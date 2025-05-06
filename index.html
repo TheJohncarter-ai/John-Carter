@@ -1,0 +1,3003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>John Carter | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Script font for name -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+  <!-- Serif font for all other text -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+  <!-- AOS Animate On Scroll Library -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6ea0e9;
+      --secondary: #101214;
+      --accent: #6ea0e9;
+      --text: #F7FFF7;
+      --background: #101214;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cinzel', serif, Arial, sans-serif; /* Added sans-serif fallback */
+      color: var(--text);
+      background: var(--background);
+      min-height: 100vh;
+      font-size: 17px; /* Slightly larger for readability */
+      line-height: 1.7; /* Improved line height for readability */
+    }
+    body {
+      position: relative;
+      z-index: 1;
+      background: var(--background);
+    }
+    /* Navbar */
+    .navbar {
+      background: rgba(16,18,20,0.97);
+      padding: 24px 0 0 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      backdrop-filter: blur(6px);
+      transition: background 0.3s, box-shadow 0.3s;
+    }
+    .navbar.scrolled {
+      background: rgba(16,18,20,0.98);
+      box-shadow: 0 4px 24px rgba(110,160,233,0.18);
+    }
+    .navbar nav {
+      display: flex;
+      gap: 48px;
+    }
+    .navbar nav a {
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 1.1rem;
+      letter-spacing: 0.25em;
+      font-family: 'Cinzel', serif;
+      transition: color 0.2s;
+    }
+    .navbar nav a:hover {
+      color: var(--text);
+    }
+    .navbar nav a.active {
+      color: var(--text);
+      font-weight: bold;
+      border-bottom: 2px solid var(--primary);
+      background: rgba(110,160,233,0.08);
+      border-radius: 4px 4px 0 0;
+    }
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 120px 32px 80px 32px;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      max-width: 1200px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .rocket-animated-wrapper {
+      opacity: 0.22;
+      position: relative;
+      z-index: 0;
+      margin: 0 auto;
+      width: 1040px;
+      height: 1040px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .rocket-animated-wrapper svg.animated-shuttle {
+      width: 1040px;
+      height: 1040px;
+    }
+    .hero-name {
+      font-family: 'Dancing Script', cursive;
+      font-size: 5.5rem;
+      color: var(--primary);
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 2;
+      letter-spacing: 0.1em;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.3);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    .hero-desc {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      color: var(--text);
+      margin-bottom: 0;
+      letter-spacing: 0.25em;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .cta {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-top: 40px;
+      z-index: 1;
+      position: relative;
+    }
+    .button-primary {
+      background: var(--primary);
+      color: var(--secondary);
+      border: none;
+      border-radius: 8px;
+      padding: 14px 36px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.15em;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .button-primary:hover {
+      background: var(--text);
+      color: var(--primary);
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(110,160,233,0.18);
+    }
+    /* Section Layout */
+    .section {
+      background: linear-gradient(135deg, rgba(110,160,233,0.04) 0%, rgba(16,18,20,0.95) 100%);
+      box-shadow: 0 8px 32px rgba(110,160,233,0.10), 0 1.5px 8px rgba(0,0,0,0.08);
+      border-radius: 32px;
+      border: 1px solid rgba(110,160,233,0.10);
+      backdrop-filter: blur(2.5px);
+      margin: 80px auto 80px auto;
+      padding: 80px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .section:not(:last-child)::after {
+      content: '';
+      display: block;
+      width: 80%;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(110,160,233,0.18) 0%, rgba(16,18,20,0.0) 100%);
+      margin: 48px auto 0 auto;
+      border-radius: 1px;
+    }
+    .section-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 36px;
+      letter-spacing: 0.18em;
+      font-family: 'Cinzel', serif, Arial, sans-serif;
+      position: relative;
+      z-index: 2;
+      line-height: 1.2;
+    }
+    /* Services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 36px;
+      margin-top: 32px;
+    }
+    .service-card, .portfolio-card {
+      background: rgba(16,18,20,0.98);
+      border-radius: 18px;
+      padding: 48px 32px;
+      color: var(--primary);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.18em;
+      border: 1px solid var(--primary);
+      position: relative;
+      z-index: 1;
+      margin-bottom: 32px;
+      overflow: hidden;
+    }
+
+    .service-card::before, .portfolio-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--primary) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .service-card:hover::before, .portfolio-card:hover::before {
+      opacity: 0.1;
+    }
+
+    .service-card:hover, .portfolio-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 32px rgba(110,160,233,0.25);
+      border-color: var(--primary);
+    }
+
+    .service-icon, .portfolio-icon {
+      font-size: 2.5rem;
+      margin-bottom: 24px;
+      color: var(--primary);
+      transition: transform 0.4s ease;
+    }
+
+    .service-card:hover .service-icon, .portfolio-card:hover .portfolio-icon {
+      transform: scale(1.2) rotate(5deg);
+    }
+
+    .service-card h3, .portfolio-card h3 {
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+      letter-spacing: 0.2em;
+      transition: color 0.3s ease;
+    }
+
+    .service-card:hover h3, .portfolio-card:hover h3 {
+      color: var(--text);
+    }
+
+    .service-card p, .portfolio-card p {
+      font-size: 1rem;
+      margin-bottom: 0;
+      color: var(--text);
+      transition: color 0.3s ease;
+    }
+
+    .service-card:hover p, .portfolio-card:hover p {
+      color: var(--text);
+    }
+    /* Portfolio */
+    .portfolio {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 36px;
+      margin-top: 32px;
+    }
+    .resume, .media {
+      background: rgba(16,18,20,0.95);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 16px;
+      color: var(--primary);
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.15em;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    }
+    .portfolio .portfolio-item {
+      cursor: pointer;
+      color: var(--primary);
+      text-decoration: underline;
+      margin-bottom: 8px;
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+    }
+    .portfolio .portfolio-item:hover {
+      color: var(--text);
+    }
+    /* Contact Section */
+    .contact-flex {
+      display: flex;
+      align-items: flex-start;
+      gap: 48px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 40px 0;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      font-size: 1.1rem;
+      letter-spacing: 0.15em;
+      color: var(--primary);
+      font-family: 'Cinzel', serif;
+      background: rgba(16,18,20,0.95);
+      padding: 32px;
+      border-radius: 16px;
+      border: 1px solid rgba(110,160,233,0.1);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .contact-row:hover {
+      transform: translateX(8px);
+    }
+
+    .contact-icon {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .contact-link {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .contact-link:hover {
+      color: var(--text);
+    }
+
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 16px;
+      border: 2px solid var(--primary);
+      object-fit: cover;
+      box-shadow: 0 8px 32px rgba(110,160,233,0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile-photo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 48px rgba(110,160,233,0.25);
+    }
+
+    /* Contact Form Styles */
+    .contact-form {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 32px;
+      background: rgba(16,18,20,0.95);
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(110,160,233,0.1);
+      border: 1px solid rgba(110,160,233,0.1);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 2px solid rgba(110,160,233,0.2);
+      border-radius: 8px;
+      background: rgba(16,18,20,0.95);
+      color: var(--text);
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      border-color: var(--primary);
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(110,160,233,0.1);
+      transform: translateY(-2px);
+    }
+
+    .contact-form input:valid,
+    .contact-form textarea:valid,
+    .contact-form select:valid {
+      border-color: #4CAF50;
+    }
+
+    .contact-form input:invalid:not(:placeholder-shown),
+    .contact-form textarea:invalid:not(:placeholder-shown),
+    .contact-form select:invalid:not(:placeholder-shown) {
+      border-color: #F44336;
+    }
+
+    .form-group label {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(247,255,247,0.5);
+      transition: all 0.3s ease;
+      pointer-events: none;
+      font-size: 1rem;
+    }
+
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label,
+    .form-group textarea:focus + label,
+    .form-group textarea:not(:placeholder-shown) + label {
+      top: 0;
+      left: 12px;
+      font-size: 0.8rem;
+      background: rgba(16,18,20,0.95);
+      padding: 0 4px;
+      color: var(--primary);
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: rgba(247,255,247,0.5);
+    }
+
+    .contact-form select {
+      cursor: pointer;
+    }
+
+    .contact-form select option {
+      background: var(--secondary);
+      color: var(--text);
+    }
+
+    .char-count {
+      position: absolute;
+      right: 8px;
+      bottom: -20px;
+      font-size: 0.875rem;
+      color: var(--primary);
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 14px;
+      background: var(--primary);
+      color: var(--secondary);
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.1em;
+    }
+
+    .submit-button:hover {
+      background: var(--text);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .submit-button:active {
+      transform: translateY(0);
+    }
+
+    .submit-button::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    .submit-button:hover::after {
+      width: 300px;
+      height: 300px;
+    }
+
+    .success-message,
+    .error-message {
+      transform: translateY(20px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .success-message.show,
+    .error-message.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .loading-spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: var(--secondary);
+      animation: spin 1s linear infinite;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes spin {
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .form-status {
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    .success-message,
+    .error-message {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 16px;
+      font-family: 'Cinzel', serif;
+    }
+
+    .success-message {
+      background: rgba(76,175,80,0.1);
+      color: #4CAF50;
+      border: 1px solid rgba(76,175,80,0.2);
+    }
+
+    .error-message {
+      background: rgba(244,67,54,0.1);
+      color: #F44336;
+      border: 1px solid rgba(244,67,54,0.2);
+    }
+
+    .success-message svg,
+    .error-message svg {
+      flex-shrink: 0;
+    }
+
+    /* Loading state */
+    .contact-form.loading button {
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    .contact-form.loading .button-text {
+      visibility: hidden;
+    }
+
+    .contact-form.loading .loading-spinner {
+      display: block;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .contact-flex {
+        flex-direction: column;
+        align-items: center;
+        gap: 32px;
+      }
+
+      .contact-info {
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .profile-photo {
+        width: 140px;
+        height: 140px;
+      }
+
+      .contact-form {
+        padding: 24px;
+      }
+    }
+    /* Back to Top Button */
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      z-index: 10;
+      background: var(--primary);
+      color: var(--secondary);
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      font-size: 2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      transition: background 0.2s, color 0.2s;
+    }
+    #backToTop:hover {
+      background: var(--text);
+      color: var(--primary);
+    }
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 100;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #23262F;
+      color: var(--primary);
+      padding: 32px;
+      border-radius: 16px;
+      max-width: 90vw;
+      max-height: 80vh;
+      overflow-y: auto;
+      position: relative;
+      font-family: 'Cinzel', serif;
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px; right: 24px;
+      font-size: 2rem;
+      color: var(--accent);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      color: var(--primary);
+      padding: 32px 0 16px 0;
+      font-size: 1rem;
+      background: transparent;
+      border-top: 1px solid #222;
+      margin-top: 48px;
+      letter-spacing: 0.2em;
+      font-family: 'Cinzel', serif;
+    }
+    @media (max-width: 1200px) {
+      .section { max-width: 96vw; }
+      .hero-bg { width: 80vw; }
+    }
+    @media (max-width: 900px) {
+      .hero-bg { width: 100vw; height: 260px; }
+      .hero { padding: 60px 4vw 32px 4vw; }
+      .section { padding: 36px 2vw; margin: 36px auto; }
+      .section-title { font-size: 2rem; }
+      .services-grid { gap: 18px; }
+      .portfolio {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 700px) {
+      .navbar nav { display: none; }
+      .navbar .mobile-nav-toggle { display: flex; }
+      .hero-bg { width: 100vw; height: 180px; }
+      .hero { padding: 40px 2vw 18px 2vw; }
+      .hero-name { font-size: 2.5rem; }
+      .section { padding: 18px 1vw; }
+      .section-title { font-size: 1.5rem; }
+      .services-grid { grid-template-columns: 1fr; gap: 12px; }
+      .contact-flex { flex-direction: column; gap: 18px; align-items: flex-start; }
+      .qr-code { margin-left: 0; }
+      .portfolio .ig-card-container { flex-direction: column; gap: 12px; }
+      .modal-content { padding: 8px; }
+      .rocket-animated-wrapper { width: 90vw; height: 50vw; min-width: 120px; min-height: 120px; max-width: 98vw; max-height: 70vw; }
+      .rocket-animated-wrapper svg.animated-shuttle { width: 100%; height: 100%; }
+      .cta { flex-direction: column; gap: 10px; }
+      .button-primary { width: 100%; font-size: 1rem; padding: 12px 0; }
+      .portfolio { gap: 18px; }
+    }
+    @media (max-width: 500px) {
+      .hero { padding: 24px 1vw 8px 1vw; }
+      .hero-name { font-size: 1.3rem; }
+      .cta { flex-direction: column; gap: 8px; }
+      .button-primary { width: 100%; font-size: 0.95rem; padding: 10px 0; }
+      .section { padding: 4px 0.5vw; }
+      .service-card { padding: 10px 4px; font-size: 0.95rem; }
+      .rocket-animated-wrapper { width: 98vw; height: 60vw; min-width: 80px; min-height: 80px; max-width: 100vw; max-height: 80vw; }
+      .rocket-animated-wrapper svg.animated-shuttle { width: 100%; height: 100%; }
+      .portfolio { gap: 8px; }
+    }
+    /* Apple-like polish */
+    .section, .service-card, .modal-content, .ig-card {
+      background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(16,18,20,0.95) 100%);
+      box-shadow: 0 8px 32px rgba(110,160,233,0.10), 0 1.5px 8px rgba(0,0,0,0.08);
+      border-radius: 24px;
+      border: 1px solid rgba(110,160,233,0.10);
+      backdrop-filter: blur(2.5px);
+    }
+    .button-primary, .contact-form button {
+      box-shadow: 0 2px 8px rgba(110,160,233,0.10);
+      border-radius: 16px;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .button-primary:active, .contact-form button:active {
+      box-shadow: 0 1px 2px rgba(110,160,233,0.18);
+      background: var(--accent);
+      color: var(--text);
+    }
+    .service-card:hover, .service-card:focus {
+      background: linear-gradient(135deg, var(--primary) 0%, #fff 100%);
+      color: var(--secondary);
+      box-shadow: 0 12px 32px rgba(110,160,233,0.18);
+    }
+    .modal-content {
+      box-shadow: 0 8px 32px rgba(110,160,233,0.18), 0 1.5px 8px rgba(0,0,0,0.08);
+      border-radius: 24px;
+    }
+    .hero-bg, .rocket-bg-wrapper, .rocket-img {
+      border-radius: 32px;
+      box-shadow: 0 4px 32px rgba(110,160,233,0.10);
+    }
+    /* Hamburger menu for mobile */
+    .mobile-nav-toggle {
+      display: none;
+      position: absolute;
+      right: 24px;
+      top: 24px;
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 20;
+      box-shadow: 0 2px 8px rgba(110,160,233,0.10);
+    }
+    .mobile-nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 3px;
+      background: var(--secondary);
+      margin: 4px 0;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .rocket-animated-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      width: 320px;
+      height: 340px;
+      position: relative;
+      z-index: 1;
+    }
+    .animated-shuttle {
+      animation: shuttleLaunch 3.5s cubic-bezier(.4,1.6,.6,1) infinite alternate;
+    }
+    .shuttle-group { /* Rocket group floats up */
+      transform-origin: 160px 180px;
+      animation: shuttleFloat 2.5s ease-in-out infinite alternate;
+    }
+    .plume {
+      opacity: 0.85;
+      filter: blur(0.5px);
+      transform-origin: 160px 250px;
+      animation: plumeFlicker 1.1s infinite alternate;
+    }
+    .smoke-clouds path {
+      stroke: #6ea0e9;
+      filter: blur(0.5px);
+      animation: smokePulse 2.2s ease-in-out infinite alternate;
+    }
+    @keyframes shuttleLaunch {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-30px); }
+    }
+    @keyframes shuttleFloat {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+    @keyframes plumeFlicker {
+      0% { opacity: 0.7; filter: blur(1.5px); }
+      100% { opacity: 1; filter: blur(0.2px); }
+    }
+    @keyframes smokePulse {
+      0% { opacity: 0.7; stroke-width: 3; }
+      100% { opacity: 1; stroke-width: 5; }
+    }
+    /* Enhanced Hero Styles */
+    .hero-name {
+      font-family: 'Dancing Script', cursive;
+      font-size: 5.5rem;
+      color: var(--primary);
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 2;
+      letter-spacing: 0.1em;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.3);
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    .hero-desc {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem;
+      color: var(--text);
+      margin-bottom: 0;
+      letter-spacing: 0.25em;
+      position: relative;
+      z-index: 1;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    .highlight-text {
+      position: relative;
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(110,160,233,0.1);
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .highlight-text:hover {
+      background: rgba(110,160,233,0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(110,160,233,0.15);
+    }
+
+    .highlight-text:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 6px rgba(110,160,233,0.1);
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px rgba(110,160,233,0.5),
+                     0 0 20px rgba(110,160,233,0.3),
+                     0 0 30px rgba(110,160,233,0.2);
+      }
+      to {
+        text-shadow: 0 0 20px rgba(110,160,233,0.6),
+                     0 0 30px rgba(110,160,233,0.4),
+                     0 0 40px rgba(110,160,233,0.3);
+      }
+    }
+
+    .stat-item {
+      position: relative;
+      padding: 16px;
+      background: rgba(110,160,233,0.05);
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .stat-item:hover {
+      transform: translateY(-5px);
+      background: rgba(110,160,233,0.1);
+    }
+
+    .stat-number {
+      position: relative;
+      display: inline-block;
+    }
+
+    .stat-number::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--primary);
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .stat-item:hover .stat-number::after {
+      transform: scaleX(1);
+    }
+
+    @media (max-width: 768px) {
+      .hero-stats {
+        flex-direction: column;
+        gap: 24px;
+      }
+      
+      .hero-name {
+        font-size: 3.5rem;
+      }
+      
+      .hero-desc {
+        font-size: 1.1rem;
+      }
+    }
+    .odds-and-ends-link {
+      color: #FF5C00;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      position: relative;
+      display: inline-block;
+    }
+    .odds-and-ends-link:hover {
+      color: #FF7F33;
+      transform: translateY(-1px);
+    }
+    .odds-and-ends-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #FF5C00;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+    .odds-and-ends-link:hover::after {
+      transform: scaleX(1);
+    }
+    /* Add at the beginning of the style section */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, var(--primary), var(--accent));
+      transform-origin: 0 50%;
+      transform: scaleX(0);
+      z-index: 1000;
+      transition: transform 0.1s ease-out;
+    }
+    /* Refined Geometric Pattern */
+    .geometric-pattern {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      opacity: 0.08;
+      z-index: 0;
+      mix-blend-mode: overlay;
+    }
+
+    .geometric-pattern::before,
+    .geometric-pattern::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border: 1.5px solid var(--primary);
+      opacity: 0.15;
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      filter: blur(0.5px);
+    }
+
+    .geometric-pattern::before {
+      top: -200px;
+      right: -200px;
+      transform: rotate(45deg);
+      border-radius: 65% 35% 30% 70% / 60% 30% 70% 40%;
+      animation: morphShape 12s ease-in-out infinite;
+      box-shadow: 0 0 30px rgba(110, 160, 233, 0.1);
+    }
+
+    .geometric-pattern::after {
+      bottom: -200px;
+      left: -200px;
+      transform: rotate(-45deg);
+      border-radius: 35% 65% 70% 30% / 50% 60% 30% 60%;
+      animation: morphShape 12s ease-in-out infinite reverse;
+      box-shadow: 0 0 30px rgba(110, 160, 233, 0.1);
+    }
+
+    @keyframes morphShape {
+      0% {
+        border-radius: 65% 35% 30% 70% / 60% 30% 70% 40%;
+        transform: rotate(45deg) scale(1);
+      }
+      50% {
+        border-radius: 35% 65% 70% 30% / 50% 60% 30% 60%;
+        transform: rotate(45deg) scale(1.05);
+      }
+      100% {
+        border-radius: 65% 35% 30% 70% / 60% 30% 70% 40%;
+        transform: rotate(45deg) scale(1);
+      }
+    }
+
+    .section:hover .geometric-pattern::before,
+    .section:hover .geometric-pattern::after {
+      opacity: 0.2;
+      filter: blur(0px);
+    }
+
+    .section:hover .geometric-pattern::before {
+      transform: rotate(45deg) scale(1.1);
+      box-shadow: 0 0 40px rgba(110, 160, 233, 0.15);
+    }
+
+    .section:hover .geometric-pattern::after {
+      transform: rotate(-45deg) scale(1.1);
+      box-shadow: 0 0 40px rgba(110, 160, 233, 0.15);
+    }
+
+    /* Add subtle gradient overlay */
+    .section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at center, transparent 0%, rgba(16, 18, 20, 0.1) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Update section styles */
+    .section {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease-out;
+    }
+
+    .section:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Enhance content container */
+    .section > div {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Geometric Icons */
+    .geometric-icon {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .geometric-icon::before,
+    .geometric-icon::after {
+      content: '';
+      position: absolute;
+      border: 2px solid var(--primary);
+      transition: all 0.3s ease;
+    }
+
+    /* Investment Icon - Hexagon with Arrow */
+    .icon-investment::before {
+      width: 60px;
+      height: 60px;
+      transform: rotate(30deg);
+      border-radius: 8px;
+    }
+
+    .icon-investment::after {
+      width: 20px;
+      height: 20px;
+      border-left: none;
+      border-bottom: none;
+      transform: rotate(45deg) translate(15px, -15px);
+    }
+
+    /* Development Icon - Cube with Code */
+    .icon-development::before {
+      width: 50px;
+      height: 50px;
+      transform: rotate(45deg);
+      border-radius: 4px;
+    }
+
+    .icon-development::after {
+      width: 30px;
+      height: 30px;
+      border: none;
+      border-right: 2px solid var(--primary);
+      border-bottom: 2px solid var(--primary);
+      transform: rotate(45deg) translate(10px, -10px);
+    }
+
+    /* Consulting Icon - Network Nodes */
+    .icon-consulting::before {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .icon-consulting::after {
+      width: 60px;
+      height: 60px;
+      border: none;
+      border-top: 2px solid var(--primary);
+      border-right: 2px solid var(--primary);
+      transform: rotate(45deg);
+    }
+
+    /* Hover Effects */
+    .geometric-icon:hover::before {
+      transform: rotate(45deg) scale(1.1);
+      border-color: var(--accent);
+    }
+
+    .geometric-icon:hover::after {
+      transform: rotate(45deg) scale(1.1);
+      border-color: var(--accent);
+    }
+
+    .icon-investment:hover::before {
+      transform: rotate(30deg) scale(1.1);
+    }
+
+    .icon-investment:hover::after {
+      transform: rotate(45deg) translate(20px, -20px);
+    }
+
+    .icon-consulting:hover::before {
+      transform: scale(1.1);
+    }
+
+    .icon-consulting:hover::after {
+      transform: rotate(45deg) scale(1.1);
+    }
+
+    /* Remove Geometric Icons styles */
+    .geometric-icon,
+    .icon-investment,
+    .icon-development,
+    .icon-consulting {
+      display: none;
+    }
+
+    /* Restore original service icons */
+    .service-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 80px;
+      height: 80px;
+      margin: 0 20px;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress"></div>
+  <header class="navbar">
+    <div class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+    <nav id="mainNav">
+      <a href="#hero">Home</a>
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <!-- Particle background -->
+        <div id="particles-js" style="position: absolute; width: 100%; height: 100%; z-index: 1;"></div>
+        <!-- Animated background elements -->
+        <div class="animated-bg-elements">
+          <div class="floating-circle" style="position: absolute; width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(110,160,233,0.1) 0%, rgba(16,18,20,0) 70%); top: 20%; left: 10%; animation: float 8s ease-in-out infinite;"></div>
+          <div class="floating-circle" style="position: absolute; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle, rgba(110,160,233,0.1) 0%, rgba(16,18,20,0) 70%); top: 40%; right: 15%; animation: float 6s ease-in-out infinite reverse;"></div>
+          <div class="floating-circle" style="position: absolute; width: 150px; height: 150px; border-radius: 50%; background: radial-gradient(circle, rgba(110,160,233,0.1) 0%, rgba(16,18,20,0) 70%); bottom: 20%; left: 20%; animation: float 7s ease-in-out infinite 1s;"></div>
+        </div>
+        <!-- Rocket animated wrapper -->
+        <div class="rocket-animated-wrapper" style="position: relative; z-index: 1; width: 320px; height: 340px; display: flex; align-items: center; justify-content: center;">
+          <svg class="animated-shuttle" width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Runway lines -->
+            <g stroke="#222" stroke-width="3" stroke-linecap="round">
+              <line x1="160" y1="250" x2="160" y2="320" />
+              <line x1="160" y1="250" x2="60" y2="320" />
+              <line x1="160" y1="250" x2="260" y2="320" />
+              <line x1="160" y1="250" x2="20" y2="300" />
+              <line x1="160" y1="250" x2="300" y2="300" />
+              <line x1="160" y1="250" x2="100" y2="320" />
+              <line x1="160" y1="250" x2="220" y2="320" />
+            </g>
+            <!-- Smoke clouds -->
+            <g class="smoke-clouds" stroke="#222" stroke-width="3" fill="none">
+              <path d="M30 250 Q60 220 100 250 Q120 230 160 250 Q200 230 220 250 Q260 220 290 250" />
+              <path d="M60 270 Q90 250 120 270 Q140 260 160 270 Q180 260 200 270 Q230 250 260 270" />
+            </g>
+            <!-- Plume -->
+            <path class="plume" d="M160 180 Q170 220 160 250 Q150 220 160 180" fill="#fff8b0" stroke="#ffb347" stroke-width="3"/>
+            <!-- Shuttle -->
+            <g class="shuttle-group">
+              <g class="shuttle-body">
+                <rect x="148" y="100" width="24" height="60" rx="12" fill="#fff" stroke="#222" stroke-width="3"/>
+                <polygon points="160,60 148,100 172,100" fill="#fff" stroke="#222" stroke-width="3"/>
+                <rect x="154" y="120" width="12" height="18" rx="6" fill="#6ea0e9" stroke="#222" stroke-width="2"/>
+                <rect x="154" y="140" width="12" height="10" rx="5" fill="#6ea0e9" stroke="#222" stroke-width="2"/>
+              </g>
+              <!-- Shuttle wings -->
+              <polygon points="148,130 130,150 148,150" fill="#fff" stroke="#222" stroke-width="3"/>
+              <polygon points="172,130 190,150 172,150" fill="#fff" stroke="#222" stroke-width="3"/>
+              <!-- Shuttle tail fins -->
+              <polygon points="154,100 160,90 166,100" fill="#fff" stroke="#222" stroke-width="2"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="hero-content" style="position: relative; z-index: 2; text-align: center;">
+        <div class="hero-name" data-aos="fade-down" data-aos-duration="1000">John Carter</div>
+        <div class="hero-desc" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+          <a href="#service-preipo" class="highlight-text" style="display: inline-block; margin-bottom: 8px; text-decoration: none; color: inherit; cursor: pointer;">Private Pre-IPO Investments</a><br>
+          <a href="#service-consulting" class="highlight-text" style="display: inline-block; margin-bottom: 8px; text-decoration: none; color: inherit; cursor: pointer;">Ai & Space Venture Capital</a><br>
+          <a href="#service-webdev" class="highlight-text" style="display: inline-block; text-decoration: none; color: inherit; cursor: pointer;">Web2, Web3 & Blockchain</a>
+        </div>
+        <!-- Animated stats -->
+        <div class="hero-stats" style="display: flex; justify-content: center; gap: 48px; margin: 32px 0;" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+          <div class="stat-item" style="text-align: center;">
+            <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">$87.4M</div>
+            <div class="stat-label" style="color: var(--text); font-size: 0.9rem; letter-spacing: 0.1em;">Total Gains</div>
+          </div>
+          <div class="stat-item" style="text-align: center;">
+            <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">158%</div>
+            <div class="stat-label" style="color: var(--text); font-size: 0.9rem; letter-spacing: 0.1em;">Average ROI</div>
+          </div>
+          <div class="stat-item" style="text-align: center;">
+            <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">$300M+</div>
+            <div class="stat-label" style="color: var(--text); font-size: 0.9rem; letter-spacing: 0.1em;">Managed Assets</div>
+          </div>
+        </div>
+        <div class="cta" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
+          <a href="#services" class="button-primary">
+            <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            Explore Services
+          </a>
+          <a href="#portfolio" class="button-primary">
+            <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M6 10l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            View Portfolio
+          </a>
+        </div>
+      </div>
+    </section>
+    <!-- SERVICES: Each service is now its own section for focus and immersion -->
+    <!-- Service 1: Private Pre-IPO Investment Opportunities -->
+    <section class="section" id="service-preipo" style="background: linear-gradient(135deg, #6ea0e9 0%, #101214 100%);" data-aos="fade-up">
+      <div class="geometric-pattern"></div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 36px; justify-content: center; flex-direction: row-reverse;">
+        <!-- Branded SVG Rocket Icon -->
+        <div class="service-icon" data-aos="zoom-in" style="font-size:3rem;">
+          <!-- Custom SVG Rocket Icon -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 4L28 20H20L24 4Z" fill="#fff"/><circle cx="24" cy="28" r="8" fill="#6ea0e9" stroke="#fff" stroke-width="2"/><path d="M24 36V44" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div style="flex:1; min-width:260px;">
+          <h2 class="section-title" data-aos="fade-left">Private Pre-IPO Investment Opportunities</h2>
+          <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px; margin-bottom: 24px;" data-aos="fade-up" data-aos-delay="100">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+              <div style="width: 40px; height: 40px; background: rgba(110,160,233,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+          </div>
+              <h3 style="color: #6ea0e9; margin: 0; font-size: 1.4rem;">Exclusive Access to Tomorrow's Giants</h3>
+            </div>
+            <p style="margin-bottom: 16px; line-height: 1.6;">
+              <span style="color: #6ea0e9; font-weight: bold;">Transform Your Portfolio</span> with pre-IPO investments in revolutionary companies that are shaping the future of technology and innovation.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0;">
+              <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 16px;">
+                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">AI & Machine Learning</div>
+                <div style="font-size: 0.9rem; color: #F7FFF7;">OpenAI, Anthropic, and emerging AI leaders</div>
+              </div>
+              <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 16px;">
+                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">Space Technology</div>
+                <div style="font-size: 0.9rem; color: #F7FFF7;">SpaceX, Anduril, and next-gen aerospace</div>
+              </div>
+              <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 16px;">
+                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">Deep Tech</div>
+                <div style="font-size: 0.9rem; color: #F7FFF7;">Quantum computing, robotics, and more</div>
+              </div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 12px; margin-top: 16px;">
+              <div style="width: 24px; height: 24px; background: rgba(110,160,233,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                  <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+              </div>
+              <div style="font-size: 0.9rem; color: #F7FFF7;">Curated opportunities with proven track record of success</div>
+            </div>
+          </div>
+          <!-- Investment Performance Chart -->
+          <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 16px; margin: 18px 0;">
+            <h3 style="color:#6ea0e9; margin:0 0 12px 0; font-size: 1.2rem;">Investment Performance</h3>
+            <div style="display: flex; height: 200px; align-items: flex-end; gap: 12px; padding: 0 12px;">
+              <div class="chart-bar" style="flex: 1; background: linear-gradient(to top, #6ea0e9, #4a80c9); height: 100%; position: relative; border-radius: 8px 8px 0 0; min-width: 40px;">
+                <div style="position: absolute; top: -24px; left: 50%; transform: translateX(-50%); color: #6ea0e9; font-weight: bold; font-size: 0.9rem;">417%</div>
+                <div style="position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%); color: #F7FFF7; font-size: 0.9rem;">Roku</div>
+              </div>
+              <div class="chart-bar" style="flex: 1; background: linear-gradient(to top, #6ea0e9, #4a80c9); height: 53%; position: relative; border-radius: 8px 8px 0 0; min-width: 40px;">
+                <div style="position: absolute; top: -24px; left: 50%; transform: translateX(-50%); color: #6ea0e9; font-weight: bold; font-size: 0.9rem;">220%</div>
+                <div style="position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%); color: #F7FFF7; font-size: 0.9rem;">Nutanix</div>
+              </div>
+              <div class="chart-bar" style="flex: 1; background: linear-gradient(to top, #6ea0e9, #4a80c9); height: 46%; position: relative; border-radius: 8px 8px 0 0; min-width: 40px;">
+                <div style="position: absolute; top: -24px; left: 50%; transform: translateX(-50%); color: #6ea0e9; font-weight: bold; font-size: 0.9rem;">193%</div>
+                <div style="position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%); color: #F7FFF7; font-size: 0.9rem;">Twitter</div>
+              </div>
+              <div class="chart-bar" style="flex: 1; background: linear-gradient(to top, #6ea0e9, #4a80c9); height: 38%; position: relative; border-radius: 8px 8px 0 0; min-width: 40px;">
+                <div style="position: absolute; top: -24px; left: 50%; transform: translateX(-50%); color: #6ea0e9; font-weight: bold; font-size: 0.9rem;">157%</div>
+                <div style="position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%); color: #F7FFF7; font-size: 0.9rem;">SolarCity</div>
+              </div>
+              <div class="chart-bar" style="flex: 1; background: linear-gradient(to top, #6ea0e9, #4a80c9); height: 35%; position: relative; border-radius: 8px 8px 0 0; min-width: 40px;">
+                <div style="position: absolute; top: -24px; left: 50%; transform: translateX(-50%); color: #6ea0e9; font-weight: bold; font-size: 0.9rem;">144%</div>
+                <div style="position: absolute; bottom: -24px; left: 50%; transform: translateX(-50%); color: #F7FFF7; font-size: 0.9rem;">Facebook</div>
+              </div>
+            </div>
+            <!-- Investment Summary -->
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 24px;">
+              <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 12px; text-align: center;">
+                <h4 style="color:#6ea0e9; margin:0 0 4px 0; font-size: 1rem;">Average ROI</h4>
+                <div style="font-size: 1.5rem; font-weight: bold; color: #F7FFF7;">158%</div>
+              </div>
+              <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 12px; text-align: center;">
+                <h4 style="color:#6ea0e9; margin:0 0 4px 0; font-size: 1rem;">Total Gains</h4>
+                <div style="font-size: 1.5rem; font-weight: bold; color: #F7FFF7;">$87.4M</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial -->
+          <blockquote style="color:#fff; font-style:italic; border-left:4px solid #6ea0e9; padding-left:12px; margin:18px 0;">
+            "Investing with John Carter opened doors to opportunities I never thought possible."<br>
+            <span style="font-size:0.95em; color:#6ea0e9;">– Jane Doe, Angel Investor</span>
+          </blockquote>
+          <a href="#contact" class="button-primary" style="margin-top:12px;">
+            <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            Request Access
+          </a>
+          <button class="button-primary" id="learnMorePreIPO" style="margin-top:12px;">
+            <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M6 10l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            Learn More
+          </button>
+        </div>
+        <!-- Removed Unsplash image -->
+        <div style="max-width:220px;"></div>
+      </div>
+    </section>
+    <!-- SVG Wave Divider -->
+    <div style="width:100%; overflow:hidden; line-height:0;">
+      <svg viewBox="0 0 1440 80" width="100%" height="80" preserveAspectRatio="none">
+        <path d="M0,40 C480,80 960,0 1440,40 L1440,80 L0,80 Z" fill="#181a20"/>
+      </svg>
+    </div>
+
+    <!-- Service 2: Web3 & Web2 Systems/Product Development -->
+    <section class="section" id="service-webdev" style="background: #181a20;" data-aos="fade-up">
+      <div class="geometric-pattern"></div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 36px; justify-content: center; flex-direction: row-reverse;">
+        <!-- Branded SVG Code/Blockchain Icon -->
+        <div class="service-icon" data-aos="zoom-in" style="font-size:3rem;">
+          <!-- Custom SVG Code Icon -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="32" height="32" rx="8" fill="#6ea0e9"/><path d="M18 24l-4 4 4 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 24l4 4-4 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="22" y="20" width="4" height="8" rx="2" fill="#fff"/></svg>
+        </div>
+        <div style="flex:1; min-width:260px;">
+          <h2 class="section-title" data-aos="fade-left">Web3 & Web2 Systems/Product Development</h2>
+          <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px; margin-bottom: 24px;" data-aos="fade-up" data-aos-delay="100">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+              <div style="width: 40px; height: 40px; background: rgba(110,160,233,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                </svg>
+          </div>
+              <h3 style="color: #6ea0e9; margin: 0; font-size: 1.4rem;">Powered by <a href="https://oddsandends.io" target="_blank" rel="noopener" class="odds-and-ends-link">Odds & Ends Ventures</a></h3>
+            </div>
+            <p style="margin-bottom: 16px; line-height: 1.6;">
+              Partnering with <a href="https://oddsandends.io" target="_blank" rel="noopener" class="odds-and-ends-link">Odds & Ends Ventures</a>, we deliver cutting-edge solutions across the full spectrum of digital innovation. Our elite team combines deep technical expertise with creative problem-solving to build scalable, secure, and user-centric applications.
+            </p>
+            
+            <!-- Service Categories -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0;">
+              <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 16px;">
+                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">Web2 Development</div>
+                <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem; color: #F7FFF7;">
+                  <li>Full-Stack Applications</li>
+                  <li>Enterprise Systems</li>
+                  <li>E-commerce Platforms</li>
+                  <li>API Development</li>
+                </ul>
+              </div>
+              <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 16px;">
+                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">Web3 Solutions</div>
+                <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem; color: #F7FFF7;">
+                  <li>Smart Contracts</li>
+                  <li>DeFi Applications</li>
+                  <li>NFT Marketplaces</li>
+                  <li>Blockchain Integration</li>
+                </ul>
+              </div>
+              <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 16px;">
+                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">Design & UX</div>
+                <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem; color: #F7FFF7;">
+                  <li>UI/UX Design</li>
+                  <li>Brand Identity</li>
+                  <li>User Research</li>
+                  <li>Prototyping</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Founder's Guide -->
+            <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 24px; margin-top: 24px;">
+              <h4 style="color: #6ea0e9; margin: 0 0 16px 0; font-size: 1.2rem;">Founder's Guide to Building Your First Product</h4>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+                <div class="founder-step" style="cursor: pointer; padding: 16px; border-radius: 8px; transition: all 0.3s ease;" onclick="toggleFounderStep(this)">
+                  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                    <div style="width: 24px; height: 24px; background: rgba(110,160,233,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #6ea0e9;">1</div>
+                    <h5 style="color: #6ea0e9; margin: 0;">Planning & Strategy</h5>
+                  </div>
+                  <div class="step-content" style="display: none; font-size: 0.9rem; color: #F7FFF7;">
+                    <ul style="margin: 0; padding-left: 20px;">
+                      <li>Market research and validation</li>
+                      <li>Technical requirements gathering</li>
+                      <li>MVP definition</li>
+                      <li>Timeline and resource planning</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="founder-step" style="cursor: pointer; padding: 16px; border-radius: 8px; transition: all 0.3s ease;" onclick="toggleFounderStep(this)">
+                  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                    <div style="width: 24px; height: 24px; background: rgba(110,160,233,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #6ea0e9;">2</div>
+                    <h5 style="color: #6ea0e9; margin: 0;">Development Approach</h5>
+                  </div>
+                  <div class="step-content" style="display: none; font-size: 0.9rem; color: #F7FFF7;">
+                    <ul style="margin: 0; padding-left: 20px;">
+                      <li>Agile development methodology</li>
+                      <li>Regular progress updates</li>
+                      <li>Quality assurance process</li>
+                      <li>Security best practices</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="founder-step" style="cursor: pointer; padding: 16px; border-radius: 8px; transition: all 0.3s ease;" onclick="toggleFounderStep(this)">
+                  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                    <div style="width: 24px; height: 24px; background: rgba(110,160,233,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #6ea0e9;">3</div>
+                    <h5 style="color: #6ea0e9; margin: 0;">Launch & Growth</h5>
+                  </div>
+                  <div class="step-content" style="display: none; font-size: 0.9rem; color: #F7FFF7;">
+                    <ul style="margin: 0; padding-left: 20px;">
+                      <li>Beta testing and feedback</li>
+                      <li>Performance optimization</li>
+                      <li>Marketing strategy</li>
+                      <li>Post-launch support</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Success Metrics -->
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 24px;">
+              <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 12px; text-align: center;">
+                <h4 style="color:#6ea0e9; margin:0 0 4px 0; font-size: 1rem;">Projects Delivered</h4>
+                <div style="font-size: 1.5rem; font-weight: bold; color: #F7FFF7;">50+</div>
+              </div>
+              <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 12px; text-align: center;">
+                <h4 style="color:#6ea0e9; margin:0 0 4px 0; font-size: 1rem;">Client Satisfaction</h4>
+                <div style="font-size: 1.5rem; font-weight: bold; color: #F7FFF7;">98%</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Testimonial -->
+          <blockquote style="color:#fff; font-style:italic; border-left:4px solid #6ea0e9; padding-left:12px; margin:18px 0;">
+            "The <a href="https://oddsandends.io" target="_blank" rel="noopener" class="odds-and-ends-link">Odds & Ends</a> team delivered a blockchain product that exceeded our expectations. Their expertise in both Web2 and Web3 technologies is unmatched."<br>
+            <span style="font-size:0.95em; color:#6ea0e9;">– Alex Smith, Startup Founder</span>
+          </blockquote>
+          <a href="#contact" class="button-primary" style="margin-top:12px;">
+            <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            Start Your Project
+          </a>
+        </div>
+        <!-- Removed Unsplash image -->
+        <div style="max-width:220px;"></div>
+      </div>
+    </section>
+    <div style="width:100%; overflow:hidden; line-height:0;">
+      <svg viewBox="0 0 1440 80" width="100%" height="80" preserveAspectRatio="none">
+        <path d="M0,40 C480,80 960,0 1440,40 L1440,80 L0,80 Z" fill="#101214"/>
+      </svg>
+    </div>
+
+    <!-- Service 3: Consulting -->
+    <section class="section" id="service-consulting" style="background: linear-gradient(135deg, #101214 0%, #6ea0e9 100%);" data-aos="fade-up">
+      <div class="geometric-pattern"></div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 36px; justify-content: center;">
+        <!-- Branded SVG Globe/Network Icon -->
+        <div class="service-icon" data-aos="zoom-in" style="font-size:3rem;">
+          <!-- Custom SVG Globe with Network Icon -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="20" stroke="#6ea0e9" stroke-width="2"/>
+            <path d="M24 4C35 4 44 13 44 24C44 35 35 44 24 44" stroke="#6ea0e9" stroke-width="2"/>
+            <path d="M24 4C13 4 4 13 4 24C4 35 13 44 24 44" stroke="#6ea0e9" stroke-width="2"/>
+            <path d="M4 24H44" stroke="#6ea0e9" stroke-width="2"/>
+            <circle cx="24" cy="24" r="4" fill="#6ea0e9"/>
+            <path d="M24 20V28" stroke="#fff" stroke-width="2"/>
+            <path d="M20 24H28" stroke="#fff" stroke-width="2"/>
+          </svg>
+        </div>
+        <div style="flex:1; min-width:260px; max-width: 800px;">
+          <h2 class="section-title" data-aos="fade-right">Global Strategic Consulting</h2>
+          <p data-aos="fade-up" data-aos-delay="100">
+            <b>Transform Your Vision into Reality.</b><br>
+            Comprehensive strategic guidance for businesses, startups, funds, and international projects. Leveraging a global network of experts to deliver exceptional results.
+          </p>
+
+          <!-- Expertise Grid -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0;">
+            <!-- Business Strategy -->
+            <div style="background: rgba(255,255,255,0.1); padding: 16px; border-radius: 12px; backdrop-filter: blur(10px);">
+              <h3 style="color: #6ea0e9; margin: 0 0 8px 0; font-size: 1.1rem;">Business Strategy</h3>
+              <ul style="color:#fff; margin:0; padding-left:16px; font-size:0.9rem;">
+                <li>Go-to-market strategy</li>
+                <li>Market entry & expansion</li>
+                <li>Competitive positioning</li>
+              </ul>
+            </div>
+
+            <!-- Technology & Innovation -->
+            <div style="background: rgba(255,255,255,0.1); padding: 16px; border-radius: 12px; backdrop-filter: blur(10px);">
+              <h3 style="color: #6ea0e9; margin: 0 0 8px 0; font-size: 1.1rem;">Technology & Innovation</h3>
+              <ul style="color:#fff; margin:0; padding-left:16px; font-size:0.9rem;">
+                <li>Tech stack optimization</li>
+                <li>AI integration</li>
+                <li>Digital transformation</li>
+              </ul>
+            </div>
+
+            <!-- Growth & Scale -->
+            <div style="background: rgba(255,255,255,0.1); padding: 16px; border-radius: 12px; backdrop-filter: blur(10px);">
+              <h3 style="color: #6ea0e9; margin: 0 0 8px 0; font-size: 1.1rem;">Growth & Scale</h3>
+              <ul style="color:#fff; margin:0; padding-left:16px; font-size:0.9rem;">
+                <li>Growth hacking</li>
+                <li>Revenue optimization</li>
+                <li>International expansion</li>
+              </ul>
+            </div>
+
+            <!-- Investment & Finance -->
+            <div style="background: rgba(255,255,255,0.1); padding: 16px; border-radius: 12px; backdrop-filter: blur(10px);">
+              <h3 style="color: #6ea0e9; margin: 0 0 8px 0; font-size: 1.1rem;">Investment & Finance</h3>
+              <ul style="color:#fff; margin:0; padding-left:16px; font-size:0.9rem;">
+                <li>Fundraising strategy</li>
+                <li>Investor relations</li>
+                <li>Financial modeling</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Global Reach -->
+          <div style="background: rgba(255,255,255,0.1); padding: 16px; border-radius: 12px; margin: 16px 0; backdrop-filter: blur(10px);">
+            <h3 style="color: #6ea0e9; margin: 0 0 8px 0; font-size: 1.1rem;">Global Reach & Network</h3>
+            <p style="color:#fff; margin:0; font-size:0.9rem;">
+              Access to a curated network of industry experts, investors, and strategic partners across:
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;">
+              <span style="background: rgba(110,160,233,0.2); color: #fff; padding: 4px 12px; border-radius: 16px; font-size: 0.9rem;">North America</span>
+              <span style="background: rgba(110,160,233,0.2); color: #fff; padding: 4px 12px; border-radius: 16px; font-size: 0.9rem;">Europe</span>
+              <span style="background: rgba(110,160,233,0.2); color: #fff; padding: 4px 12px; border-radius: 16px; font-size: 0.9rem;">Asia</span>
+              <span style="background: rgba(110,160,233,0.2); color: #fff; padding: 4px 12px; border-radius: 16px; font-size: 0.9rem;">Latin America</span>
+              <span style="background: rgba(110,160,233,0.2); color: #fff; padding: 4px 12px; border-radius: 16px; font-size: 0.9rem;">Middle East</span>
+            </div>
+          </div>
+
+          <!-- Success Metrics -->
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin: 24px 0;">
+            <div style="text-align: center;">
+              <div style="color: #6ea0e9; font-size: 2rem; font-weight: bold;">20+</div>
+              <div style="color: #fff; font-size: 0.9rem;">Startups Scaled</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="color: #6ea0e9; font-size: 2rem; font-weight: bold;">$10M+</div>
+              <div style="color: #fff; font-size: 0.9rem;">Revenue Generated</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="color: #6ea0e9; font-size: 2rem; font-weight: bold;">15+</div>
+              <div style="color: #fff; font-size: 0.9rem;">Countries Served</div>
+            </div>
+          </div>
+
+          <!-- Testimonials Carousel -->
+          <div class="testimonials-carousel" style="margin: 24px 0;">
+            <div class="testimonial" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; backdrop-filter: blur(10px);">
+              <blockquote style="color:#fff; font-style:italic; margin:0 0 12px 0; font-size:0.95rem;">
+                "John's strategic guidance and global network were instrumental in our successful market expansion. His ability to connect us with the right partners made all the difference."
+              </blockquote>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div>
+                  <div style="color: #6ea0e9; font-weight: bold;">Priya Patel</div>
+                  <div style="color: #fff; font-size: 0.9rem;">CEO, TechStart Inc.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Call to Action -->
+          <div style="display: flex; gap: 16px; margin-top: 24px;">
+            <a href="#" class="button-primary" id="scheduleConsultBtn" style="flex:1; text-align:center;">
+              <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              Schedule a Consultation
+            </a>
+            <a href="#contact" class="button-secondary" style="flex:1; text-align:center;">
+              <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              Discuss Your Project
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Calendly Modal -->
+    <div id="calendlyModal" class="modal" aria-modal="true" role="dialog">
+      <div class="modal-content" style="max-width: 95vw; width: 95vw; height: 95vh; max-height: 95vh; padding: 0; margin: 0; overflow: hidden; position: relative;">
+        <button class="modal-close" aria-label="Close Calendar" style="position: absolute; top: 12px; right: 12px; z-index: 1000;">&times;</button>
+        <div id="calendly-inline" style="width: 100%; height: 100%; overflow: hidden; position: absolute; top: 0; left: 0;"></div>
+      </div>
+    </div>
+    <div style="width:100%; overflow:hidden; line-height:0;">
+      <svg viewBox="0 0 1440 80" width="100%" height="80" preserveAspectRatio="none">
+        <path d="M0,40 C480,80 960,0 1440,40 L1440,80 L0,80 Z" fill="#101214"/>
+      </svg>
+    </div>
+
+    <!-- Service 4: Interviews, Media Content Partnerships & Production -->
+    <section class="section" id="service-media" style="background: #181a20;" data-aos="fade-up">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 36px; justify-content: center; flex-direction: row-reverse;">
+        <!-- Branded SVG Microphone Icon -->
+        <div class="service-icon" data-aos="zoom-in" style="font-size:3rem;">
+          <!-- Custom SVG Microphone Icon -->
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="18" y="8" width="12" height="24" rx="6" fill="#6ea0e9"/><rect x="22" y="32" width="4" height="8" rx="2" fill="#fff"/><path d="M24 40v4" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M16 36h16" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div style="flex:1; min-width:260px;">
+          <h2 class="section-title" data-aos="fade-left">Interviews, Media Content Partnerships & Production</h2>
+          <p data-aos="fade-up" data-aos-delay="100"><b>Amplify Your Voice. Grow Your Brand.</b><br>
+          High-impact media production, interviews, and partnership opportunities for thought leadership and brand growth.</p>
+          
+          <!-- Video Carousel -->
+          <div class="video-carousel" style="position: relative; margin: 24px 0;">
+            <div class="carousel-container" style="overflow: hidden; position: relative; border-radius: 12px;">
+              <div class="carousel-track" style="display: flex; transition: transform 0.5s ease;">
+                <!-- Video 1 -->
+                <div class="carousel-slide" style="min-width: 100%; padding: 0 12px;">
+                  <div style="background: rgba(16,18,20,0.95); border-radius: 12px; padding: 18px;">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/0Gwu3EEyNCI?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 8px;"></iframe>
+                    <div style="margin-top: 12px; color: var(--primary); font-weight: bold;">YouTube Interview Highlight 1</div>
+            </div>
+            </div>
+                <!-- Video 2 -->
+                <div class="carousel-slide" style="min-width: 100%; padding: 0 12px;">
+                  <div style="background: rgba(16,18,20,0.95); border-radius: 12px; padding: 18px;">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/TIqF5UaB4Cw?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 8px;"></iframe>
+                    <div style="margin-top: 12px; color: var(--primary); font-weight: bold;">YouTube Interview Highlight 2</div>
+          </div>
+                </div>
+                <!-- Video 3 -->
+                <div class="carousel-slide" style="min-width: 100%; padding: 0 12px;">
+                  <div style="background: rgba(16,18,20,0.95); border-radius: 12px; padding: 18px;">
+                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/your-video-id?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 8px;"></iframe>
+                    <div style="margin-top: 12px; color: var(--primary); font-weight: bold;">YouTube Interview Highlight 3</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Carousel Controls -->
+            <button class="carousel-control prev" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: rgba(110,160,233,0.2); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.5rem; transition: all 0.3s ease;">
+              &#10094;
+            </button>
+            <button class="carousel-control next" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: rgba(110,160,233,0.2); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.5rem; transition: all 0.3s ease;">
+              &#10095;
+            </button>
+            
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators" style="display: flex; justify-content: center; gap: 8px; margin-top: 16px;">
+              <button class="indicator active" style="width: 10px; height: 10px; border-radius: 50%; border: none; background: var(--primary); cursor: pointer; transition: all 0.3s ease;"></button>
+              <button class="indicator" style="width: 10px; height: 10px; border-radius: 50%; border: none; background: rgba(110,160,233,0.3); cursor: pointer; transition: all 0.3s ease;"></button>
+              <button class="indicator" style="width: 10px; height: 10px; border-radius: 50%; border: none; background: rgba(110,160,233,0.3); cursor: pointer; transition: all 0.3s ease;"></button>
+            </div>
+          </div>
+
+          <!-- Media partner logos -->
+          <div class="company-logos" style="display:flex; gap:18px; margin:12px 0; align-items:center;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/CNN.svg" alt="CNN" style="height:32px; background:#fff; border-radius:6px; padding:4px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/BBC_News_2022_%28Alt%29.svg" alt="BBC" style="height:32px; background:#fff; border-radius:6px; padding:4px;">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Forbes_logo.svg" alt="Forbes" style="height:32px; background:#fff; border-radius:6px; padding:4px;">
+          </div>
+          
+          <!-- Rest of the content -->
+          <!-- Quote slider (static for now) -->
+          <blockquote style="color:#fff; font-style:italic; border-left:4px solid #6ea0e9; padding-left:12px; margin:18px 0;">
+            "Our interview with John Carter was one of the most insightful features we've produced."<br>
+            <span style="font-size:0.95em; color:#6ea0e9;">– Media Partner</span>
+          </blockquote>
+          <a href="#contact" class="button-primary" style="margin-top:12px;">
+            <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+            Partner With Us
+          </a>
+        </div>
+        <!-- Removed Unsplash image -->
+        <div style="max-width:220px;"></div>
+      </div>
+    </section>
+    <div style="width:100%; overflow:hidden; line-height:0;">
+      <svg viewBox="0 0 1440 80" width="100%" height="80" preserveAspectRatio="none">
+        <path d="M0,40 C480,80 960,0 1440,40 L1440,80 L0,80 Z" fill="#101214"/>
+      </svg>
+    </div>
+    <!-- End of Services Sections -->
+    <!-- Portfolio & Resume Section -->
+    <section class="section" id="portfolio" data-aos="fade-up">
+      <h2 style="color: var(--primary); text-align:center; font-family: 'Cinzel', serif; letter-spacing: 0.2em;">Professional Profile</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 32px;">
+        <!-- Investment & Technology Expertise -->
+        <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px;">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <div style="width: 40px; height: 40px; background: rgba(110,160,233,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
+        </div>
+            <h3 style="color: #6ea0e9; margin: 0; font-size: 1.4rem;">Investment & Technology Expertise</h3>
+          </div>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" style="margin-top: 4px;">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>Columbia Business School Executive Education in Blockchain & Business</span>
+            </li>
+            <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" style="margin-top: 4px;">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>2+ years experience in AI integration and optimization</span>
+            </li>
+            <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" style="margin-top: 4px;">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>Expertise in Web3 marketing and digital assets</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- International Business Success -->
+        <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px;">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <div style="width: 40px; height: 40px; background: rgba(110,160,233,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2">
+                <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+                <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
+                <path d="M16 21h5v-5"/>
+              </svg>
+            </div>
+            <h3 style="color: #6ea0e9; margin: 0; font-size: 1.4rem;">International Business Success</h3>
+          </div>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" style="margin-top: 4px;">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>Led $6M+ sales projections in Central and South America</span>
+            </li>
+            <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" style="margin-top: 4px;">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>Fluent in English and Spanish</span>
+            </li>
+            <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" style="margin-top: 4px;">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>Expert in international regulatory compliance</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Strategic Leadership -->
+        <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px;">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <div style="width: 40px; height: 40px; background: rgba(110,160,233,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3 style="color: #6ea0e9; margin: 0; font-size: 1.4rem;">Strategic Leadership</h3>
+          </div>
+          <ul style="list-style: none; padding: 0; margin: 0;">
+            <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" style="margin-top: 4px;">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>15+ years experience in strategic business management</span>
+            </li>
+            <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" style="margin-top: 4px;">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>Proven track record in exceeding sales targets</span>
+            </li>
+            <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" style="margin-top: 4px;">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                <polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+              <span>Expert in building and managing high-performing teams</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Download Resume Button -->
+      <div style="text-align: center; margin-top: 32px;">
+        <a href="resume.pdf" download class="button-primary" style="display: inline-flex; align-items: center; gap: 8px;">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download Full Resume
+        </a>
+      </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="section" id="contact" data-aos="fade-up">
+      <h2 style="color: var(--primary); text-align:center; font-family: 'Cinzel', serif; letter-spacing: 0.2em;">Contact</h2>
+      <div class="contact-flex">
+        <div class="contact-info">
+          <div class="contact-row">
+            <svg class="contact-icon" viewBox="0 0 24 24">
+              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5h3.5a1 1 0 011 1c0 1.35.26 2.67.76 3.88a1 1 0 01-.21 1.11l-2.2 2.2z" fill="none" stroke="#6ea0e9" stroke-width="2"/>
+            </svg>
+            <a href="tel:+14435103504" class="contact-link">+1-443-510-3504</a>
+          </div>
+          <div class="contact-row">
+            <svg class="contact-icon" viewBox="0 0 24 24">
+              <path d="M4 4h16v16H4z" fill="none"/>
+              <path d="M22 6l-10 7L2 6" stroke="#6ea0e9" stroke-width="2" fill="none"/>
+              <rect x="4" y="4" width="16" height="16" rx="2" stroke="#6ea0e9" stroke-width="2" fill="none"/>
+            </svg>
+            <a href="mailto:Johncarter@lucreativity.io" class="contact-link">Johncarter@lucreativity.io</a>
+          </div>
+          <div class="contact-row">
+            <svg class="contact-icon" viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="none" stroke="#6ea0e9" stroke-width="2"/>
+            </svg>
+            <span>Based in Maryland, USA</span>
+        </div>
+        </div>
+        <img src="https://media.licdn.com/dms/image/v2/C4E03AQG2WKzrYw-UKg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1664206781622?e=1752105600&v=beta&t=pQ2rLM_LmAE2sfdmACorkWX3pThvqpeq-wawy6uIFhA" alt="John Carter LinkedIn Profile Photo" class="profile-photo" />
+      </div>
+      <form class="contact-form" id="contactForm" novalidate>
+        <div class="form-group">
+          <input type="text" id="name" name="name" placeholder="Name" required 
+                 pattern="[A-Za-z\s]{2,50}" 
+                 title="Please enter a valid name (2-50 characters, letters and spaces only)" />
+          <div class="error-message" id="nameError"></div>
+        </div>
+        
+        <div class="form-group">
+          <input type="email" id="email" name="email" placeholder="Email" required 
+                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
+                 title="Please enter a valid email address" />
+          <div class="error-message" id="emailError"></div>
+        </div>
+        
+        <div class="form-group">
+          <select name="service" id="service" required>
+          <option value="">Select service of interest</option>
+            <option value="preipo">Private Pre-IPO Investment</option>
+            <option value="webdev">Web3/Web2 Product Development</option>
+            <option value="consulting">Consulting</option>
+            <option value="media">Media/Interviews</option>
+        </select>
+          <div class="error-message" id="serviceError"></div>
+        </div>
+        
+        <div class="form-group">
+          <textarea id="message" name="message" rows="4" placeholder="Message" required 
+                    minlength="10" maxlength="1000"></textarea>
+          <div class="error-message" id="messageError"></div>
+          <div class="char-count"><span id="charCount">0</span>/1000</div>
+        </div>
+
+        <button type="submit" id="submitBtn" class="submit-button">
+          <span class="button-text">Send Message</span>
+          <span class="loading-spinner"></span>
+        </button>
+      </form>
+
+      <div class="form-status">
+        <div class="success-message" id="successMessage">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          <span>Thank you! Your message has been sent.</span>
+        </div>
+        <div class="error-message" id="formError">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span>There was an error sending your message. Please try again.</span>
+        </div>
+      </div>
+    </section>
+
+    <style>
+      /* Contact Form Styles */
+      .contact-form {
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 32px;
+        background: rgba(16,18,20,0.95);
+        border-radius: 16px;
+        box-shadow: 0 4px 24px rgba(110,160,233,0.1);
+      }
+
+      .form-group {
+        margin-bottom: 24px;
+        position: relative;
+      }
+
+      .contact-form input,
+      .contact-form textarea,
+      .contact-form select {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid rgba(110,160,233,0.2);
+        border-radius: 8px;
+        background: rgba(16,18,20,0.95);
+        color: var(--text);
+        font-family: 'Cinzel', serif;
+        font-size: 1rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+      }
+
+      .contact-form input:focus,
+      .contact-form textarea:focus,
+      .contact-form select:focus {
+        border-color: var(--primary);
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(110,160,233,0.1);
+        transform: translateY(-2px);
+      }
+
+      .contact-form input:valid,
+      .contact-form textarea:valid,
+      .contact-form select:valid {
+        border-color: #4CAF50;
+      }
+
+      .contact-form input:invalid:not(:placeholder-shown),
+      .contact-form textarea:invalid:not(:placeholder-shown),
+      .contact-form select:invalid:not(:placeholder-shown) {
+        border-color: #F44336;
+      }
+
+      .error-message {
+        color: #ff4d4d;
+        font-size: 0.875rem;
+        margin-top: 4px;
+        display: none;
+      }
+
+      .char-count {
+        position: absolute;
+        right: 8px;
+        bottom: -20px;
+        font-size: 0.875rem;
+        color: var(--primary);
+      }
+
+      .contact-form button {
+        width: 100%;
+        padding: 14px;
+        background: var(--primary);
+        color: var(--secondary);
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .contact-form button:hover {
+        background: var(--text);
+        color: var(--primary);
+        transform: translateY(-2px);
+      }
+
+      .contact-form button:active {
+        transform: translateY(0);
+      }
+
+      .loading-spinner {
+        display: none;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        border-top-color: var(--secondary);
+        animation: spin 1s linear infinite;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      @keyframes spin {
+        to { transform: translate(-50%, -50%) rotate(360deg); }
+      }
+
+      .form-status {
+        text-align: center;
+        margin-top: 24px;
+      }
+
+      .success-message,
+      .error-message {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 16px;
+        border-radius: 8px;
+        margin-top: 16px;
+        font-family: 'Cinzel', serif;
+      }
+
+      .success-message {
+        background: rgba(76,175,80,0.1);
+        color: #4CAF50;
+        border: 1px solid rgba(76,175,80,0.2);
+      }
+
+      .error-message {
+        background: rgba(244,67,54,0.1);
+        color: #F44336;
+        border: 1px solid rgba(244,67,54,0.2);
+      }
+
+      .success-message svg,
+      .error-message svg {
+        flex-shrink: 0;
+      }
+
+      /* Loading state */
+      .contact-form.loading button {
+        pointer-events: none;
+        opacity: 0.8;
+      }
+
+      .contact-form.loading .button-text {
+        visibility: hidden;
+      }
+
+      .contact-form.loading .loading-spinner {
+        display: block;
+      }
+
+      /* reCAPTCHA styling */
+      .g-recaptcha {
+        margin: 16px 0;
+      }
+    </style>
+
+    <script>
+      // Contact Form Handling
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const charCount = document.getElementById('charCount');
+        const messageInput = document.getElementById('message');
+        const successMessage = document.getElementById('successMessage');
+        const formError = document.getElementById('formError');
+        const inputs = form.querySelectorAll('input, textarea, select');
+
+        // Real-time character count for message
+        messageInput.addEventListener('input', function() {
+          const count = this.value.length;
+          charCount.textContent = count;
+          if (count > 1000) {
+            this.value = this.value.substring(0, 1000);
+            charCount.textContent = 1000;
+          }
+          // Update character count color based on length
+          charCount.style.color = count > 900 ? '#F44336' : 'var(--primary)';
+        });
+
+        // Real-time validation feedback
+        inputs.forEach(input => {
+          input.addEventListener('input', function() {
+            validateInput(this);
+          });
+
+          input.addEventListener('blur', function() {
+            validateInput(this);
+          });
+        });
+
+        function validateInput(input) {
+          const errorElement = document.getElementById(`${input.id}Error`);
+          let isValid = true;
+          let errorMessage = '';
+
+          // Reset error state
+          input.style.borderColor = '';
+          if (errorElement) errorElement.style.display = 'none';
+
+          // Validate based on input type
+          switch(input.id) {
+            case 'name':
+              if (!input.value.match(/^[A-Za-z\s]{2,50}$/)) {
+                isValid = false;
+                errorMessage = 'Please enter a valid name (2-50 characters, letters and spaces only)';
+              }
+              break;
+            case 'email':
+              if (!input.value.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+                isValid = false;
+                errorMessage = 'Please enter a valid email address';
+              }
+              break;
+            case 'service':
+              if (!input.value) {
+                isValid = false;
+                errorMessage = 'Please select a service';
+              }
+              break;
+            case 'message':
+              if (input.value.length < 10) {
+                isValid = false;
+                errorMessage = 'Message must be at least 10 characters long';
+              }
+              break;
+          }
+
+          // Show error if invalid
+          if (!isValid) {
+            input.style.borderColor = '#F44336';
+            if (errorElement) {
+              errorElement.textContent = errorMessage;
+              errorElement.style.display = 'block';
+            }
+          }
+
+          return isValid;
+        }
+
+        // Form submission
+        form.addEventListener('submit', async function(e) {
+          e.preventDefault();
+
+          // Validate all inputs
+          let isValid = true;
+          inputs.forEach(input => {
+            if (!validateInput(input)) {
+              isValid = false;
+            }
+          });
+
+          if (!isValid) {
+            return;
+          }
+
+          // Show loading state
+          form.classList.add('loading');
+          submitBtn.disabled = true;
+
+          try {
+            // Prepare form data
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            // Here you would typically send the data to your server
+            // For demonstration, we'll simulate an API call
+            await new Promise(resolve => setTimeout(resolve, 1500));
+
+            // Show success message
+            successMessage.style.display = 'flex';
+            formError.style.display = 'none';
+            form.reset();
+            charCount.textContent = '0';
+
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+              successMessage.style.display = 'none';
+            }, 5000);
+
+          } catch (error) {
+            // Show error message
+            formError.style.display = 'flex';
+            successMessage.style.display = 'none';
+          } finally {
+            // Remove loading state
+            form.classList.remove('loading');
+            submitBtn.disabled = false;
+          }
+        });
+      });
+    </script>
+    <!-- Resume Modal -->
+    <div id="resumeModal" class="modal" aria-modal="true" role="dialog">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close Resume Modal">&times;</button>
+        <h2 style="color:var(--primary);">Resume Preview</h2>
+        <p>Embed your resume PDF or content here. <br> <a href="resume.pdf" download style="color:var(--accent);">Download PDF</a></p>
+      </div>
+    </div>
+    <!-- Portfolio Modal -->
+    <div id="portfolioModal" class="modal" aria-modal="true" role="dialog">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close Portfolio Modal">&times;</button>
+        <div id="portfolioModalContent"></div>
+      </div>
+    </div>
+    <!-- Investment Learn More Modal -->
+    <div id="preipoModal" class="modal" aria-modal="true" role="dialog">
+      <div class="modal-content" style="max-width: 800px; width: 95vw; height: 80vh; max-height: 600px; overflow: hidden; position: relative;">
+        <button class="modal-close" aria-label="Close Investment Modal">&times;</button>
+        <h2 style="color:var(--primary); margin-bottom: 12px; font-size: 1.8rem;">Firsthand Capital Fund Strategy</h2>
+        <div style="color:#F7FFF7; font-family:'Cinzel',serif; height: calc(100% - 60px); overflow-y: auto; padding-right: 12px; position: absolute; top: 60px; left: 0; right: 0; bottom: 0;">
+          <!-- Fund Overview -->
+          <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+            <h3 style="color:#6ea0e9; margin:0 0 16px 0; font-size: 1.4rem;">Fund Overview</h3>
+            <p style="margin-bottom: 16px; line-height: 1.6;">
+              Firsthand Capital is a specialized investment fund focused on pre-IPO opportunities in transformative technology companies. 
+              Our strategy combines deep industry expertise with a rigorous selection process to identify and invest in tomorrow's market leaders.
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px;">
+              <div>
+                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">Investment Focus</h4>
+                <ul style="margin: 0; padding-left: 20px;">
+                  <li>Artificial Intelligence & Machine Learning</li>
+                  <li>Space Technology & Aerospace</li>
+                  <li>Clean Energy & Sustainability</li>
+                  <li>Web3 & Blockchain Infrastructure</li>
+                </ul>
+              </div>
+              <div>
+                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">Investment Criteria</h4>
+                <ul style="margin: 0; padding-left: 20px;">
+                  <li>Proven Technology & Market Fit</li>
+                  <li>Strong Management Team</li>
+                  <li>Clear Path to IPO</li>
+                  <li>Competitive Advantage</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Investment Process -->
+          <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+            <h3 style="color:#6ea0e9; margin:0 0 16px 0; font-size: 1.4rem;">Investment Process</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+              <div style="text-align: center; padding: 16px; background: rgba(110,160,233,0.1); border-radius: 12px;">
+                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">1. Deal Sourcing</h4>
+                <p style="margin: 0; font-size: 0.9rem;">Extensive network and relationships with founders, VCs, and investment banks</p>
+              </div>
+              <div style="text-align: center; padding: 16px; background: rgba(110,160,233,0.1); border-radius: 12px;">
+                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">2. Due Diligence</h4>
+                <p style="margin: 0; font-size: 0.9rem;">Comprehensive analysis of technology, market, team, and financials</p>
+              </div>
+              <div style="text-align: center; padding: 16px; background: rgba(110,160,233,0.1); border-radius: 12px;">
+                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">3. Investment</h4>
+                <p style="margin: 0; font-size: 0.9rem;">Strategic investment with active portfolio management</p>
+              </div>
+              <div style="text-align: center; padding: 16px; background: rgba(110,160,233,0.1); border-radius: 12px;">
+                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">4. Value Add</h4>
+                <p style="margin: 0; font-size: 0.9rem;">Active support in growth, strategy, and exit planning</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Why Invest With Us -->
+          <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px;">
+            <h3 style="color:#6ea0e9; margin:0 0 16px 0; font-size: 1.4rem;">Why Invest With Us</h3>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+              <div>
+                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">Our Advantages</h4>
+                <ul style="margin: 0; padding-left: 20px;">
+                  <li>Proven Track Record</li>
+                  <li>Access to Top Deals</li>
+                  <li>Active Portfolio Management</li>
+                  <li>Strategic Value Add</li>
+                </ul>
+              </div>
+              <div>
+                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">Investment Terms</h4>
+                <ul style="margin: 0; padding-left: 20px;">
+                  <li>Minimum Investment: $100K</li>
+                  <li>Fund Life: 10 Years</li>
+                  <li>Management Fee: 2%</li>
+                  <li>Carried Interest: 20%</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Back to Top Button -->
+    <button id="backToTop" aria-label="Back to top">&#8679;</button>
+  </main>
+  <footer>
+    <div class="social-icons">
+      <a href="https://www.linkedin.com/in/john-carter-231b5a251/" aria-label="LinkedIn" target="_blank" rel="noopener">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.026-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.563 2.841-1.563 3.039 0 3.6 2.001 3.6 4.601v5.595z"/></svg>
+      </a>
+      <a href="https://x.com/The_JohnCarter" aria-label="Twitter" target="_blank" rel="noopener">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.92 4.92 0 0 0-8.384 4.482c-4.086-.205-7.713-2.164-10.141-5.144a4.822 4.822 0 0 0-.666 2.475c0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417a9.867 9.867 0 0 1-6.102 2.104c-.396 0-.787-.023-1.175-.069a13.945 13.945 0 0 0 7.548 2.212c9.057 0 14.009-7.513 14.009-14.009 0-.213-.005-.425-.014-.636a10.012 10.012 0 0 0 2.457-2.548z"/></svg>
+      </a>
+      <a href="mailto:Johncarter@lucreativity.io" aria-label="Email">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 13.065l-11.99-7.065v14c0 1.104.896 2 2 2h19.98c1.104 0 2-.896 2-2v-14l-11.99 7.065zm11.99-9.065c0-1.104-.896-2-2-2h-19.98c-1.104 0-2 .896-2 2v.217l12 7.083 11.98-7.083v-.217z"/></svg>
+      </a>
+    </div>
+    <div>© 2024 John Carter</div>
+  </footer>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- Add Calendly Inline Widget with preload -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <script>
+    // Initialize AOS
+    AOS.init({ once: true });
+
+    // Preload Calendly widget
+    let calendlyInitialized = false;
+    function initializeCalendly() {
+      if (typeof Calendly !== 'undefined' && !calendlyInitialized) {
+        Calendly.initInlineWidget({
+          url: 'https://calendly.com/lucreativity/johncarter',
+          parentElement: document.getElementById('calendly-inline'),
+          prefill: {},
+          utm: {},
+          hideEventTypeDetails: true,
+          hideLandingPageDetails: true,
+          hideCookieBanner: true,
+          loading: 'lazy',
+          styles: {
+            height: '100%',
+            width: '100%',
+            overflow: 'hidden'
+          },
+          text: {
+            welcome: 'Schedule a Consultation',
+            eventTypeDetails: 'Select a time that works for you'
+          }
+        });
+        calendlyInitialized = true;
+
+        // Add custom CSS to prevent scrollbars and ensure smooth scrolling
+        const style = document.createElement('style');
+        style.textContent = `
+          #calendlyModal {
+            overflow: hidden !important;
+          }
+          #calendlyModal .modal-content {
+            overflow: hidden !important;
+          }
+          #calendly-inline {
+            overflow: hidden !important;
+          }
+          .calendly-inline-widget {
+            overflow: hidden !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+          }
+          .calendly-inline-widget iframe {
+            overflow: hidden !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+          /* Hide scrollbars but keep functionality */
+          .calendly-inline-widget::-webkit-scrollbar,
+          .calendly-inline-widget iframe::-webkit-scrollbar,
+          #calendlyModal::-webkit-scrollbar,
+          #calendlyModal .modal-content::-webkit-scrollbar,
+          #calendly-inline::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+          }
+          .calendly-inline-widget,
+          .calendly-inline-widget iframe,
+          #calendlyModal,
+          #calendlyModal .modal-content,
+          #calendly-inline {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+          }
+          /* Ensure content is still scrollable */
+          .calendly-inline-widget iframe {
+            -webkit-overflow-scrolling: touch !important;
+          }
+        `;
+        document.head.appendChild(style);
+      }
+    }
+
+    // Check if Calendly is loaded every 100ms until it's available
+    const calendlyCheckInterval = setInterval(() => {
+      if (typeof Calendly !== 'undefined') {
+        initializeCalendly();
+        clearInterval(calendlyCheckInterval);
+      }
+    }, 100);
+
+    // Modal functionality
+    function initializeModals() {
+      // Learn More Pre-IPO Modal Logic
+      const learnMorePreIPO = document.getElementById('learnMorePreIPO');
+      const preipoModal = document.getElementById('preipoModal');
+      
+      if (learnMorePreIPO && preipoModal) {
+        // Add custom CSS to prevent double scrollbars and style the remaining one
+        const style = document.createElement('style');
+        style.textContent = `
+          #preipoModal {
+            overflow: hidden !important;
+          }
+          #preipoModal .modal-content {
+            overflow: hidden !important;
+          }
+          #preipoModal .modal-content > div {
+            overflow-y: auto !important;
+            overflow-x: hidden !important;
+            scrollbar-width: thin !important;
+            scrollbar-color: rgba(110,160,233,0.3) transparent !important;
+          }
+          /* Custom scrollbar styling */
+          #preipoModal .modal-content > div::-webkit-scrollbar {
+            width: 6px !important;
+            background: transparent !important;
+          }
+          #preipoModal .modal-content > div::-webkit-scrollbar-track {
+            background: transparent !important;
+            border-radius: 3px !important;
+          }
+          #preipoModal .modal-content > div::-webkit-scrollbar-thumb {
+            background: rgba(110,160,233,0.3) !important;
+            border-radius: 3px !important;
+            transition: background 0.2s ease !important;
+          }
+          #preipoModal .modal-content > div::-webkit-scrollbar-thumb:hover {
+            background: rgba(110,160,233,0.5) !important;
+          }
+          /* Hide scrollbars but keep functionality */
+          #preipoModal::-webkit-scrollbar,
+          #preipoModal .modal-content::-webkit-scrollbar {
+            display: none !important;
+            width: 0 !important;
+            height: 0 !important;
+          }
+          #preipoModal,
+          #preipoModal .modal-content {
+            -ms-overflow-style: none !important;
+            scrollbar-width: none !important;
+          }
+        `;
+        document.head.appendChild(style);
+
+        // Open modal
+        learnMorePreIPO.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          preipoModal.style.display = 'flex';
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+
+        // Close modal with close button
+        const closeButton = preipoModal.querySelector('.modal-close');
+        if (closeButton) {
+          closeButton.addEventListener('click', function() {
+            preipoModal.style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
+          });
+        }
+
+        // Close modal when clicking outside
+        preipoModal.addEventListener('click', function(e) {
+          if (e.target === preipoModal) {
+            preipoModal.style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
+          }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && preipoModal.style.display === 'flex') {
+            preipoModal.style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
+          }
+        });
+      }
+    }
+
+    // Initialize all modals when the DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+      initializeModals();
+      
+      // Calendly Modal Logic
+      const scheduleConsultBtn = document.getElementById('scheduleConsultBtn');
+      const calendlyModal = document.getElementById('calendlyModal');
+      
+      if (scheduleConsultBtn && calendlyModal) {
+        // Open modal
+        scheduleConsultBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          calendlyModal.style.display = 'flex';
+          document.body.style.overflow = 'hidden'; // Prevent background scrolling
+          
+          // Ensure Calendly is initialized
+          if (!calendlyInitialized) {
+            initializeCalendly();
+          }
+        });
+
+        // Close modal with close button
+        const closeButton = calendlyModal.querySelector('.modal-close');
+        if (closeButton) {
+          closeButton.addEventListener('click', function() {
+            calendlyModal.style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
+          });
+        }
+
+        // Close modal when clicking outside
+        calendlyModal.addEventListener('click', function(e) {
+          if (e.target === calendlyModal) {
+            calendlyModal.style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
+          }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && calendlyModal.style.display === 'flex') {
+            calendlyModal.style.display = 'none';
+            document.body.style.overflow = ''; // Restore scrolling
+          }
+        });
+      }
+
+      // Chart Toggle Functionality
+      document.querySelectorAll('.chart-toggle').forEach(button => {
+        button.addEventListener('click', function() {
+          // Update button styles
+          document.querySelectorAll('.chart-toggle').forEach(btn => {
+            btn.style.background = 'rgba(110,160,233,0.2)';
+            btn.style.color = '#6ea0e9';
+          });
+          this.style.background = '#6ea0e9';
+          this.style.color = '#101214';
+          
+          // Toggle chart visibility
+          const view = this.dataset.view;
+          document.getElementById('roiChart').style.display = view === 'roi' ? 'block' : 'none';
+          document.getElementById('gainsChart').style.display = view === 'gains' ? 'block' : 'none';
+        });
+      });
+
+    // Back to Top Button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Portfolio Modal
+    document.querySelectorAll('.portfolio-item').forEach(item => {
+      item.addEventListener('click', function() {
+        document.getElementById('portfolioModalContent').innerHTML = this.getAttribute('data-modal-content');
+        document.getElementById('portfolioModal').style.display = 'flex';
+      });
+    });
+    document.querySelectorAll('.modal-close').forEach(btn => {
+      btn.addEventListener('click', function() {
+        this.closest('.modal').style.display = 'none';
+      });
+    });
+    window.addEventListener('click', function(e) {
+      document.querySelectorAll('.modal').forEach(modal => {
+        if (e.target === modal) modal.style.display = 'none';
+      });
+    });
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal').forEach(modal => {
+          modal.style.display = 'none';
+        });
+      }
+    });
+
+    // Resume Modal
+    document.getElementById('resumeBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      document.getElementById('resumeModal').style.display = 'flex';
+    });
+
+    // Mobile nav toggle
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const mainNav = document.getElementById('mainNav');
+    mobileNavToggle.addEventListener('click', function() {
+      if (mainNav.style.display === 'flex' || mainNav.style.display === '') {
+        mainNav.style.display = 'none';
+      } else {
+        mainNav.style.display = 'flex';
+        mainNav.style.flexDirection = 'column';
+        mainNav.style.position = 'absolute';
+        mainNav.style.top = '64px';
+        mainNav.style.right = '16px';
+        mainNav.style.background = 'rgba(16,18,20,0.98)';
+        mainNav.style.borderRadius = '18px';
+        mainNav.style.boxShadow = '0 4px 24px rgba(110,160,233,0.18)';
+        mainNav.style.padding = '18px 24px';
+        mainNav.style.gap = '18px';
+        mainNav.style.zIndex = '30';
+      }
+    });
+    // Close nav on link click (mobile)
+    mainNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 700) mainNav.style.display = 'none';
+      });
+    });
+
+    // Navbar blur on scroll
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 30) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Scrollspy effect
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.navbar nav a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 80;
+        if (pageYOffset >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href').includes(current)) {
+          link.classList.add('active');
+        }
+      });
+    });
+    });
+
+    // Add this to your existing JavaScript
+    function toggleFounderStep(element) {
+      const content = element.querySelector('.step-content');
+      const isExpanded = content.style.display === 'block';
+      
+      // Close all other steps
+      document.querySelectorAll('.founder-step').forEach(step => {
+        step.querySelector('.step-content').style.display = 'none';
+        step.style.background = 'transparent';
+      });
+      
+      // Toggle current step
+      if (!isExpanded) {
+        content.style.display = 'block';
+        element.style.background = 'rgba(110,160,233,0.1)';
+      }
+    }
+  </script>
+  <!-- Add before closing body tag -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script>
+    particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: '#6ea0e9' },
+        shape: { type: 'circle' },
+        opacity: {
+          value: 0.5,
+          random: true,
+          animation: { enable: true, speed: 1, minimumValue: 0.1, sync: false }
+        },
+        size: {
+          value: 3,
+          random: true,
+          animation: { enable: true, speed: 2, minimumValue: 0.1, sync: false }
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: '#6ea0e9',
+          opacity: 0.2,
+          width: 1
+        },
+        move: {
+          enable: true,
+          speed: 1,
+          direction: 'none',
+          random: true,
+          straight: false,
+          outMode: 'out',
+          bounce: false
+        }
+      },
+      interactivity: {
+        detectsOn: 'canvas',
+        events: {
+          onHover: { enable: true, mode: 'grab' },
+          onClick: { enable: true, mode: 'push' },
+          resize: true
+        },
+        modes: {
+          grab: { distance: 140, line_linked: { opacity: 0.5 } },
+          push: { particles_nb: 4 }
+        }
+      },
+      retina_detect: true
+    });
+  </script>
+  <script>
+    // Add to the existing script section
+    // Scroll Progress Indicator
+    const scrollProgress = document.querySelector('.scroll-progress');
+    window.addEventListener('scroll', () => {
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (window.scrollY / windowHeight) * 100;
+      scrollProgress.style.transform = `scaleX(${scrolled / 100})`;
+    });
+  </script>
+  <script>
+    // Video Carousel Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const track = document.querySelector('.carousel-track');
+      const slides = document.querySelectorAll('.carousel-slide');
+      const nextButton = document.querySelector('.carousel-control.next');
+      const prevButton = document.querySelector('.carousel-control.prev');
+      const indicators = document.querySelectorAll('.indicator');
+      const carousel = document.querySelector('.video-carousel');
+      
+      let currentIndex = 0;
+      let players = [];
+      let isScrolling = false;
+      let scrollTimeout;
+      
+      // Initialize YouTube players
+      function onYouTubeIframeAPIReady() {
+        slides.forEach((slide, index) => {
+          const iframe = slide.querySelector('iframe');
+          const player = new YT.Player(iframe, {
+            events: {
+              'onStateChange': onPlayerStateChange
+            }
+          });
+          players.push(player);
+        });
+      }
+      
+      // Handle video state changes
+      function onPlayerStateChange(event) {
+        if (event.data === YT.PlayerState.ENDED) {
+          // Move to next video when current one ends
+          if (currentIndex < slides.length - 1) {
+            currentIndex++;
+          } else {
+            currentIndex = 0;
+          }
+          updateCarousel();
+          playCurrentVideo();
+        }
+      }
+      
+      // Play current video
+      function playCurrentVideo() {
+        players.forEach((player, index) => {
+          if (index === currentIndex) {
+            player.playVideo();
+          } else {
+            player.pauseVideo();
+          }
+        });
+      }
+      
+      // Handle scroll events
+      window.addEventListener('scroll', function() {
+        isScrolling = true;
+        clearTimeout(scrollTimeout);
+        
+        // Pause all videos while scrolling
+        players.forEach(player => player.pauseVideo());
+        
+        scrollTimeout = setTimeout(function() {
+          isScrolling = false;
+          // Check if carousel is in viewport
+          const rect = carousel.getBoundingClientRect();
+          const isInViewport = (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+          );
+          
+          if (isInViewport) {
+            playCurrentVideo();
+          }
+        }, 150); // Wait 150ms after scrolling stops
+      });
+      
+      function updateCarousel() {
+        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+        
+        // Update indicators
+        indicators.forEach((indicator, index) => {
+          indicator.style.background = index === currentIndex ? 'var(--primary)' : 'rgba(110,160,233,0.3)';
+        });
+        
+        // Update button states
+        prevButton.style.opacity = currentIndex === 0 ? '0.5' : '1';
+        nextButton.style.opacity = currentIndex === slides.length - 1 ? '0.5' : '1';
+      }
+      
+      nextButton.addEventListener('click', () => {
+        if (currentIndex < slides.length - 1) {
+          currentIndex++;
+          updateCarousel();
+          playCurrentVideo();
+        }
+      });
+      
+      prevButton.addEventListener('click', () => {
+        if (currentIndex > 0) {
+          currentIndex--;
+          updateCarousel();
+          playCurrentVideo();
+        }
+      });
+      
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+          currentIndex = index;
+          updateCarousel();
+          playCurrentVideo();
+        });
+      });
+      
+      // Initialize carousel
+      const slideWidth = slides[0].offsetWidth;
+      updateCarousel();
+      
+      // Check if carousel is in viewport on page load
+      const rect = carousel.getBoundingClientRect();
+      const isInViewport = (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+      );
+      
+      if (isInViewport) {
+        playCurrentVideo();
+    }
+    });
+  </script>
+
+  <style>
+    /* Add to your existing styles */
+    .carousel-control:hover {
+      background: rgba(110,160,233,0.4) !important;
+      transform: translateY(-50%) scale(1.1) !important;
+    }
+    
+    .carousel-control:active {
+      transform: translateY(-50%) scale(0.95) !important;
+    }
+    
+    .indicator:hover {
+      transform: scale(1.2);
+    }
+    
+    .carousel-slide {
+      transition: transform 0.3s ease;
+    }
+    
+    .carousel-slide:hover {
+      transform: scale(1.02);
+    }
+  </style>
+</body>
+</html> 
