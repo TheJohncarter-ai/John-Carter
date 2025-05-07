@@ -1210,6 +1210,86 @@
       margin: 0 20px;
       flex-shrink: 0;
     }
+
+    /* Add to your existing styles */
+    .language-selector {
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .language-button {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(110,160,233,0.1);
+      border: 1px solid rgba(110,160,233,0.2);
+      color: var(--primary);
+      padding: 6px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .language-button:hover {
+      background: rgba(110,160,233,0.2);
+      transform: translateY(-1px);
+    }
+
+    .current-language {
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .dropdown-arrow {
+      transition: transform 0.3s ease;
+    }
+
+    .language-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: rgba(16,18,20,0.95);
+      border: 1px solid rgba(110,160,233,0.2);
+      border-radius: 8px;
+      padding: 8px 0;
+      min-width: 140px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+    }
+
+    .language-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .language-option {
+      display: block;
+      padding: 8px 16px;
+      color: var(--primary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .language-option:hover {
+      background: rgba(110,160,233,0.1);
+      color: var(--text);
+    }
+
+    @media (max-width: 768px) {
+      .language-selector {
+        right: 80px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1224,6 +1304,25 @@
       <a href="#portfolio">Portfolio</a>
       <a href="#contact">Contact</a>
     </nav>
+    <div class="language-selector">
+      <button class="language-button" aria-label="Select Language" onclick="toggleLanguageDropdown()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          <path d="M2 12h20"/>
+        </svg>
+        <span class="current-language">EN</span>
+        <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M6 9l6 6 6-6"/>
+        </svg>
+      </button>
+      <div class="language-dropdown" id="languageDropdown">
+        <a href="#" class="language-option" data-lang="en">English</a>
+        <a href="#" class="language-option" data-lang="es">Español</a>
+        <a href="#" class="language-option" data-lang="fr">Français</a>
+        <a href="#" class="language-option" data-lang="de">Deutsch</a>
+      </div>
+    </div>
   </header>
   <main>
     <!-- Hero Section -->
@@ -1280,21 +1379,6 @@
           <a href="#service-preipo" class="highlight-text" style="display: inline-block; margin-bottom: 8px; text-decoration: none; color: inherit; cursor: pointer;">Private Pre-IPO Investments</a><br>
           <a href="#service-consulting" class="highlight-text" style="display: inline-block; margin-bottom: 8px; text-decoration: none; color: inherit; cursor: pointer;">Ai & Space Venture Capital</a><br>
           <a href="#service-webdev" class="highlight-text" style="display: inline-block; text-decoration: none; color: inherit; cursor: pointer;">Web2, Web3 & Blockchain</a>
-        </div>
-        <!-- Animated stats -->
-        <div class="hero-stats" style="display: flex; justify-content: center; gap: 48px; margin: 32px 0;" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-          <div class="stat-item" style="text-align: center;">
-            <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">$87.4M</div>
-            <div class="stat-label" style="color: var(--text); font-size: 0.9rem; letter-spacing: 0.1em;">Total Gains</div>
-          </div>
-          <div class="stat-item" style="text-align: center;">
-            <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">158%</div>
-            <div class="stat-label" style="color: var(--text); font-size: 0.9rem; letter-spacing: 0.1em;">Average ROI</div>
-          </div>
-          <div class="stat-item" style="text-align: center;">
-            <div class="stat-number" style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">$300M+</div>
-            <div class="stat-label" style="color: var(--text); font-size: 0.9rem; letter-spacing: 0.1em;">Managed Assets</div>
-          </div>
         </div>
         <div class="cta" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
           <a href="#services" class="button-primary">
@@ -1935,7 +2019,9 @@
             <span>Based in Maryland, USA</span>
         </div>
         </div>
-        <img src="https://media.licdn.com/dms/image/v2/C4E03AQG2WKzrYw-UKg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1664206781622?e=1752105600&v=beta&t=pQ2rLM_LmAE2sfdmACorkWX3pThvqpeq-wawy6uIFhA" alt="John Carter LinkedIn Profile Photo" class="profile-photo" />
+        <a href="https://www.linkedin.com/in/john-carter-231b5a251/" target="_blank" rel="noopener" style="display: block;">
+          <img src="https://media.licdn.com/dms/image/v2/C4E03AQG2WKzrYw-UKg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1664206781622?e=1752105600&v=beta&t=pQ2rLM_LmAE2sfdmACorkWX3pThvqpeq-wawy6uIFhA" alt="John Carter LinkedIn Profile Photo" class="profile-photo" />
+        </a>
       </div>
       <form class="contact-form" id="contactForm" novalidate>
         <div class="form-group">
@@ -2391,6 +2477,17 @@
               </div>
             </div>
           </div>
+          <!-- Add Performance Metrics -->
+          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px; background: rgba(110,160,233,0.05); padding: 20px; border-radius: 12px;">
+            <div style="text-align: center;">
+              <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">158%</div>
+              <div style="color: var(--text); font-size: 0.9rem; letter-spacing: 0.1em;">Average ROI</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">$300M+</div>
+              <div style="color: var(--text); font-size: 0.9rem; letter-spacing: 0.1em;">Managed Assets</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -2398,18 +2495,115 @@
     <button id="backToTop" aria-label="Back to top">&#8679;</button>
   </main>
   <footer>
-    <div class="social-icons">
-      <a href="https://www.linkedin.com/in/john-carter-231b5a251/" aria-label="LinkedIn" target="_blank" rel="noopener">
-        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.026-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.563 2.841-1.563 3.039 0 3.6 2.001 3.6 4.601v5.595z"/></svg>
+    <div class="social-icons" style="display: flex; justify-content: center; gap: 24px; margin-bottom: 20px;">
+      <a href="https://www.linkedin.com/in/john-carter-231b5a251/" aria-label="LinkedIn" target="_blank" rel="noopener" class="social-icon-link">
+        <div class="social-icon-wrapper">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
+            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+          </svg>
+        </div>
+        <span class="social-icon-label">LinkedIn</span>
       </a>
-      <a href="https://x.com/The_JohnCarter" aria-label="Twitter" target="_blank" rel="noopener">
-        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.92 4.92 0 0 0-8.384 4.482c-4.086-.205-7.713-2.164-10.141-5.144a4.822 4.822 0 0 0-.666 2.475c0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417a9.867 9.867 0 0 1-6.102 2.104c-.396 0-.787-.023-1.175-.069a13.945 13.945 0 0 0 7.548 2.212c9.057 0 14.009-7.513 14.009-14.009 0-.213-.005-.425-.014-.636a10.012 10.012 0 0 0 2.457-2.548z"/></svg>
+      <a href="https://x.com/The_JohnCarter" aria-label="Twitter" target="_blank" rel="noopener" class="social-icon-link">
+        <div class="social-icon-wrapper">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+        </div>
+        <span class="social-icon-label">Twitter</span>
       </a>
-      <a href="mailto:Johncarter@lucreativity.io" aria-label="Email">
-        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 13.065l-11.99-7.065v14c0 1.104.896 2 2 2h19.98c1.104 0 2-.896 2-2v-14l-11.99 7.065zm11.99-9.065c0-1.104-.896-2-2-2h-19.98c-1.104 0-2 .896-2 2v.217l12 7.083 11.98-7.083v-.217z"/></svg>
+      <a href="mailto:Johncarter@lucreativity.io" aria-label="Email" class="social-icon-link">
+        <div class="social-icon-wrapper">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
+            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+        </div>
+        <span class="social-icon-label">Email</span>
       </a>
     </div>
-    <div>© 2024 John Carter</div>
+    <style>
+      .social-icon-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        color: var(--primary);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding: 8px;
+        border-radius: 8px;
+        background: rgba(110,160,233,0.05);
+        width: 80px;
+      }
+
+      .social-icon-wrapper {
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(110,160,233,0.1);
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .social-icon {
+        transition: all 0.3s ease;
+      }
+
+      .social-icon-label {
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        opacity: 0.9;
+        transition: all 0.3s ease;
+      }
+
+      .social-icon-link:hover {
+        transform: translateY(-2px);
+        background: rgba(110,160,233,0.1);
+      }
+
+      .social-icon-link:hover .social-icon-wrapper {
+        background: rgba(110,160,233,0.2);
+        transform: scale(1.1);
+      }
+
+      .social-icon-link:hover .social-icon {
+        transform: scale(1.1);
+      }
+
+      .social-icon-link:hover .social-icon-label {
+        color: var(--text);
+        opacity: 1;
+      }
+
+      @media (max-width: 768px) {
+        .social-icons {
+          gap: 12px;
+        }
+        
+        .social-icon-link {
+          width: 70px;
+          padding: 6px;
+        }
+        
+        .social-icon-wrapper {
+          width: 32px;
+          height: 32px;
+        }
+        
+        .social-icon {
+          width: 18px;
+          height: 18px;
+        }
+        
+        .social-icon-label {
+          font-size: 0.75rem;
+        }
+      }
+    </style>
+    <div style="color: var(--primary); opacity: 0.8;">© 2024 John Carter</div>
   </footer>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <!-- Add Calendly Inline Widget with preload -->
@@ -2999,5 +3193,37 @@
       transform: scale(1.02);
     }
   </style>
+
+  <script>
+    // Add to your existing scripts
+    function toggleLanguageDropdown() {
+      const dropdown = document.getElementById('languageDropdown');
+      const arrow = document.querySelector('.dropdown-arrow');
+      dropdown.classList.toggle('show');
+      arrow.style.transform = dropdown.classList.contains('show') ? 'rotate(180deg)' : '';
+    }
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const dropdown = document.getElementById('languageDropdown');
+      const button = document.querySelector('.language-button');
+      if (!button.contains(event.target) && dropdown.classList.contains('show')) {
+        dropdown.classList.remove('show');
+        document.querySelector('.dropdown-arrow').style.transform = '';
+      }
+    });
+
+    // Language selection functionality
+    document.querySelectorAll('.language-option').forEach(option => {
+      option.addEventListener('click', function(e) {
+        e.preventDefault();
+        const lang = this.dataset.lang;
+        document.querySelector('.current-language').textContent = lang.toUpperCase();
+        document.getElementById('languageDropdown').classList.remove('show');
+        document.querySelector('.dropdown-arrow').style.transform = '';
+        // Here you would typically implement the actual language change logic
+      });
+    });
+  </script>
 </body>
 </html> 
