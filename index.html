@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="language" content="English">
   <title>John Carter | Portfolio</title>
+  <!-- Language alternates -->
+  <link rel="alternate" hreflang="en" href="index.html">
+  <link rel="alternate" hreflang="es" href="index-es.html">
+  <link rel="alternate" hreflang="fr" href="index-fr.html">
+  <link rel="alternate" hreflang="de" href="index-de.html">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Script font for name -->
@@ -15,10 +22,33 @@
   <style>
     :root {
       --primary: #6ea0e9;
-      --secondary: #101214;
-      --accent: #6ea0e9;
+      --primary-dark: #19223a;
+      --primary-light: #22304a;
+      --accent: #1bb89a;
       --text: #F7FFF7;
       --background: #101214;
+      --success: #4CAF50;
+      --error: #F44336;
+      --spacing-xs: 4px;
+      --spacing-sm: 8px;
+      --spacing-md: 16px;
+      --spacing-lg: 24px;
+      --spacing-xl: 32px;
+      --font-size-sm: 0.9rem;
+      --font-size-base: 1rem;
+      --font-size-lg: 1.3rem;
+      --font-size-xl: 1.5rem;
+      --font-size-2xl: 2rem;
+      --font-size-3xl: 5.5rem;
+      --border-radius-sm: 4px;
+      --border-radius-md: 8px;
+      --border-radius-lg: 16px;
+      --transition-fast: 0.2s ease;
+      --transition-medium: 0.3s ease;
+      --transition-slow: 0.5s ease;
+      --shadow-sm: 0 2px 6px rgba(110,160,233,0.1);
+      --shadow-md: 0 4px 12px rgba(110,160,233,0.15);
+      --shadow-lg: 0 8px 24px rgba(110,160,233,0.2);
     }
     html {
       scroll-behavior: smooth;
@@ -67,10 +97,13 @@
       font-size: 1.1rem;
       letter-spacing: 0.25em;
       font-family: 'Cinzel', serif;
-      transition: color 0.2s;
+      transition: color 0.2s, box-shadow 0.2s, transform 0.18s cubic-bezier(.4,1.6,.6,1);
     }
-    .navbar nav a:hover {
+    .navbar nav a:hover, .navbar nav a:focus-visible {
       color: var(--text);
+      background: rgba(110,160,233,0.08);
+      border-radius: 4px 4px 0 0;
+      transform: scale(1.06);
     }
     .navbar nav a.active {
       color: var(--text);
@@ -82,7 +115,7 @@
     /* Hero Section */
     .hero {
       text-align: center;
-      padding: 120px 32px 80px 32px;
+      padding: calc(var(--spacing-xl) * 3.75) var(--spacing-xl) calc(var(--spacing-xl) * 2.5);
       position: relative;
       min-height: 100vh;
       display: flex;
@@ -90,10 +123,9 @@
       align-items: center;
       justify-content: center;
       background: transparent;
-      margin-left: auto;
-      margin-right: auto;
+      margin: 0 auto;
       width: 100%;
-      max-width: 1200px;
+      max-width: 1400px;
       overflow: hidden;
     }
     .hero-bg {
@@ -107,6 +139,7 @@
       align-items: center;
       z-index: 0;
       pointer-events: none;
+      background: radial-gradient(circle at center, rgba(110,160,233,0.1) 0%, transparent 70%);
     }
     .rocket-animated-wrapper {
       opacity: 0.22;
@@ -125,24 +158,36 @@
     }
     .hero-name {
       font-family: 'Dancing Script', cursive;
-      font-size: 5.5rem;
+      font-size: var(--font-size-3xl);
       color: var(--primary);
-      margin-bottom: 32px;
+      margin-bottom: var(--spacing-xl);
       position: relative;
       z-index: 2;
       letter-spacing: 0.1em;
       text-shadow: 0 2px 16px rgba(0,0,0,0.3);
       animation: glow 2s ease-in-out infinite alternate;
+      transform-origin: center;
+      transition: var(--transition-slow);
+    }
+    .hero-name:hover {
+      transform: scale(1.05);
+      color: var(--primary-light);
     }
     .hero-desc {
       font-family: 'Cinzel', serif;
-      font-size: 1.3rem;
+      font-size: var(--font-size-lg);
       color: var(--text);
       margin-bottom: 0;
       letter-spacing: 0.25em;
       position: relative;
       z-index: 1;
       text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      opacity: 0.9;
+      transition: var(--transition-medium);
+    }
+    .hero-desc:hover {
+      opacity: 1;
+      transform: translateY(-2px);
     }
     .cta {
       display: flex;
@@ -153,15 +198,15 @@
       position: relative;
     }
     .button-primary {
-      background: var(--primary);
-      color: var(--secondary);
+      background: linear-gradient(90deg, var(--primary-dark), var(--accent));
+      color: var(--text) !important;
       border: none;
       border-radius: 8px;
       padding: 14px 36px;
       font-weight: bold;
       font-size: 1.1rem;
       cursor: pointer;
-      transition: background 0.2s, color 0.2s;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.18s cubic-bezier(.4,1.6,.6,1);
       text-decoration: none;
       font-family: 'Cinzel', serif;
       letter-spacing: 0.15em;
@@ -170,15 +215,19 @@
       align-items: center;
       gap: 8px;
     }
-    .button-primary:hover {
-      background: var(--text);
+    .button-primary:hover, .button-primary:focus-visible {
+      background: linear-gradient(90deg, var(--accent), var(--primary-dark));
       color: var(--primary);
       transform: scale(1.05);
       box-shadow: 0 4px 16px rgba(110,160,233,0.18);
     }
+    .button-primary:active {
+      transform: scale(0.98);
+      box-shadow: 0 1px 2px rgba(110,160,233,0.18);
+    }
     /* Section Layout */
     .section {
-      background: linear-gradient(135deg, rgba(110,160,233,0.04) 0%, rgba(16,18,20,0.95) 100%);
+      background: var(--background);
       box-shadow: 0 8px 32px rgba(110,160,233,0.10), 0 1.5px 8px rgba(0,0,0,0.08);
       border-radius: 32px;
       border: 1px solid rgba(110,160,233,0.10);
@@ -187,6 +236,12 @@
       padding: 80px 32px;
       position: relative;
       overflow: hidden;
+    }
+    .section:nth-of-type(even) {
+      background: var(--primary-dark);
+    }
+    .section:nth-of-type(odd) {
+      background: var(--background);
     }
     .section:not(:last-child)::after {
       content: '';
@@ -212,86 +267,167 @@
     /* Services */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 36px;
       margin-top: 32px;
+      position: relative;
+      z-index: 2;
+      align-items: stretch;
+      grid-auto-rows: auto;
     }
-    .service-card, .portfolio-card {
-      background: rgba(16,18,20,0.98);
-      border-radius: 18px;
-      padding: 48px 32px;
-      color: var(--primary);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+    .service-card {
+      border-radius: 20px !important;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 0 32px 0 rgba(110,160,233,0.18), 0 1.5px 8px rgba(0,0,0,0.08);
+      transition: box-shadow 0.4s cubic-bezier(.4,1.6,.6,1);
       display: flex;
       flex-direction: column;
+      justify-content: flex-start;
+      min-height: 360px;
+      padding: 36px 24px 28px 24px;
+      background: var(--primary-light) !important;
+      color: var(--text) !important;
+    }
+    .service-card:hover, .service-card:focus-visible {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 12px 32px rgba(110,160,233,0.18);
+      background: linear-gradient(135deg, var(--primary) 0%, #fff 100%);
+      color: var(--secondary);
+    }
+    .service-card::before {
+      display: none !important;
+    }
+    .service-icon {
+      width: 64px;
+      height: 64px;
+      margin-bottom: 18px;
+      display: flex;
       align-items: center;
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      cursor: pointer;
-      font-family: 'Cinzel', serif;
-      font-size: 1.15rem;
-      letter-spacing: 0.18em;
-      border: 1px solid var(--primary);
-      position: relative;
+      justify-content: center;
+      background: rgba(110,160,233,0.10);
+      border-radius: 16px;
+      font-size: 2rem;
+      transition: transform 0.5s cubic-bezier(.4,1.6,.6,1), box-shadow 0.3s, background 0.3s;
+      box-shadow: 0 2px 12px rgba(110,160,233,0.10);
       z-index: 1;
-      margin-bottom: 32px;
-      overflow: hidden;
     }
-
-    .service-card::before, .portfolio-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, var(--primary) 0%, transparent 100%);
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: -1;
+    .service-card:hover .service-icon {
+      transform: rotate(18deg) scale(1.15);
+      background: linear-gradient(135deg, #6ea0e9 0%, #a8edea 100%);
+      box-shadow: 0 4px 24px rgba(110,160,233,0.18);
     }
-
-    .service-card:hover::before, .portfolio-card:hover::before {
-      opacity: 0.1;
+    .service-icon svg {
+      transition: filter 0.3s, transform 0.6s cubic-bezier(.4,1.6,.6,1);
+      filter: drop-shadow(0 0 6px #6ea0e9);
     }
-
-    .service-card:hover, .portfolio-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 12px 32px rgba(110,160,233,0.25);
-      border-color: var(--primary);
+    .service-card:hover .service-icon svg {
+      filter: drop-shadow(0 0 16px #a8edea);
+      transform: rotate(360deg) scale(1.1);
     }
-
-    .service-icon, .portfolio-icon {
-      font-size: 2.5rem;
-      margin-bottom: 24px;
-      color: var(--primary);
-      transition: transform 0.4s ease;
-    }
-
-    .service-card:hover .service-icon, .portfolio-card:hover .portfolio-icon {
-      transform: scale(1.2) rotate(5deg);
-    }
-
-    .service-card h3, .portfolio-card h3 {
-      color: var(--primary);
+    .service-card h3 {
+      color: #a8edea;
       margin-bottom: 12px;
       font-size: 1.3rem;
       letter-spacing: 0.2em;
-      transition: color 0.3s ease;
+      transition: color 0.3s;
+      z-index: 2;
+      position: relative;
+      word-break: break-word;
+      overflow-wrap: anywhere;
     }
-
-    .service-card:hover h3, .portfolio-card:hover h3 {
-      color: var(--text);
-    }
-
-    .service-card p, .portfolio-card p {
+    .service-card p {
       font-size: 1rem;
       margin-bottom: 0;
-      color: var(--text);
-      transition: color 0.3s ease;
+      color: #F7FFF7;
+      opacity: 0.92;
+      z-index: 2;
+      position: relative;
+      word-break: break-word;
+      overflow-wrap: anywhere;
     }
-
-    .service-card:hover p, .portfolio-card:hover p {
-      color: var(--text);
+    /* Badge */
+    .service-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: linear-gradient(90deg, #ffb347 0%, #ff5c00 100%);
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: bold;
+      padding: 6px 16px;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(255,92,0,0.12);
+      z-index: 3;
+      letter-spacing: 0.08em;
+      animation: badge-pop 0.7s cubic-bezier(.4,1.6,.6,1);
+    }
+    @keyframes badge-pop {
+      0% { transform: scale(0.7); opacity: 0; }
+      80% { transform: scale(1.1); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+    /* Tooltip */
+    .service-info {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 3;
+      cursor: pointer;
+    }
+    .service-info svg {
+      width: 20px; height: 20px;
+      color: #6ea0e9;
+      opacity: 0.7;
+      transition: color 0.2s, opacity 0.2s;
+    }
+    .service-info:hover svg {
+      color: #a8edea;
+      opacity: 1;
+    }
+    .service-tooltip {
+      display: none;
+      position: absolute;
+      top: 28px;
+      left: 0;
+      background: #23262F;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      box-shadow: 0 2px 8px rgba(110,160,233,0.18);
+      z-index: 10;
+      white-space: nowrap;
+    }
+    .service-info:hover .service-tooltip {
+      display: block;
+    }
+    /* Floating geometric shapes */
+    .services-floating-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.10;
+    }
+    .floating-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent) 100%) !important;
+      animation: floatShape 8s ease-in-out infinite alternate;
+      border-color: var(--accent) !important;
+    }
+    .floating-shape1 { width: 120px; height: 120px; top: 10%; left: 8%; animation-delay: 0s; }
+    .floating-shape2 { width: 80px; height: 80px; top: 60%; left: 80%; animation-delay: 2s; }
+    .floating-shape3 { width: 60px; height: 60px; top: 40%; left: 50%; animation-delay: 4s; }
+    @keyframes floatShape {
+      0% { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-30px) scale(1.08); }
+    }
+    @media (max-width: 700px) {
+      .service-card { padding: 24px 10px 18px 10px; min-height: 220px; }
+      .service-icon { width: 48px; height: 48px; }
+      .service-badge { font-size: 0.75rem; padding: 4px 10px; }
     }
     /* Portfolio */
     .portfolio {
@@ -313,13 +449,16 @@
     .portfolio .portfolio-item {
       cursor: pointer;
       color: var(--primary);
-      text-decoration: underline;
+      text-decoration: none;
       margin-bottom: 8px;
       display: inline-block;
       font-family: 'Cinzel', serif;
+      transition: color 0.2s, box-shadow 0.2s, transform 0.18s cubic-bezier(.4,1.6,.6,1);
     }
-    .portfolio .portfolio-item:hover {
+    .portfolio .portfolio-item:hover, .portfolio .portfolio-item:focus-visible {
       color: var(--text);
+      text-decoration: underline;
+      transform: scale(1.04);
     }
     /* Contact Section */
     .contact-flex {
@@ -489,8 +628,8 @@
     .submit-button {
       width: 100%;
       padding: 14px;
-      background: var(--primary);
-      color: var(--secondary);
+      background: linear-gradient(90deg, var(--primary-dark), var(--accent));
+      color: var(--text) !important;
       border: none;
       border-radius: 8px;
       font-weight: bold;
@@ -503,14 +642,16 @@
       letter-spacing: 0.1em;
     }
 
-    .submit-button:hover {
-      background: var(--text);
+    .submit-button:hover, .submit-button:focus-visible {
+      background: linear-gradient(90deg, var(--accent), var(--primary-dark));
       color: var(--primary);
-      transform: translateY(-2px);
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(110,160,233,0.18);
     }
 
     .submit-button:active {
-      transform: translateY(0);
+      transform: scale(0.98);
+      box-shadow: 0 1px 2px rgba(110,160,233,0.18);
     }
 
     .submit-button::after {
@@ -658,25 +799,34 @@
     .modal {
       display: none;
       position: fixed;
-      z-index: 100;
-      left: 0;
-      top: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0,0,0,0.7);
-      justify-content: center;
+      background: rgba(16,18,20,0.85);
+      z-index: 9999;
       align-items: center;
+      justify-content: center;
+      overflow: auto;
+    }
+    .modal.show {
+      display: flex !important;
     }
     .modal-content {
-      background: #23262F;
-      color: var(--primary);
-      padding: 32px;
-      border-radius: 16px;
-      max-width: 90vw;
-      max-height: 80vh;
-      overflow-y: auto;
+      margin: 0 auto;
       position: relative;
-      font-family: 'Cinzel', serif;
+      background: #22304a;
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(110,160,233,0.18), 0 1.5px 8px rgba(0,0,0,0.08);
+      max-width: 420px;
+      width: 90vw;
+      padding: 32px 24px;
+      text-align: center;
+      z-index: 10000;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .modal, .modal-content {
+        transition: none !important;
+      }
     }
     .modal-close {
       position: absolute;
@@ -744,27 +894,35 @@
       .portfolio { gap: 8px; }
     }
     /* Apple-like polish */
-    .section, .service-card, .modal-content, .ig-card {
+    .section, .modal-content, .ig-card {
       background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(16,18,20,0.95) 100%);
       box-shadow: 0 8px 32px rgba(110,160,233,0.10), 0 1.5px 8px rgba(0,0,0,0.08);
       border-radius: 24px;
       border: 1px solid rgba(110,160,233,0.10);
       backdrop-filter: blur(2.5px);
     }
+    .service-card {
+      border-radius: 20px !important;
+      overflow: hidden;
+    }
+    .service-card::before {
+      border-radius: 20px !important;
+    }
     .button-primary, .contact-form button {
       box-shadow: 0 2px 8px rgba(110,160,233,0.10);
       border-radius: 16px;
-      transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.18s cubic-bezier(.4,1.6,.6,1);
     }
     .button-primary:active, .contact-form button:active {
       box-shadow: 0 1px 2px rgba(110,160,233,0.18);
       background: var(--accent);
       color: var(--text);
     }
-    .service-card:hover, .service-card:focus {
+    .service-card:hover, .service-card:focus-visible {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 12px 32px rgba(110,160,233,0.18);
       background: linear-gradient(135deg, var(--primary) 0%, #fff 100%);
       color: var(--secondary);
-      box-shadow: 0 12px 32px rgba(110,160,233,0.18);
     }
     .modal-content {
       box-shadow: 0 8px 32px rgba(110,160,233,0.18), 0 1.5px 8px rgba(0,0,0,0.08);
@@ -846,9 +1004,9 @@
     /* Enhanced Hero Styles */
     .hero-name {
       font-family: 'Dancing Script', cursive;
-      font-size: 5.5rem;
+      font-size: var(--font-size-3xl);
       color: var(--primary);
-      margin-bottom: 32px;
+      margin-bottom: var(--spacing-xl);
       position: relative;
       z-index: 2;
       letter-spacing: 0.1em;
@@ -870,21 +1028,22 @@
     .highlight-text {
       position: relative;
       display: inline-block;
-      padding: 4px 12px;
+      padding: var(--spacing-xs) var(--spacing-md);
       background: rgba(110,160,233,0.1);
-      border-radius: 4px;
-      transition: all 0.3s ease;
+      border-radius: var(--border-radius-sm);
+      transition: var(--transition-medium);
+      margin: var(--spacing-xs) 0;
     }
 
     .highlight-text:hover {
       background: rgba(110,160,233,0.2);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(110,160,233,0.15);
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: var(--shadow-md);
     }
 
     .highlight-text:active {
       transform: translateY(0);
-      box-shadow: 0 2px 6px rgba(110,160,233,0.1);
+      box-shadow: var(--shadow-sm);
     }
 
     @keyframes float {
@@ -1259,8 +1418,8 @@
       min-width: 140px;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(-10px);
-      transition: all 0.3s ease;
+      transform: translateY(-10px) scale(0.98);
+      transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 24px rgba(0,0,0,0.2);
     }
@@ -1268,7 +1427,7 @@
     .language-dropdown.show {
       opacity: 1;
       visibility: visible;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
 
     .language-option {
@@ -1290,37 +1449,444 @@
         right: 80px;
       }
     }
+    /* Add visible focus state for accessibility */
+    .navbar nav a:focus, .language-button:focus, .language-option:focus, .mobile-nav-toggle:focus {
+      outline: 3px solid var(--primary);
+      outline-offset: 2px;
+      box-shadow: 0 0 0 3px rgba(110,160,233,0.25);
+      z-index: 10;
+    }
+    /* Micro-interactions for buttons, links, and cards */
+    .button-primary, .submit-button, .service-card, .portfolio-item, .social-icon-link, .navbar nav a {
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.18s cubic-bezier(.4,1.6,.6,1);
+    }
+    .button-primary:hover, .button-primary:focus-visible, .submit-button:hover, .submit-button:focus-visible {
+      background: linear-gradient(90deg, var(--accent), var(--primary-dark));
+      color: var(--primary);
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(110,160,233,0.18);
+    }
+    .button-primary:active, .submit-button:active {
+      transform: scale(0.98);
+      box-shadow: 0 1px 2px rgba(110,160,233,0.18);
+    }
+    .service-card:hover, .service-card:focus-visible {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 12px 32px rgba(110,160,233,0.18);
+      background: linear-gradient(135deg, var(--primary) 0%, #fff 100%);
+      color: var(--secondary);
+    }
+    .portfolio-item:hover, .portfolio-item:focus-visible {
+      color: var(--text);
+      text-decoration: underline;
+      transform: scale(1.04);
+    }
+    .social-icon-link:hover, .social-icon-link:focus-visible {
+      transform: translateY(-2px) scale(1.08);
+      background: rgba(110,160,233,0.1);
+      box-shadow: 0 4px 16px rgba(110,160,233,0.18);
+    }
+    .navbar nav a:hover, .navbar nav a:focus-visible {
+      color: var(--text);
+      background: rgba(110,160,233,0.08);
+      border-radius: 4px 4px 0 0;
+      transform: scale(1.06);
+    }
+    /* Reduce motion for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      .button-primary, .submit-button, .service-card, .portfolio-item, .social-icon-link, .navbar nav a {
+        transition: none !important;
+      }
+    }
+    /* Animate form feedback (success, error, loading) */
+    .success-message, .error-message {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+    .success-message.show, .error-message.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .loading-spinner {
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .contact-form.loading .loading-spinner {
+      display: block;
+      opacity: 1;
+    }
+    .contact-form.loading .button-text {
+      visibility: hidden;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .success-message, .error-message, .loading-spinner {
+        transition: none !important;
+      }
+    }
+    /* Animate mobile nav toggle (hamburger) */
+    .mobile-nav-toggle {
+      transition: box-shadow 0.2s, background 0.2s, transform 0.2s;
+    }
+    .mobile-nav-toggle:active, .mobile-nav-toggle:focus-visible {
+      box-shadow: 0 0 0 3px rgba(110,160,233,0.25);
+      background: var(--primary-light);
+      transform: scale(1.08);
+    }
+    .mobile-nav-toggle.open span:nth-child(1) {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+    .mobile-nav-toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+    .mobile-nav-toggle.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+    .mobile-nav-toggle span {
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .language-dropdown, .mobile-nav-toggle, .mobile-nav-toggle span {
+        transition: none !important;
+      }
+    }
+    /* Von Restorff Effect: Highlight primary CTAs */
+    .primary-cta {
+      background: linear-gradient(90deg, var(--primary-dark), var(--accent));
+      color: var(--text) !important;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.18rem;
+      font-weight: bold;
+      box-shadow: 0 4px 24px rgba(255,92,0,0.18);
+      padding: 16px 40px;
+      letter-spacing: 0.12em;
+      position: relative;
+      z-index: 2;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.18s cubic-bezier(.4,1.6,.6,1);
+      animation: cta-glow 2.2s infinite alternate;
+    }
+    .primary-cta:hover, .primary-cta:focus-visible {
+      background: linear-gradient(90deg, var(--accent), var(--primary-dark));
+      color: var(--primary);
+      transform: scale(1.07);
+      box-shadow: 0 8px 32px rgba(255,92,0,0.28);
+      outline: 3px solid var(--accent);
+      outline-offset: 2px;
+    }
+    .primary-cta:active {
+      transform: scale(0.98);
+      box-shadow: 0 1px 2px rgba(255,92,0,0.18);
+    }
+    @keyframes cta-glow {
+      from {
+        box-shadow: 0 0 12px 2px #ffb347, 0 4px 24px rgba(255,92,0,0.18);
+      }
+      to {
+        box-shadow: 0 0 32px 8px #ff5c00, 0 8px 32px rgba(255,92,0,0.28);
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .primary-cta {
+        animation: none !important;
+      }
+    }
+    /* Enhanced About Me modal centering and animation */
+    #aboutMeModal.modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(16,18,20,0.85);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      overflow: auto;
+    }
+    #aboutMeModal.show {
+      display: flex !important;
+    }
+    #aboutMeModal .modal-content {
+      max-width: 420px;
+      width: 90vw;
+      padding: 32px 24px;
+      text-align: center;
+      position: relative;
+      background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, rgba(16,18,20,0.95) 100%);
+      border-radius: 24px;
+      box-shadow: 0 8px 32px rgba(110,160,233,0.18), 0 1.5px 8px rgba(0,0,0,0.08);
+      border: 1px solid rgba(110,160,233,0.10);
+      margin: 0;
+      overflow: visible;
+      transform: scale(0.92);
+      opacity: 0;
+      transition: transform 0.32s cubic-bezier(.4,1.6,.6,1), opacity 0.32s cubic-bezier(.4,1.6,.6,1);
+    }
+    #aboutMeModal.show .modal-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+    @media (max-width: 500px) {
+      #aboutMeModal .modal-content {
+        max-width: 98vw;
+        padding: 18px 6px;
+        font-size: 0.98rem;
+      }
+    }
+    #earthModal .modal-close {
+      color: var(--accent);
+      background: transparent;
+      border: none;
+      font-size: 2rem;
+      cursor: pointer;
+      box-shadow: none;
+      outline: none;
+      text-shadow: 0 0 4px #0e2e2a, 0 0 2px var(--accent);
+      transition: text-shadow 0.2s, color 0.2s;
+    }
+    #earthModal .modal-close:hover, #earthModal .modal-close:focus {
+      color: #fff;
+      text-shadow: 0 0 8px #0e2e2a, 0 0 4px var(--accent);
+    }
+    /* 1. SERVICES: Staggered Card Reveal with Scale & Shadow */
+    #services .service-card {
+      opacity: 0;
+      transform: translateY(40px) scale(0.96);
+      transition: all 0.7s cubic-bezier(.4,1.6,.6,1), box-shadow 0.5s;
+    }
+    #services .service-card.aos-animate {
+      opacity: 1;
+      transform: translateY(0) scale(1.03);
+      box-shadow: 0 8px 32px rgba(27,184,154,0.18);
+    }
+    /* Dark-lit glow on card hover */
+    #services .service-card:hover, #services .service-card:focus-visible {
+      box-shadow: 0 0 32px 8px rgba(20,30,40,0.55), 0 12px 32px rgba(110,160,233,0.18);
+      background: linear-gradient(135deg, var(--primary) 0%, #222 100%);
+      color: var(--text);
+      z-index: 2;
+    }
+    /* Remove typewriter animation */
+    #service-consulting .section-title.typewriter {
+      animation: none !important;
+      border-right: none !important;
+      white-space: normal !important;
+    }
+    /* Gradient text reveal animation */
+    #service-consulting .section-title.gradient-reveal {
+      background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary-dark));
+      background-size: 200% auto;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      opacity: 0;
+      animation: gradient-reveal-fade 1.2s ease forwards, gradient-move 2.5s linear 1.2s infinite;
+    }
+    @keyframes gradient-reveal-fade {
+      from { opacity: 0; filter: blur(8px); }
+      to { opacity: 1; filter: blur(0); }
+    }
+    @keyframes gradient-move {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
   </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('#services .service-card').forEach((el, i) => {
+        el.setAttribute('data-aos', 'fade-up');
+        el.setAttribute('data-aos-delay', 180 * i);
+      });
+    });
+  </script>
+
+  <!-- 2. PRE-IPO: Parallax Background + Slide-in Content -->
+  <style>
+    #service-preipo .geometric-pattern {
+      will-change: transform;
+      transition: transform 0.5s cubic-bezier(.4,1.6,.6,1);
+    }
+    #service-preipo .preipo-content {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: all 0.8s cubic-bezier(.4,1.6,.6,1);
+    }
+    #service-preipo.aos-animate .preipo-content {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const section = document.getElementById('service-preipo');
+      const bg = section.querySelector('.geometric-pattern');
+      window.addEventListener('scroll', function() {
+        const rect = section.getBoundingClientRect();
+        if(rect.top < window.innerHeight && rect.bottom > 0) {
+          const offset = Math.max(0, Math.min(1, 1 - rect.top/window.innerHeight));
+          bg.style.transform = `translateY(${offset * 40}px)`;
+        }
+      });
+      // Slide-in content
+      section.setAttribute('data-aos', 'fade-up');
+      section.setAttribute('data-aos-once', 'true');
+      section.addEventListener('aos:in', function() {
+        section.classList.add('aos-animate');
+      });
+      // Add .preipo-content to main content div
+      const mainContent = section.querySelector('div[style*="flex:1"]');
+      if(mainContent) mainContent.classList.add('preipo-content');
+    });
+  </script>
+
+  <!-- 3. CONSULTING: Typewriter Header + Fade-in Content -->
+  <style>
+    #service-consulting .section-title.typewriter {
+      overflow: hidden;
+      border-right: .15em solid var(--accent);
+      white-space: nowrap;
+      margin: 0 auto 24px auto;
+      letter-spacing: .08em;
+      animation: typing 2.2s steps(40, end), blink-caret .75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: var(--accent); }
+    }
+    #service-consulting .consulting-content {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(.4,1.6,.6,1);
+    }
+    #service-consulting.aos-animate .consulting-content {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const section = document.getElementById('service-consulting');
+      const title = section.querySelector('.section-title');
+      if(title) title.classList.add('typewriter');
+      section.setAttribute('data-aos', 'fade-up');
+      section.setAttribute('data-aos-once', 'true');
+      section.addEventListener('aos:in', function() {
+        section.classList.add('aos-animate');
+      });
+      // Add .consulting-content to main content div
+      const mainContent = section.querySelector('div[style*="flex:1"]');
+      if(mainContent) mainContent.classList.add('consulting-content');
+    });
+  </script>
+
+  <!-- 4. MEDIA: SVG Wave Divider + Cards Float Up with Rotation -->
+  <style>
+    #service-media .media-videos, #service-media .sponsorship-tier {
+      opacity: 0;
+      transform: translateY(60px) rotate(-3deg);
+      transition: all 0.8s cubic-bezier(.4,1.6,.6,1);
+    }
+    #service-media.aos-animate .media-videos, #service-media.aos-animate .sponsorship-tier {
+      opacity: 1;
+      transform: translateY(0) rotate(0);
+    }
+    #service-media .svg-wave-demo {
+      display: block;
+      width: 100%;
+      height: 60px;
+      margin-bottom: -2px;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const section = document.getElementById('service-media');
+      section.setAttribute('data-aos', 'fade-up');
+      section.setAttribute('data-aos-once', 'true');
+      section.addEventListener('aos:in', function() {
+        section.classList.add('aos-animate');
+      });
+      // Insert SVG wave at top
+      if(!section.querySelector('.svg-wave-demo')) {
+        const svg = document.createElement('div');
+        svg.innerHTML = `<svg class='svg-wave-demo' viewBox='0 0 1440 60' preserveAspectRatio='none'><path d='M0,30 C480,60 960,0 1440,30 L1440,60 L0,60 Z' fill='var(--primary-dark)'/></svg>`;
+        section.insertBefore(svg, section.firstChild);
+      }
+    });
+  </script>
+
+  <!-- 5. PROFILE: Gradient Fade-in + Staggered List Reveal -->
+  <style>
+    #portfolio {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--background) 100%) !important;
+      transition: background 1.2s cubic-bezier(.4,1.6,.6,1);
+    }
+    #portfolio .profile-fade {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s cubic-bezier(.4,1.6,.6,1);
+    }
+    #portfolio .profile-fade.aos-animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Staggered list reveal for profile
+      document.querySelectorAll('#portfolio [style*="background: rgba(16,18,20,0.95)"]').forEach((el, i) => {
+        el.classList.add('profile-fade');
+        el.setAttribute('data-aos', 'fade-up');
+        el.setAttribute('data-aos-delay', 120 * i);
+        el.addEventListener('aos:in', () => el.classList.add('aos-animate'));
+      });
+    });
+  </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
 </head>
 <body>
   <div class="scroll-progress"></div>
-  <header class="navbar">
-    <div class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation" tabindex="0">
+  <header class="navbar" role="banner">
+    <div class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation" tabindex="0" role="button" aria-pressed="false">
       <span></span><span></span><span></span>
     </div>
-    <nav id="mainNav">
-      <a href="#hero">Home</a>
-      <a href="#services">Services</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#contact">Contact</a>
+    <nav id="mainNav" role="navigation" aria-label="Main Navigation">
+      <a href="#hero" tabindex="0">Home</a>
+      <a href="#services" tabindex="0">Services</a>
+      <a href="#portfolio" tabindex="0">Portfolio</a>
+      <a href="#contact" tabindex="0">Contact</a>
     </nav>
-    <div class="language-selector">
-      <button class="language-button" aria-label="Select Language" onclick="toggleLanguageDropdown()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <div class="language-selector" role="region" aria-label="Language Selector">
+      <button type="button" class="language-button" aria-label="Select Language" aria-haspopup="listbox" aria-expanded="false" aria-controls="languageDropdown" onclick="toggleLanguageDropdown()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
           <circle cx="12" cy="12" r="10"/>
           <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
           <path d="M2 12h20"/>
         </svg>
         <span class="current-language">EN</span>
-        <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
           <path d="M6 9l6 6 6-6"/>
         </svg>
       </button>
-      <div class="language-dropdown" id="languageDropdown">
-        <a href="#" class="language-option" data-lang="en">English</a>
-        <a href="#" class="language-option" data-lang="es">Español</a>
-        <a href="#" class="language-option" data-lang="fr">Français</a>
-        <a href="#" class="language-option" data-lang="de">Deutsch</a>
+      <div class="language-dropdown" id="languageDropdown" role="listbox" aria-label="Language Options">
+        <a href="index.html" class="language-option" data-lang="en" role="option" aria-selected="true" tabindex="0">English</a>
+        <a href="index-es.html" class="language-option" data-lang="es" role="option" tabindex="0">Español</a>
+        <a href="index-fr.html" class="language-option" data-lang="fr" role="option" tabindex="0">Français</a>
+        <a href="index-de.html" class="language-option" data-lang="de" role="option" tabindex="0">Deutsch</a>
       </div>
     </div>
   </header>
@@ -1373,44 +1939,194 @@
           </svg>
         </div>
       </div>
+      <!-- Serial Position Effect: Add prominent CTA at the top of hero -->
+      <div style="text-align:center; margin-bottom: 24px;">
+        <a href="#contact" class="button-primary primary-cta" style="margin-top: 24px; position: relative;">
+          <span style="position: absolute; top: -18px; right: -18px; background: linear-gradient(90deg, #ff5c00 0%, #ffb347 100%); color: #fff; font-size: 0.85rem; font-weight: bold; padding: 6px 16px; border-radius: 16px; box-shadow: 0 2px 8px rgba(255,92,0,0.12); z-index: 3; letter-spacing: 0.08em;" aria-label="Limited availability">Limited</span>
+          Start Your Project
+        </a>
+      </div>
       <div class="hero-content" style="position: relative; z-index: 2; text-align: center;">
         <div class="hero-name" data-aos="fade-down" data-aos-duration="1000">John Carter</div>
+        <!-- About Me Button -->
+        <div style="margin-bottom: 18px;">
+          <button id="aboutMeBtn" class="button-primary" style="font-size:1rem; padding:8px 24px; border-radius:8px; margin-top:0;" aria-haspopup="dialog" aria-controls="aboutMeModal" aria-expanded="false">About Me</button>
+        </div>
+        <!-- About Me Modal -->
+        <div id="aboutMeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="aboutMeTitle" tabindex="-1" style="display:none; align-items:center; justify-content:center;">
+          <div class="modal-content" style="max-width:420px; width:90vw; padding:32px 24px; text-align:center; position:relative;">
+            <button class="modal-close" aria-label="Close About Me" style="position:absolute; top:12px; right:18px; font-size:2rem; background:none; border:none; color:var(--primary); cursor:pointer;">&times;</button>
+            <h2 id="aboutMeTitle" style="color:var(--primary); font-size:1.4rem; margin-bottom:18px;">About Me</h2>
+            <p style="color:var(--text); font-size:1.08rem; line-height:1.6; margin:0;">Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun. Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue-green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea.</p>
+          </div>
+        </div>
         <div class="hero-desc" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
           <a href="#service-preipo" class="highlight-text" style="display: inline-block; margin-bottom: 8px; text-decoration: none; color: inherit; cursor: pointer;">Private Pre-IPO Investments</a><br>
           <a href="#service-consulting" class="highlight-text" style="display: inline-block; margin-bottom: 8px; text-decoration: none; color: inherit; cursor: pointer;">Ai & Space Venture Capital</a><br>
           <a href="#service-webdev" class="highlight-text" style="display: inline-block; text-decoration: none; color: inherit; cursor: pointer;">Web2, Web3 & Blockchain</a>
         </div>
         <div class="cta" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-          <a href="#services" class="button-primary">
-            <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          <a href="#services" class="button-primary" aria-label="Explore Services" tabindex="0" role="button">
+            <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
             Explore Services
           </a>
-          <a href="#portfolio" class="button-primary">
-            <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M6 10l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          <a href="#portfolio" class="button-primary" aria-label="View Portfolio" tabindex="0" role="button">
+            <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M6 10l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
             View Portfolio
           </a>
         </div>
       </div>
     </section>
+    <!-- Our Services Section (insert after hero, before individual service sections) -->
+    <section class="section" id="services" style="position:relative;">
+      <div class="geometric-pattern"></div>
+      <!-- Floating geometric shapes -->
+      <div class="services-floating-bg">
+        <div class="floating-shape floating-shape1"></div>
+        <div class="floating-shape floating-shape2"></div>
+        <div class="floating-shape floating-shape3"></div>
+      </div>
+      <h2 class="section-title">Our Services</h2>
+      <div class="services-grid">
+        <!-- Pre-IPO Investments -->
+        <div class="service-card" data-aos="fade-up" data-aos-delay="0" onclick="scrollToSection('service-preipo')">
+          <span class="service-badge">Popular</span>
+          <div class="service-info" onclick="event.stopPropagation();">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div class="service-tooltip">Learn more about Pre-IPO access</div>
+          </div>
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3>Pre-IPO Investments</h3>
+          <p>Access exclusive investment opportunities in tomorrow's market leaders.</p>
+        </div>
+        <!-- AI & Space VC -->
+        <div class="service-card" data-aos="fade-up" data-aos-delay="120" onclick="openServiceModal('vc')" style="position: relative;">
+          <span class="service-badge" style="background: linear-gradient(90deg, #ff5c00 0%, #ffb347 100%); color: #fff;" aria-label="High demand">High Demand</span>
+          <div class="service-info" onclick="event.stopPropagation();">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div class="service-tooltip">AI & Space VC is our most in-demand service</div>
+          </div>
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="8"/>
+              <path d="M12 2v20M2 12h20"/>
+            </svg>
+          </div>
+          <h3>AI & Space VC</h3>
+          <p>Strategic investments in cutting-edge technology ventures.</p>
+        </div>
+        <!-- Web3 Development -->
+        <div class="service-card" data-aos="fade-up" data-aos-delay="240" onclick="openServiceModal('web3')">
+          <div class="service-info" onclick="event.stopPropagation();">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div class="service-tooltip">Web3: Blockchain, DeFi, NFTs & more</div>
+          </div>
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="4" width="16" height="16" rx="4"/>
+              <path d="M8 12h8M12 8v8"/>
+            </svg>
+          </div>
+          <h3>Web3 Development</h3>
+          <p>Building the future of decentralized applications.</p>
+        </div>
+        <!-- Consulting -->
+        <div class="service-card" data-aos="fade-up" data-aos-delay="360" onclick="openServiceModal('consulting')">
+          <div class="service-info" onclick="event.stopPropagation();">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div class="service-tooltip">Consulting for growth, innovation, and expansion</div>
+          </div>
+          <div class="service-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M8 15s1.5 2 4 2 4-2 4-2"/>
+              <path d="M9 9h.01M15 9h.01"/>
+            </svg>
+          </div>
+          <h3>Consulting</h3>
+          <p>Expert guidance for growth, innovation, and market expansion.</p>
+        </div>
+      </div>
+      <!-- Serial Position Effect: Add prominent CTA at the end of services -->
+      <div style="text-align:center; margin-top: 40px;">
+        <a href="https://calendly.com/lucreativity/johncarter" class="button-primary primary-cta" target="_blank" rel="noopener">Let's Work Together</a>
+      </div>
+    </section>
+
+    <!-- Service Modals -->
+    <div id="modal-preipo" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-preipo-title">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close Pre-IPO Investments Modal" onclick="closeServiceModal('preipo')">&times;</button>
+        <h2 id="modal-preipo-title">Pre-IPO Investments</h2>
+        <p>Access exclusive pre-IPO investment opportunities in transformative technology companies. Our team leverages deep industry expertise and a rigorous selection process to identify tomorrow's market leaders.</p>
+      </div>
+    </div>
+    <div id="modal-vc" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-vc-title">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close AI & Space Venture Capital Modal" onclick="closeServiceModal('vc')">&times;</button>
+        <h2 id="modal-vc-title">AI & Space Venture Capital</h2>
+        <p>Strategic investments in AI, machine learning, and space technology ventures. We connect you with the most promising startups and scale-ups in the industry.</p>
+      </div>
+    </div>
+    <div id="modal-web3" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-web3-title">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close Web3 Development Modal" onclick="closeServiceModal('web3')">&times;</button>
+        <h2 id="modal-web3-title">Web3 Development</h2>
+        <p>We build secure, scalable, and user-centric decentralized applications, smart contracts, and blockchain solutions for the next generation of the web.</p>
+      </div>
+    </div>
+    <div id="modal-consulting" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-consulting-title">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close Consulting Modal" onclick="closeServiceModal('consulting')">&times;</button>
+        <h2 id="modal-consulting-title">Consulting</h2>
+        <p>Expert guidance for businesses and startups, focusing on growth, innovation, and market expansion. Leverage our global network and experience for your success.</p>
+      </div>
+    </div>
+
+    <script>
+    function openServiceModal(service) {
+      const modal = document.getElementById('modal-' + service);
+      if (modal) {
+        modal.classList.add('show');
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      }
+    }
+    function closeServiceModal(service) {
+      const modal = document.getElementById('modal-' + service);
+      if (modal) {
+        modal.classList.remove('show');
+        setTimeout(() => {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+        }, 300);
+      }
+    }
+    function scrollToSection(sectionId) {
+      const el = document.getElementById(sectionId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    </script>
     <!-- SERVICES: Each service is now its own section for focus and immersion -->
     <!-- Service 1: Private Pre-IPO Investment Opportunities -->
     <section class="section" id="service-preipo" style="background: linear-gradient(135deg, #6ea0e9 0%, #101214 100%);" data-aos="fade-up">
       <div class="geometric-pattern"></div>
-      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 36px; justify-content: center; flex-direction: row-reverse;">
-        <!-- Branded SVG Rocket Icon -->
-        <div class="service-icon" data-aos="zoom-in" style="font-size:3rem;">
-          <!-- Custom SVG Rocket Icon -->
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><path d="M24 4L28 20H20L24 4Z" fill="#fff"/><circle cx="24" cy="28" r="8" fill="#6ea0e9" stroke="#fff" stroke-width="2"/><path d="M24 36V44" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 36px; justify-content: center;">
         <div style="flex:1; min-width:260px;">
           <h2 class="section-title" data-aos="fade-left">Private Pre-IPO Investment Opportunities</h2>
           <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px; margin-bottom: 24px;" data-aos="fade-up" data-aos-delay="100">
             <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
               <div style="width: 40px; height: 40px; background: rgba(110,160,233,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" aria-label="Investment icon" role="img">
                   <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                 </svg>
-          </div>
+              </div>
               <h3 style="color: #6ea0e9; margin: 0; font-size: 1.4rem;">Exclusive Access to Tomorrow's Giants</h3>
             </div>
             <p style="margin-bottom: 16px; line-height: 1.6;">
@@ -1466,169 +2182,18 @@
               </div>
             </div>
             <!-- Investment Summary -->
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 24px;">
-              <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 12px; text-align: center;">
-                <h4 style="color:#6ea0e9; margin:0 0 4px 0; font-size: 1rem;">Average ROI</h4>
-                <div style="font-size: 1.5rem; font-weight: bold; color: #F7FFF7;">158%</div>
-              </div>
-              <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 12px; text-align: center;">
-                <h4 style="color:#6ea0e9; margin:0 0 4px 0; font-size: 1rem;">Total Gains</h4>
-                <div style="font-size: 1.5rem; font-weight: bold; color: #F7FFF7;">$87.4M</div>
-              </div>
-            </div>
           </div>
-
+          <div style="display: flex; gap: 12px; margin-top: 24px;">
+            <a href="#contact" class="button-primary primary-cta">
+              <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              Request Access
+            </a>
+            <button class="button-primary" onclick="openLearnMoreModal()">
+              <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M6 10l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+              Learn More
+            </button>
+          </div>
           <!-- Testimonial -->
-          <blockquote style="color:#fff; font-style:italic; border-left:4px solid #6ea0e9; padding-left:12px; margin:18px 0;">
-            "Investing with John Carter opened doors to opportunities I never thought possible."<br>
-            <span style="font-size:0.95em; color:#6ea0e9;">– Jane Doe, Angel Investor</span>
-          </blockquote>
-          <a href="#contact" class="button-primary" style="margin-top:12px;">
-            <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-            Request Access
-          </a>
-          <button class="button-primary" id="learnMorePreIPO" style="margin-top:12px;">
-            <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M6 10l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-            Learn More
-          </button>
-        </div>
-        <!-- Removed Unsplash image -->
-        <div style="max-width:220px;"></div>
-      </div>
-    </section>
-    <!-- SVG Wave Divider -->
-    <div style="width:100%; overflow:hidden; line-height:0;">
-      <svg viewBox="0 0 1440 80" width="100%" height="80" preserveAspectRatio="none">
-        <path d="M0,40 C480,80 960,0 1440,40 L1440,80 L0,80 Z" fill="#181a20"/>
-      </svg>
-    </div>
-
-    <!-- Service 2: Web3 & Web2 Systems/Product Development -->
-    <section class="section" id="service-webdev" style="background: #181a20;" data-aos="fade-up">
-      <div class="geometric-pattern"></div>
-      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 36px; justify-content: center; flex-direction: row-reverse;">
-        <!-- Branded SVG Code/Blockchain Icon -->
-        <div class="service-icon" data-aos="zoom-in" style="font-size:3rem;">
-          <!-- Custom SVG Code Icon -->
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="32" height="32" rx="8" fill="#6ea0e9"/><path d="M18 24l-4 4 4 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M30 24l4 4-4 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="22" y="20" width="4" height="8" rx="2" fill="#fff"/></svg>
-        </div>
-        <div style="flex:1; min-width:260px;">
-          <h2 class="section-title" data-aos="fade-left">Web3 & Web2 Systems/Product Development</h2>
-          <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px; margin-bottom: 24px;" data-aos="fade-up" data-aos-delay="100">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-              <div style="width: 40px; height: 40px; background: rgba(110,160,233,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-          </div>
-              <h3 style="color: #6ea0e9; margin: 0; font-size: 1.4rem;">Powered by <a href="https://oddsandends.io" target="_blank" rel="noopener" class="odds-and-ends-link">Odds & Ends Ventures</a></h3>
-            </div>
-            <p style="margin-bottom: 16px; line-height: 1.6;">
-              Partnering with <a href="https://oddsandends.io" target="_blank" rel="noopener" class="odds-and-ends-link">Odds & Ends Ventures</a>, we deliver cutting-edge solutions across the full spectrum of digital innovation. Our elite team combines deep technical expertise with creative problem-solving to build scalable, secure, and user-centric applications.
-            </p>
-            
-            <!-- Service Categories -->
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0;">
-              <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 16px;">
-                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">Web2 Development</div>
-                <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem; color: #F7FFF7;">
-                  <li>Full-Stack Applications</li>
-                  <li>Enterprise Systems</li>
-                  <li>E-commerce Platforms</li>
-                  <li>API Development</li>
-                </ul>
-              </div>
-              <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 16px;">
-                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">Web3 Solutions</div>
-                <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem; color: #F7FFF7;">
-                  <li>Smart Contracts</li>
-                  <li>DeFi Applications</li>
-                  <li>NFT Marketplaces</li>
-                  <li>Blockchain Integration</li>
-                </ul>
-              </div>
-              <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 16px;">
-                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">Design & UX</div>
-                <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem; color: #F7FFF7;">
-                  <li>UI/UX Design</li>
-                  <li>Brand Identity</li>
-                  <li>User Research</li>
-                  <li>Prototyping</li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Founder's Guide -->
-            <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 24px; margin-top: 24px;">
-              <h4 style="color: #6ea0e9; margin: 0 0 16px 0; font-size: 1.2rem;">Founder's Guide to Building Your First Product</h4>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
-                <div class="founder-step" style="cursor: pointer; padding: 16px; border-radius: 8px; transition: all 0.3s ease;" onclick="toggleFounderStep(this)">
-                  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
-                    <div style="width: 24px; height: 24px; background: rgba(110,160,233,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #6ea0e9;">1</div>
-                    <h5 style="color: #6ea0e9; margin: 0;">Planning & Strategy</h5>
-                  </div>
-                  <div class="step-content" style="display: none; font-size: 0.9rem; color: #F7FFF7;">
-                    <ul style="margin: 0; padding-left: 20px;">
-                      <li>Market research and validation</li>
-                      <li>Technical requirements gathering</li>
-                      <li>MVP definition</li>
-                      <li>Timeline and resource planning</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="founder-step" style="cursor: pointer; padding: 16px; border-radius: 8px; transition: all 0.3s ease;" onclick="toggleFounderStep(this)">
-                  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
-                    <div style="width: 24px; height: 24px; background: rgba(110,160,233,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #6ea0e9;">2</div>
-                    <h5 style="color: #6ea0e9; margin: 0;">Development Approach</h5>
-                  </div>
-                  <div class="step-content" style="display: none; font-size: 0.9rem; color: #F7FFF7;">
-                    <ul style="margin: 0; padding-left: 20px;">
-                      <li>Agile development methodology</li>
-                      <li>Regular progress updates</li>
-                      <li>Quality assurance process</li>
-                      <li>Security best practices</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="founder-step" style="cursor: pointer; padding: 16px; border-radius: 8px; transition: all 0.3s ease;" onclick="toggleFounderStep(this)">
-                  <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
-                    <div style="width: 24px; height: 24px; background: rgba(110,160,233,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #6ea0e9;">3</div>
-                    <h5 style="color: #6ea0e9; margin: 0;">Launch & Growth</h5>
-                  </div>
-                  <div class="step-content" style="display: none; font-size: 0.9rem; color: #F7FFF7;">
-                    <ul style="margin: 0; padding-left: 20px;">
-                      <li>Beta testing and feedback</li>
-                      <li>Performance optimization</li>
-                      <li>Marketing strategy</li>
-                      <li>Post-launch support</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Success Metrics -->
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 24px;">
-              <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 12px; text-align: center;">
-                <h4 style="color:#6ea0e9; margin:0 0 4px 0; font-size: 1rem;">Projects Delivered</h4>
-                <div style="font-size: 1.5rem; font-weight: bold; color: #F7FFF7;">50+</div>
-              </div>
-              <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 12px; text-align: center;">
-                <h4 style="color:#6ea0e9; margin:0 0 4px 0; font-size: 1rem;">Client Satisfaction</h4>
-                <div style="font-size: 1.5rem; font-weight: bold; color: #F7FFF7;">98%</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Testimonial -->
-          <blockquote style="color:#fff; font-style:italic; border-left:4px solid #6ea0e9; padding-left:12px; margin:18px 0;">
-            "The <a href="https://oddsandends.io" target="_blank" rel="noopener" class="odds-and-ends-link">Odds & Ends</a> team delivered a blockchain product that exceeded our expectations. Their expertise in both Web2 and Web3 technologies is unmatched."<br>
-            <span style="font-size:0.95em; color:#6ea0e9;">– Alex Smith, Startup Founder</span>
-          </blockquote>
-          <a href="#contact" class="button-primary" style="margin-top:12px;">
-            <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-            Start Your Project
-          </a>
         </div>
         <!-- Removed Unsplash image -->
         <div style="max-width:220px;"></div>
@@ -1644,19 +2209,6 @@
     <section class="section" id="service-consulting" style="background: linear-gradient(135deg, #101214 0%, #6ea0e9 100%);" data-aos="fade-up">
       <div class="geometric-pattern"></div>
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 36px; justify-content: center;">
-        <!-- Branded SVG Globe/Network Icon -->
-        <div class="service-icon" data-aos="zoom-in" style="font-size:3rem;">
-          <!-- Custom SVG Globe with Network Icon -->
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="20" stroke="#6ea0e9" stroke-width="2"/>
-            <path d="M24 4C35 4 44 13 44 24C44 35 35 44 24 44" stroke="#6ea0e9" stroke-width="2"/>
-            <path d="M24 4C13 4 4 13 4 24C4 35 13 44 24 44" stroke="#6ea0e9" stroke-width="2"/>
-            <path d="M4 24H44" stroke="#6ea0e9" stroke-width="2"/>
-            <circle cx="24" cy="24" r="4" fill="#6ea0e9"/>
-            <path d="M24 20V28" stroke="#fff" stroke-width="2"/>
-            <path d="M20 24H28" stroke="#fff" stroke-width="2"/>
-          </svg>
-        </div>
         <div style="flex:1; min-width:260px; max-width: 800px;">
           <h2 class="section-title" data-aos="fade-right">Global Strategic Consulting</h2>
           <p data-aos="fade-up" data-aos-delay="100">
@@ -1722,23 +2274,9 @@
             </div>
           </div>
 
-          <!-- Success Metrics -->
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin: 24px 0;">
-            <div style="text-align: center;">
-              <div style="color: #6ea0e9; font-size: 2rem; font-weight: bold;">20+</div>
-              <div style="color: #fff; font-size: 0.9rem;">Startups Scaled</div>
-            </div>
-            <div style="text-align: center;">
-              <div style="color: #6ea0e9; font-size: 2rem; font-weight: bold;">$10M+</div>
-              <div style="color: #fff; font-size: 0.9rem;">Revenue Generated</div>
-            </div>
-            <div style="text-align: center;">
-              <div style="color: #6ea0e9; font-size: 2rem; font-weight: bold;">15+</div>
-              <div style="color: #fff; font-size: 0.9rem;">Countries Served</div>
-            </div>
-          </div>
-
           <!-- Testimonials Carousel -->
+          <!-- Removed Priya Patel testimonial -->
+          <!--
           <div class="testimonials-carousel" style="margin: 24px 0;">
             <div class="testimonial" style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; backdrop-filter: blur(10px);">
               <blockquote style="color:#fff; font-style:italic; margin:0 0 12px 0; font-size:0.95rem;">
@@ -1752,18 +2290,64 @@
               </div>
             </div>
           </div>
+          -->
 
           <!-- Call to Action -->
           <div style="display: flex; gap: 16px; margin-top: 24px;">
-            <a href="#" class="button-primary" id="scheduleConsultBtn" style="flex:1; text-align:center;">
-              <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-              Schedule a Consultation
+            <a href="https://calendly.com/lucreativity/johncarter" class="button-primary primary-cta" id="scheduleConsultBtn" style="flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; background: var(--primary); color: var(--secondary); border-radius: 8px; text-decoration: none; font-weight: bold; transition: all 0.3s ease; border: 1px solid transparent; min-height: 52px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0;">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              <span>Schedule a Consultation</span>
             </a>
-            <a href="#contact" class="button-secondary" style="flex:1; text-align:center;">
-              <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-              Discuss Your Project
+            <a href="#contact" class="button-primary" style="flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; background: var(--primary); color: var(--secondary); border-radius: 8px; text-decoration: none; font-weight: bold; transition: all 0.3s ease; border: 1px solid transparent; min-height: 52px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0;">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+              <span>Discuss Your Project</span>
             </a>
           </div>
+          <style>
+            .consulting-cta {
+              background: var(--primary);
+              color: var(--secondary);
+              border-radius: 8px;
+              text-decoration: none;
+              font-weight: bold;
+              transition: all 0.3s ease;
+              border: 1px solid transparent;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            }
+            
+            .consulting-cta:hover {
+              background: var(--text);
+              color: var(--primary);
+              transform: translateY(-2px);
+              box-shadow: 0 4px 16px rgba(110,160,233,0.18);
+              border-color: var(--primary);
+            }
+            
+            .consulting-cta:active {
+              transform: translateY(0);
+              box-shadow: 0 2px 8px rgba(110,160,233,0.18);
+            }
+
+            @media (max-width: 768px) {
+              .consulting-cta {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+                min-height: 48px;
+              }
+              
+              .consulting-cta svg {
+                width: 18px;
+                height: 18px;
+              }
+            }
+          </style>
         </div>
       </div>
     </section>
@@ -1782,89 +2366,121 @@
 
     <!-- Service 4: Interviews, Media Content Partnerships & Production -->
     <section class="section" id="service-media" style="background: #181a20;" data-aos="fade-up">
-      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 36px; justify-content: center; flex-direction: row-reverse;">
-        <!-- Branded SVG Microphone Icon -->
-        <div class="service-icon" data-aos="zoom-in" style="font-size:3rem;">
-          <!-- Custom SVG Microphone Icon -->
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none"><rect x="18" y="8" width="12" height="24" rx="6" fill="#6ea0e9"/><rect x="22" y="32" width="4" height="8" rx="2" fill="#fff"/><path d="M24 40v4" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M16 36h16" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
-        </div>
-        <div style="flex:1; min-width:260px;">
-          <h2 class="section-title" data-aos="fade-left">Interviews, Media Content Partnerships & Production</h2>
-          <p data-aos="fade-up" data-aos-delay="100"><b>Amplify Your Voice. Grow Your Brand.</b><br>
-          High-impact media production, interviews, and partnership opportunities for thought leadership and brand growth.</p>
+      <div class="geometric-pattern"></div>
+      <div style="display: flex; flex-wrap: wrap; gap: 48px; justify-content: center;">
+        <!-- Main Content -->
+        <div style="flex: 1; min-width: 300px; max-width: 800px;">
           
-          <!-- Video Carousel -->
-          <div class="video-carousel" style="position: relative; margin: 24px 0;">
-            <div class="carousel-container" style="overflow: hidden; position: relative; border-radius: 12px;">
-              <div class="carousel-track" style="display: flex; transition: transform 0.5s ease;">
-                <!-- Video 1 -->
-                <div class="carousel-slide" style="min-width: 100%; padding: 0 12px;">
-                  <div style="background: rgba(16,18,20,0.95); border-radius: 12px; padding: 18px;">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/0Gwu3EEyNCI?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 8px;"></iframe>
-                    <div style="margin-top: 12px; color: var(--primary); font-weight: bold;">YouTube Interview Highlight 1</div>
-            </div>
-            </div>
-                <!-- Video 2 -->
-                <div class="carousel-slide" style="min-width: 100%; padding: 0 12px;">
-                  <div style="background: rgba(16,18,20,0.95); border-radius: 12px; padding: 18px;">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/TIqF5UaB4Cw?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 8px;"></iframe>
-                    <div style="margin-top: 12px; color: var(--primary); font-weight: bold;">YouTube Interview Highlight 2</div>
-          </div>
-                </div>
-                <!-- Video 3 -->
-                <div class="carousel-slide" style="min-width: 100%; padding: 0 12px;">
-                  <div style="background: rgba(16,18,20,0.95); border-radius: 12px; padding: 18px;">
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/your-video-id?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="border-radius: 8px;"></iframe>
-                    <div style="margin-top: 12px; color: var(--primary); font-weight: bold;">YouTube Interview Highlight 3</div>
-                  </div>
-                </div>
+          <h2 class="section-title" data-aos="fade-left">Media & Content Creation</h2>
+          
+          <div class="media-videos" style="margin: 0 auto 40px auto; display: flex; flex-direction: column; align-items: center; max-width: 700px;">
+            <!-- Featured (Main) Video -->
+            <div id="mainVideoWrapper" class="main-video-wrapper" style="margin-bottom: 18px; width: 100%;">
+              <div class="main-video-card" style="border-radius: 20px; overflow: hidden; box-shadow: 0 8px 32px rgba(110,160,233,0.18); background: #000;">
+                <iframe id="mainVideo" src="https://www.youtube.com/embed/0Gwu3EEyNCI" title="Featured Episode" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; aspect-ratio:16/9; min-height:220px; border-radius: 20px; transition: box-shadow 0.3s;"></iframe>
               </div>
             </div>
-            
-            <!-- Carousel Controls -->
-            <button class="carousel-control prev" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: rgba(110,160,233,0.2); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.5rem; transition: all 0.3s ease;">
-              &#10094;
-            </button>
-            <button class="carousel-control next" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: rgba(110,160,233,0.2); border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; color: var(--primary); font-size: 1.5rem; transition: all 0.3s ease;">
-              &#10095;
-            </button>
-            
-            <!-- Carousel Indicators -->
-            <div class="carousel-indicators" style="display: flex; justify-content: center; gap: 8px; margin-top: 16px;">
-              <button class="indicator active" style="width: 10px; height: 10px; border-radius: 50%; border: none; background: var(--primary); cursor: pointer; transition: all 0.3s ease;"></button>
-              <button class="indicator" style="width: 10px; height: 10px; border-radius: 50%; border: none; background: rgba(110,160,233,0.3); cursor: pointer; transition: all 0.3s ease;"></button>
-              <button class="indicator" style="width: 10px; height: 10px; border-radius: 50%; border: none; background: rgba(110,160,233,0.3); cursor: pointer; transition: all 0.3s ease;"></button>
+            <!-- Thumbnails -->
+            <div class="video-thumbnails" style="display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;">
+              <button class="video-thumb" data-video="0Gwu3EEyNCI" aria-label="Play Video 1" style="background:none; border:none; padding:0; cursor:pointer; border-radius:12px; outline:none;">
+                <img src="https://img.youtube.com/vi/0Gwu3EEyNCI/hqdefault.jpg" alt="Video 1 thumbnail" style="width: 140px; height: 80px; object-fit: cover; border-radius: 12px; box-shadow: 0 2px 8px rgba(110,160,233,0.10); border: 2px solid var(--primary);">
+              </button>
+              <button class="video-thumb" data-video="TIqF5UaB4Cw" aria-label="Play Video 2" style="background:none; border:none; padding:0; cursor:pointer; border-radius:12px; outline:none;">
+                <img src="https://img.youtube.com/vi/TIqF5UaB4Cw/hqdefault.jpg" alt="Video 2 thumbnail" style="width: 140px; height: 80px; object-fit: cover; border-radius: 12px; box-shadow: 0 2px 8px rgba(110,160,233,0.10);">
+              </button>
+              <button class="video-thumb" data-video="-wVGO-upGgM" aria-label="Play Video 3" style="background:none; border:none; padding:0; cursor:pointer; border-radius:12px; outline:none;">
+                <img src="https://img.youtube.com/vi/-wVGO-upGgM/hqdefault.jpg" alt="Video 3 thumbnail" style="width: 140px; height: 80px; object-fit: cover; border-radius: 12px; box-shadow: 0 2px 8px rgba(110,160,233,0.10);">
+              </button>
+              <button class="video-thumb" data-video="MCmgyNLo2uM" aria-label="Play Video 4" style="background:none; border:none; padding:0; cursor:pointer; border-radius:12px; outline:none;">
+                <img src="https://img.youtube.com/vi/MCmgyNLo2uM/hqdefault.jpg" alt="Video 4 thumbnail" style="width: 140px; height: 80px; object-fit: cover; border-radius: 12px; box-shadow: 0 2px 8px rgba(110,160,233,0.10);">
+              </button>
             </div>
           </div>
-
-          <!-- Media partner logos -->
-          <div class="company-logos" style="display:flex; gap:18px; margin:12px 0; align-items:center;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/CNN.svg" alt="CNN" style="height:32px; background:#fff; border-radius:6px; padding:4px;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/BBC_News_2022_%28Alt%29.svg" alt="BBC" style="height:32px; background:#fff; border-radius:6px; padding:4px;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Forbes_logo.svg" alt="Forbes" style="height:32px; background:#fff; border-radius:6px; padding:4px;">
-          </div>
           
-          <!-- Rest of the content -->
-          <!-- Quote slider (static for now) -->
-          <blockquote style="color:#fff; font-style:italic; border-left:4px solid #6ea0e9; padding-left:12px; margin:18px 0;">
-            "Our interview with John Carter was one of the most insightful features we've produced."<br>
-            <span style="font-size:0.95em; color:#6ea0e9;">– Media Partner</span>
-          </blockquote>
-          <a href="#contact" class="button-primary" style="margin-top:12px;">
-            <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-            Partner With Us
-          </a>
+          <!-- Sponsorship Opportunities -->
+          <div style="background: linear-gradient(135deg, rgba(110,160,233,0.1) 0%, rgba(16,18,20,0.95) 100%); border-radius: 16px; padding: 32px; margin: 32px 0; position: relative; overflow: hidden;" data-aos="fade-up">
+            <div class="geometric-pattern" style="opacity: 0.1;"></div>
+            <h3 style="color: var(--primary); margin-bottom: 24px; font-size: 1.4rem; position: relative;">Sponsorship Opportunities</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; position: relative;">
+              <!-- Premium Tier -->
+              <div class="sponsorship-tier" style="background: rgba(16,18,20,0.9); padding: 24px; border-radius: 12px; border: 1px solid rgba(110,160,233,0.2);">
+                <div style="color: var(--primary); font-size: 1.2rem; font-weight: bold; margin-bottom: 16px;">Premium Partner</div>
+                <ul style="color: var(--text); margin: 0 0 24px 0; padding-left: 20px; font-size: 0.9rem;">
+                  <li>15-20 Episodes per month</li>
+                  <li>Brand integration in content</li>
+                  <li>Social media promotion</li>
+                  <li>Exclusive audience insights</li>
+                </ul>
+                <button onclick="location.href='#contact'" class="sponsor-cta" style="width: 100%; padding: 12px; background: var(--primary); color: var(--secondary); border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">Become a Partner</button>
+              </div>
+              
+              <!-- Standard Tier -->
+              <div class="sponsorship-tier" style="background: rgba(16,18,20,0.9); padding: 24px; border-radius: 12px; border: 1px solid rgba(110,160,233,0.2);">
+                <div style="color: var(--primary); font-size: 1.2rem; font-weight: bold; margin-bottom: 16px;">Standard Sponsor</div>
+                <ul style="color: var(--text); margin: 0 0 24px 0; padding-left: 20px; font-size: 0.9rem;">
+                  <li>Featured in 2 episodes</li>
+                  <li>Brand mention in content</li>
+                  <li>Social media shoutout</li>
+                  <li>Monthly performance reports</li>
+                </ul>
+                <button onclick="location.href='#contact'" class="sponsor-cta" style="width: 100%; padding: 12px; background: var(--primary); color: var(--secondary); border: none; border-radius: 8px; font-weight: bold; cursor: pointer; transition: all 0.3s ease;">Get Started</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- Removed Unsplash image -->
-        <div style="max-width:220px;"></div>
+
+        <script>
+        // Video thumbnail click handler
+        document.addEventListener('DOMContentLoaded', function() {
+          const mainVideo = document.getElementById('mainVideo');
+          document.querySelectorAll('.video-thumb').forEach(btn => {
+            btn.addEventListener('click', function() {
+              const videoId = this.getAttribute('data-video');
+              if (mainVideo) {
+                mainVideo.src = `https://www.youtube.com/embed/${videoId}`;
+              }
+              // Optional: highlight selected thumbnail
+              document.querySelectorAll('.video-thumb img').forEach(img => img.style.border = 'none');
+              this.querySelector('img').style.border = '2px solid var(--primary)';
+            });
+          });
+        });
+        </script>
+
+        <style>
+          .sponsorship-tier {
+            transition: all 0.3s ease;
+          }
+          
+          .sponsorship-tier:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 32px rgba(110,160,233,0.15);
+          }
+
+          .sponsor-cta:hover {
+            background: var(--text);
+            color: var(--primary);
+            transform: translateY(-2px);
+          }
+
+          .video-container iframe {
+            transition: all 0.3s ease;
+          }
+
+          .video-container:hover iframe {
+            transform: scale(1.01);
+          }
+
+          @media (max-width: 768px) {
+            .sponsorship-tier {
+              margin-bottom: 16px;
+            }
+          }
+        </style>
       </div>
     </section>
-    <div style="width:100%; overflow:hidden; line-height:0;">
-      <svg viewBox="0 0 1440 80" width="100%" height="80" preserveAspectRatio="none">
-        <path d="M0,40 C480,80 960,0 1440,40 L1440,80 L0,80 Z" fill="#101214"/>
-      </svg>
-    </div>
-    <!-- End of Services Sections -->
     <!-- Portfolio & Resume Section -->
     <section class="section" id="portfolio" data-aos="fade-up">
       <h2 style="color: var(--primary); text-align:center; font-family: 'Cinzel', serif; letter-spacing: 0.2em;">Professional Profile</h2>
@@ -1873,7 +2489,7 @@
         <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px;">
           <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
             <div style="width: 40px; height: 40px; background: rgba(110,160,233,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" aria-label="Investment icon" role="img">
                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
               </svg>
         </div>
@@ -1892,7 +2508,7 @@
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                 <polyline points="22 4 12 14.01 9 11.01"/>
               </svg>
-              <span>2+ years experience in AI integration and optimization</span>
+              <span>Practical experience with sales strategy and business development</span>
             </li>
             <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" style="margin-top: 4px;">
@@ -1908,7 +2524,7 @@
         <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px;">
           <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
             <div style="width: 40px; height: 40px; background: rgba(110,160,233,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" aria-label="Globe icon" role="img">
                 <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
                 <path d="M3 3v5h5"/>
                 <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/>
@@ -1937,7 +2553,7 @@
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                 <polyline points="22 4 12 14.01 9 11.01"/>
               </svg>
-              <span>Expert in international regulatory compliance</span>
+              <span>Successfully navigated complex international regulatory challenges</span>
             </li>
           </ul>
         </div>
@@ -1946,7 +2562,7 @@
         <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px;">
           <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
             <div style="width: 40px; height: 40px; background: rgba(110,160,233,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" aria-label="Leadership icon" role="img">
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                 <circle cx="9" cy="7" r="4"/>
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -1961,14 +2577,14 @@
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                 <polyline points="22 4 12 14.01 9 11.01"/>
               </svg>
-              <span>15+ years experience in strategic business management</span>
+              <span>8+ years experience in strategic business management</span>
             </li>
             <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" style="margin-top: 4px;">
                 <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                 <polyline points="22 4 12 14.01 9 11.01"/>
               </svg>
-              <span>Proven track record in exceeding sales targets</span>
+              <span>Familiar with sales strategies and business development processes</span>
             </li>
             <li style="margin-bottom: 12px; display: flex; align-items: flex-start; gap: 8px;">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" style="margin-top: 4px;">
@@ -1992,91 +2608,142 @@
           Download Full Resume
         </a>
       </div>
+      <!-- Serial Position Effect: Add prominent CTA at the end of portfolio -->
+      <div style="text-align:center; margin-top: 40px;">
+        <a href="https://calendly.com/lucreativity/johncarter" class="button-primary primary-cta" target="_blank" rel="noopener">Let's Work Together</a>
+      </div>
     </section>
     <!-- Contact Section -->
     <section class="section" id="contact" data-aos="fade-up">
-      <h2 style="color: var(--primary); text-align:center; font-family: 'Cinzel', serif; letter-spacing: 0.2em;">Contact</h2>
-      <div class="contact-flex">
-        <div class="contact-info">
-          <div class="contact-row">
-            <svg class="contact-icon" viewBox="0 0 24 24">
-              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5h3.5a1 1 0 011 1c0 1.35.26 2.67.76 3.88a1 1 0 01-.21 1.11l-2.2 2.2z" fill="none" stroke="#6ea0e9" stroke-width="2"/>
+      <h2 style="color: var(--primary); text-align:center; font-family: 'Cinzel', serif; letter-spacing: 0.2em; margin-bottom: 48px;">Contact</h2>
+      <div class="contact-flex" style="display: flex; align-items: flex-start; gap: 48px; justify-content: center; margin: 0 auto; max-width: 1200px; padding: 0 20px;">
+        <div class="contact-info" style="background: rgba(16,18,20,0.95); padding: 32px; border-radius: 16px; border: 1px solid rgba(110,160,233,0.1); box-shadow: 0 4px 24px rgba(0,0,0,0.1); flex-shrink: 0;">
+          <div class="contact-row" style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+            <svg class="contact-icon" viewBox="0 0 24 24" style="width: 24px; height: 24px; color: var(--primary);" aria-label="Phone icon" role="img">
+              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5h3.5a1 1 0 011 1c0 1.35.26 2.67.76 3.88a1 1 0 01-.21 1.11l-2.2 2.2z" fill="none" stroke="currentColor" stroke-width="2"/>
             </svg>
-            <a href="tel:+14435103504" class="contact-link">+1-443-510-3504</a>
+            <a href="tel:+14435103503" class="contact-link" style="color: var(--primary); text-decoration: none; transition: color 0.3s ease;">+1-443-510-3503</a>
           </div>
-          <div class="contact-row">
-            <svg class="contact-icon" viewBox="0 0 24 24">
-              <path d="M4 4h16v16H4z" fill="none"/>
-              <path d="M22 6l-10 7L2 6" stroke="#6ea0e9" stroke-width="2" fill="none"/>
-              <rect x="4" y="4" width="16" height="16" rx="2" stroke="#6ea0e9" stroke-width="2" fill="none"/>
-            </svg>
-            <a href="mailto:Johncarter@lucreativity.io" class="contact-link">Johncarter@lucreativity.io</a>
+          <div class="contact-row" style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+            <a href="https://wa.me/qr/W4L2KKK6ANEDC1" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" style="display:inline-flex; align-items:center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="color:#1bb89a; transition:transform 0.2s;" class="contact-icon" aria-label="WhatsApp icon" role="img">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.031-.967-.273-.099-.472-.148-.67.15-.198.297-.767.967-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.007-.372-.009-.571-.009-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.099 3.205 5.077 4.372.71.306 1.263.489 1.695.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.288.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 6.17h-.001a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.455 4.436-9.89 9.893-9.89 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.896 6.995c-.003 5.456-4.438 9.891-9.893 9.891zm8.413-18.282A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.304-1.678a11.86 11.86 0 005.74 1.463h.005c6.554 0 11.89-5.335 11.893-11.893a11.822 11.822 0 00-3.477-8.462z"/>
+              </svg>
+            </a>
+            <span style="color: var(--accent); font-weight: 500; font-size: 1.05rem;">Connect via WhatsApp</span>
           </div>
-          <div class="contact-row">
-            <svg class="contact-icon" viewBox="0 0 24 24">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="none" stroke="#6ea0e9" stroke-width="2"/>
+          <div class="contact-row" style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+            <svg class="contact-icon" viewBox="0 0 24 24" style="width: 24px; height: 24px; color: var(--primary);">
+              <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+              <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" fill="none"/>
             </svg>
-            <span>Based in Maryland, USA</span>
-        </div>
+            <a href="mailto:Johncarter@lucreativity.io" class="contact-link" style="color: var(--primary); text-decoration: none; transition: color 0.3s ease;">Johncarter@lucreativity.io</a>
+          </div>
+          <div class="contact-row" style="display: flex; align-items: center; gap: 16px;">
+            <svg class="contact-icon" viewBox="0 0 24 24" style="width: 24px; height: 24px; color: var(--primary);">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="none" stroke="currentColor" stroke-width="2"/>
+              <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+            <span id="earthLocation" style="color: var(--accent); text-decoration: underline; cursor: pointer; font-weight: 500;">Based on Earth</span>
+          </div>
         </div>
         <a href="https://www.linkedin.com/in/john-carter-231b5a251/" target="_blank" rel="noopener" style="display: block;">
-          <img src="https://media.licdn.com/dms/image/v2/C4E03AQG2WKzrYw-UKg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1664206781622?e=1752105600&v=beta&t=pQ2rLM_LmAE2sfdmACorkWX3pThvqpeq-wawy6uIFhA" alt="John Carter LinkedIn Profile Photo" class="profile-photo" />
+          <img src="https://media.licdn.com/dms/image/v2/C4E03AQG2WKzrYw-UKg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1664206781622?e=1752105600&v=beta&t=pQ2rLM_LmAE2sfdmACorkWX3pThvqpeq-wawy6uIFhA" alt="John Carter LinkedIn Profile Photo" class="profile-photo" style="width: 180px; height: 180px; border-radius: 16px; border: 2px solid var(--primary); object-fit: cover; box-shadow: 0 8px 32px rgba(110,160,233,0.15); transition: transform 0.3s ease, box-shadow 0.3s ease;" />
         </a>
       </div>
-      <form class="contact-form" id="contactForm" novalidate>
-        <div class="form-group">
-          <input type="text" id="name" name="name" placeholder="Name" required 
-                 pattern="[A-Za-z\s]{2,50}" 
-                 title="Please enter a valid name (2-50 characters, letters and spaces only)" />
-          <div class="error-message" id="nameError"></div>
+      <form class="contact-form" id="contactForm" novalidate aria-labelledby="contactFormTitle" style="max-width: 600px; margin: 48px auto; padding: 48px 80px; background: rgba(16,18,20,0.95); border-radius: 16px; box-shadow: 0 4px 24px rgba(110,160,233,0.1); border: 1px solid rgba(110,160,233,0.1); display: flex; flex-direction: column; align-items: center;" autocomplete="on">
+        <h2 id="contactFormTitle" class="sr-only">Contact Form</h2>
+        <div class="form-group" style="margin-bottom: 32px; position: relative; width: 100%;">
+          <input type="text" id="name" name="name" placeholder=" " required pattern="[A-Za-z\s]{2,50}" aria-required="true" aria-invalid="false" aria-describedby="nameError" style="width: 100%; padding: 12px 16px; border: 2px solid rgba(110,160,233,0.2); border-radius: 8px; background: rgba(16,18,20,0.95); color: var(--text); font-family: 'Cinzel', serif; font-size: 1rem; transition: all 0.3s ease;" />
+          <label for="name" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: rgba(247,255,247,0.5); transition: all 0.3s ease; pointer-events: none; background: rgba(16,18,20,0.95); padding: 0 4px;">Your Name</label>
+          <span id="nameError" class="error-message" aria-live="polite"></span>
         </div>
-        
-        <div class="form-group">
-          <input type="email" id="email" name="email" placeholder="Email" required 
-                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" 
-                 title="Please enter a valid email address" />
-          <div class="error-message" id="emailError"></div>
+        <div class="form-group" style="margin-bottom: 32px; position: relative; width: 100%;">
+          <input type="email" id="email" name="email" placeholder=" " required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" aria-required="true" aria-invalid="false" aria-describedby="emailError" style="width: 100%; padding: 12px 16px; border: 2px solid rgba(110,160,233,0.2); border-radius: 8px; background: rgba(16,18,20,0.95); color: var(--text); font-family: 'Cinzel', serif; font-size: 1rem; transition: all 0.3s ease;" />
+          <label for="email" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: rgba(247,255,247,0.5); transition: all 0.3s ease; pointer-events: none; background: rgba(16,18,20,0.95); padding: 0 4px;">Your Email</label>
+          <span id="emailError" class="error-message" aria-live="polite"></span>
         </div>
-        
-        <div class="form-group">
-          <select name="service" id="service" required>
-          <option value="">Select service of interest</option>
-            <option value="preipo">Private Pre-IPO Investment</option>
-            <option value="webdev">Web3/Web2 Product Development</option>
-            <option value="consulting">Consulting</option>
-            <option value="media">Media/Interviews</option>
-        </select>
-          <div class="error-message" id="serviceError"></div>
+        <div class="form-group" style="margin-bottom: 32px; position: relative; width: 100%;">
+          <fieldset style="border: none; padding: 0; margin: 0;">
+            <legend style="font-size: 1rem; color: var(--primary); margin-bottom: 4px; font-weight: 600;">Service of Interest</legend>
+            <div style="font-size: 0.95rem; color: rgba(247,255,247,0.7); margin-bottom: 8px;">What can we help you with?</div>
+            <select name="service" id="service" required aria-required="true" aria-invalid="false" aria-describedby="serviceError" style="width: 100%; padding: 12px 16px; border: 2px solid rgba(110,160,233,0.2); border-radius: 8px; background: rgba(16,18,20,0.95); color: var(--text); font-family: 'Cinzel', serif; font-size: 1rem; transition: all 0.3s ease; cursor: pointer;">
+              <option value="">Select service of interest</option>
+              <option value="preipo">Private Pre-IPO Investment</option>
+              <option value="webdev">Web3/Web2 Product Development</option>
+              <option value="consulting">Consulting</option>
+              <option value="media">Media/Interviews</option>
+            </select>
+            <span id="serviceError" class="error-message" aria-live="polite"></span>
+          </fieldset>
         </div>
-        
-        <div class="form-group">
-          <textarea id="message" name="message" rows="4" placeholder="Message" required 
-                    minlength="10" maxlength="1000"></textarea>
-          <div class="error-message" id="messageError"></div>
-          <div class="char-count"><span id="charCount">0</span>/1000</div>
+        <div class="form-group" style="margin-bottom: 32px; position: relative; width: 100%;">
+          <textarea id="message" name="message" rows="4" placeholder=" " required minlength="10" maxlength="1000" aria-required="true" aria-invalid="false" aria-describedby="messageError" style="width: 100%; padding: 12px 16px; border: 2px solid rgba(110,160,233,0.2); border-radius: 8px; background: rgba(16,18,20,0.95); color: var(--text); font-family: 'Cinzel', serif; font-size: 1rem; transition: all 0.3s ease; resize: vertical; min-height: 120px;"></textarea>
+          <label for="message" style="position: absolute; left: 16px; top: 16px; color: rgba(247,255,247,0.5); transition: all 0.3s ease; pointer-events: none; background: rgba(16,18,20,0.95); padding: 0 4px;">How can we help?</label>
+          <span id="messageError" class="error-message" aria-live="polite"></span>
         </div>
 
-        <button type="submit" id="submitBtn" class="submit-button">
+        <button type="submit" id="submitBtn" class="submit-button" style="width: 100%; padding: 12px; background: var(--primary); color: var(--secondary); border: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; font-family: 'Cinzel', serif; letter-spacing: 0.1em; margin-top: 8px;" aria-label="Send Message">
           <span class="button-text">Send Message</span>
-          <span class="loading-spinner"></span>
+          <span class="loading-spinner" style="display: none;"></span>
         </button>
+
+        <style>
+          .contact-form input:focus + label,
+          .contact-form textarea:focus + label,
+          .contact-form input:not(:placeholder-shown) + label,
+          .contact-form textarea:not(:placeholder-shown) + label {
+            transform: translateY(-28px) scale(0.9);
+            color: var(--primary);
+          }
+
+          .contact-form input:focus,
+          .contact-form textarea:focus,
+          .contact-form select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(110,160,233,0.1);
+          }
+
+          @media (max-width: 768px) {
+            .contact-form {
+              padding: 24px;
+            }
+
+            .form-group {
+              margin-bottom: 28px;
+            }
+
+            .form-group input,
+            .form-group select,
+            .form-group textarea,
+            .submit-button {
+              height: 52px;
+              padding: 14px 16px;
+            }
+
+            .form-group textarea {
+              min-height: 120px;
+            }
+          }
+        </style>
       </form>
 
       <div class="form-status">
         <div class="success-message" id="successMessage">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
             <polyline points="22 4 12 14.01 9 11.01"/>
           </svg>
-          <span>Thank you! Your message has been sent.</span>
+          <span>Thank you! We've received your message and will be in touch soon.</span>
         </div>
         <div class="error-message" id="formError">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <circle cx="12" cy="12" r="10"/>
             <line x1="12" y1="8" x2="12" y2="12"/>
             <line x1="12" y1="16" x2="12.01" y2="16"/>
           </svg>
-          <span>There was an error sending your message. Please try again.</span>
+          <span>Sorry, something went wrong. Please try again or email us directly.</span>
         </div>
       </div>
     </section>
@@ -2358,19 +3025,24 @@
             await new Promise(resolve => setTimeout(resolve, 1500));
 
             // Show success message
+            successMessage.classList.add('show');
             successMessage.style.display = 'flex';
+            formError.classList.remove('show');
             formError.style.display = 'none';
             form.reset();
             charCount.textContent = '0';
 
             // Hide success message after 5 seconds
             setTimeout(() => {
+              successMessage.classList.remove('show');
               successMessage.style.display = 'none';
             }, 5000);
 
           } catch (error) {
             // Show error message
+            formError.classList.add('show');
             formError.style.display = 'flex';
+            successMessage.classList.remove('show');
             successMessage.style.display = 'none';
           } finally {
             // Remove loading state
@@ -2381,32 +3053,31 @@
       });
     </script>
     <!-- Resume Modal -->
-    <div id="resumeModal" class="modal" aria-modal="true" role="dialog">
+    <div id="resumeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="resumeModalTitle">
       <div class="modal-content">
         <button class="modal-close" aria-label="Close Resume Modal">&times;</button>
-        <h2 style="color:var(--primary);">Resume Preview</h2>
+        <h2 id="resumeModalTitle" style="color:var(--primary);">Resume Preview</h2>
         <p>Embed your resume PDF or content here. <br> <a href="resume.pdf" download style="color:var(--accent);">Download PDF</a></p>
       </div>
     </div>
     <!-- Portfolio Modal -->
-    <div id="portfolioModal" class="modal" aria-modal="true" role="dialog">
+    <div id="portfolioModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="portfolioModalTitle">
       <div class="modal-content">
         <button class="modal-close" aria-label="Close Portfolio Modal">&times;</button>
         <div id="portfolioModalContent"></div>
       </div>
     </div>
     <!-- Investment Learn More Modal -->
-    <div id="preipoModal" class="modal" aria-modal="true" role="dialog">
+    <div id="preipoModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="preipoModalTitle">
       <div class="modal-content" style="max-width: 800px; width: 95vw; height: 80vh; max-height: 600px; overflow: hidden; position: relative;">
         <button class="modal-close" aria-label="Close Investment Modal">&times;</button>
-        <h2 style="color:var(--primary); margin-bottom: 12px; font-size: 1.8rem;">Firsthand Capital Fund Strategy</h2>
+        <h2 id="preipoModalTitle" style="color:var(--primary); margin-bottom: 12px; font-size: 1.8rem;">Firsthand Capital Fund Strategy</h2>
         <div style="color:#F7FFF7; font-family:'Cinzel',serif; height: calc(100% - 60px); overflow-y: auto; padding-right: 12px; position: absolute; top: 60px; left: 0; right: 0; bottom: 0;">
           <!-- Fund Overview -->
           <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px; margin-bottom: 24px;">
             <h3 style="color:#6ea0e9; margin:0 0 16px 0; font-size: 1.4rem;">Fund Overview</h3>
             <p style="margin-bottom: 16px; line-height: 1.6;">
-              Firsthand Capital is a specialized investment fund focused on pre-IPO opportunities in transformative technology companies. 
-              Our strategy combines deep industry expertise with a rigorous selection process to identify and invest in tomorrow's market leaders.
+              <span style="color:#6ea0e9; font-weight:bold;">Firsthand Capital</span> is a specialized investment fund based in <span style="color:#6ea0e9; font-weight:bold;">Silicon Valley</span>, the heart of global technology, innovation, and entrepreneurship. We focus on pre-IPO opportunities in transformative technology companies, combining deep industry expertise with a rigorous selection process to identify and invest in tomorrow's market leaders—right at the source of the world's most influential tech giants and groundbreaking startups.
             </p>
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px;">
               <div>
@@ -2477,17 +3148,6 @@
               </div>
             </div>
           </div>
-          <!-- Add Performance Metrics -->
-          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px; background: rgba(110,160,233,0.05); padding: 20px; border-radius: 12px;">
-            <div style="text-align: center;">
-              <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">158%</div>
-              <div style="color: var(--text); font-size: 0.9rem; letter-spacing: 0.1em;">Average ROI</div>
-            </div>
-            <div style="text-align: center;">
-              <div style="font-size: 2.5rem; font-weight: bold; color: var(--primary);">$300M+</div>
-              <div style="color: var(--text); font-size: 0.9rem; letter-spacing: 0.1em;">Managed Assets</div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -2496,25 +3156,25 @@
   </main>
   <footer>
     <div class="social-icons" style="display: flex; justify-content: center; gap: 24px; margin-bottom: 20px;">
-      <a href="https://www.linkedin.com/in/john-carter-231b5a251/" aria-label="LinkedIn" target="_blank" rel="noopener" class="social-icon-link">
+      <a href="https://www.linkedin.com/in/john-carter-231b5a251/" aria-label="LinkedIn profile" target="_blank" rel="noopener" class="social-icon-link">
         <div class="social-icon-wrapper">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" class="social-icon" aria-label="LinkedIn icon" role="img">
             <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
           </svg>
         </div>
         <span class="social-icon-label">LinkedIn</span>
       </a>
-      <a href="https://x.com/The_JohnCarter" aria-label="Twitter" target="_blank" rel="noopener" class="social-icon-link">
+      <a href="https://x.com/The_JohnCarter" aria-label="Twitter profile" target="_blank" rel="noopener" class="social-icon-link">
         <div class="social-icon-wrapper">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" class="social-icon" aria-label="Twitter icon" role="img">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
         </div>
         <span class="social-icon-label">Twitter</span>
       </a>
-      <a href="mailto:Johncarter@lucreativity.io" aria-label="Email" class="social-icon-link">
+      <a href="mailto:Johncarter@lucreativity.io" aria-label="Email John Carter" class="social-icon-link">
         <div class="social-icon-wrapper">
-          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" class="social-icon">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" class="social-icon" aria-label="Email icon" role="img">
             <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
           </svg>
         </div>
@@ -2565,7 +3225,7 @@
       }
 
       .social-icon-link:hover .social-icon-wrapper {
-        background: rgba(110,160,233,0.2);
+        background: var(--accent);
         transform: scale(1.1);
       }
 
@@ -2606,624 +3266,364 @@
     <div style="color: var(--primary); opacity: 0.8;">© 2024 John Carter</div>
   </footer>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <!-- Add Calendly Inline Widget with preload -->
-  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
-  <script>
-    // Initialize AOS
-    AOS.init({ once: true });
-
-    // Preload Calendly widget
-    let calendlyInitialized = false;
-    function initializeCalendly() {
-      if (typeof Calendly !== 'undefined' && !calendlyInitialized) {
-        Calendly.initInlineWidget({
-          url: 'https://calendly.com/lucreativity/johncarter',
-          parentElement: document.getElementById('calendly-inline'),
-          prefill: {},
-          utm: {},
-          hideEventTypeDetails: true,
-          hideLandingPageDetails: true,
-          hideCookieBanner: true,
-          loading: 'lazy',
-          styles: {
-            height: '100%',
-            width: '100%',
-            overflow: 'hidden'
-          },
-          text: {
-            welcome: 'Schedule a Consultation',
-            eventTypeDetails: 'Select a time that works for you'
-          }
-        });
-        calendlyInitialized = true;
-
-        // Add custom CSS to prevent scrollbars and ensure smooth scrolling
-        const style = document.createElement('style');
-        style.textContent = `
-          #calendlyModal {
-            overflow: hidden !important;
-          }
-          #calendlyModal .modal-content {
-            overflow: hidden !important;
-          }
-          #calendly-inline {
-            overflow: hidden !important;
-          }
-          .calendly-inline-widget {
-            overflow: hidden !important;
-            position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-          }
-          .calendly-inline-widget iframe {
-            overflow: hidden !important;
-            position: absolute !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
-          }
-          /* Hide scrollbars but keep functionality */
-          .calendly-inline-widget::-webkit-scrollbar,
-          .calendly-inline-widget iframe::-webkit-scrollbar,
-          #calendlyModal::-webkit-scrollbar,
-          #calendlyModal .modal-content::-webkit-scrollbar,
-          #calendly-inline::-webkit-scrollbar {
-            display: none !important;
-            width: 0 !important;
-            height: 0 !important;
-          }
-          .calendly-inline-widget,
-          .calendly-inline-widget iframe,
-          #calendlyModal,
-          #calendlyModal .modal-content,
-          #calendly-inline {
-            -ms-overflow-style: none !important;
-            scrollbar-width: none !important;
-          }
-          /* Ensure content is still scrollable */
-          .calendly-inline-widget iframe {
-            -webkit-overflow-scrolling: touch !important;
-          }
-        `;
-        document.head.appendChild(style);
-      }
-    }
-
-    // Check if Calendly is loaded every 100ms until it's available
-    const calendlyCheckInterval = setInterval(() => {
-      if (typeof Calendly !== 'undefined') {
-        initializeCalendly();
-        clearInterval(calendlyCheckInterval);
-      }
-    }, 100);
-
-    // Modal functionality
-    function initializeModals() {
-      // Learn More Pre-IPO Modal Logic
-      const learnMorePreIPO = document.getElementById('learnMorePreIPO');
-      const preipoModal = document.getElementById('preipoModal');
-      
-      if (learnMorePreIPO && preipoModal) {
-        // Add custom CSS to prevent double scrollbars and style the remaining one
-        const style = document.createElement('style');
-        style.textContent = `
-          #preipoModal {
-            overflow: hidden !important;
-          }
-          #preipoModal .modal-content {
-            overflow: hidden !important;
-          }
-          #preipoModal .modal-content > div {
-            overflow-y: auto !important;
-            overflow-x: hidden !important;
-            scrollbar-width: thin !important;
-            scrollbar-color: rgba(110,160,233,0.3) transparent !important;
-          }
-          /* Custom scrollbar styling */
-          #preipoModal .modal-content > div::-webkit-scrollbar {
-            width: 6px !important;
-            background: transparent !important;
-          }
-          #preipoModal .modal-content > div::-webkit-scrollbar-track {
-            background: transparent !important;
-            border-radius: 3px !important;
-          }
-          #preipoModal .modal-content > div::-webkit-scrollbar-thumb {
-            background: rgba(110,160,233,0.3) !important;
-            border-radius: 3px !important;
-            transition: background 0.2s ease !important;
-          }
-          #preipoModal .modal-content > div::-webkit-scrollbar-thumb:hover {
-            background: rgba(110,160,233,0.5) !important;
-          }
-          /* Hide scrollbars but keep functionality */
-          #preipoModal::-webkit-scrollbar,
-          #preipoModal .modal-content::-webkit-scrollbar {
-            display: none !important;
-            width: 0 !important;
-            height: 0 !important;
-          }
-          #preipoModal,
-          #preipoModal .modal-content {
-            -ms-overflow-style: none !important;
-            scrollbar-width: none !important;
-          }
-        `;
-        document.head.appendChild(style);
-
-        // Open modal
-        learnMorePreIPO.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          preipoModal.style.display = 'flex';
-          document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        });
-
-        // Close modal with close button
-        const closeButton = preipoModal.querySelector('.modal-close');
-        if (closeButton) {
-          closeButton.addEventListener('click', function() {
-            preipoModal.style.display = 'none';
-            document.body.style.overflow = ''; // Restore scrolling
-          });
-        }
-
-        // Close modal when clicking outside
-        preipoModal.addEventListener('click', function(e) {
-          if (e.target === preipoModal) {
-            preipoModal.style.display = 'none';
-            document.body.style.overflow = ''; // Restore scrolling
-          }
-        });
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && preipoModal.style.display === 'flex') {
-            preipoModal.style.display = 'none';
-            document.body.style.overflow = ''; // Restore scrolling
-          }
-        });
-      }
-    }
-
-    // Initialize all modals when the DOM is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      initializeModals();
-      
-      // Calendly Modal Logic
-      const scheduleConsultBtn = document.getElementById('scheduleConsultBtn');
-      const calendlyModal = document.getElementById('calendlyModal');
-      
-      if (scheduleConsultBtn && calendlyModal) {
-        // Open modal
-        scheduleConsultBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          calendlyModal.style.display = 'flex';
-          document.body.style.overflow = 'hidden'; // Prevent background scrolling
-          
-          // Ensure Calendly is initialized
-          if (!calendlyInitialized) {
-            initializeCalendly();
-          }
-        });
-
-        // Close modal with close button
-        const closeButton = calendlyModal.querySelector('.modal-close');
-        if (closeButton) {
-          closeButton.addEventListener('click', function() {
-            calendlyModal.style.display = 'none';
-            document.body.style.overflow = ''; // Restore scrolling
-          });
-        }
-
-        // Close modal when clicking outside
-        calendlyModal.addEventListener('click', function(e) {
-          if (e.target === calendlyModal) {
-            calendlyModal.style.display = 'none';
-            document.body.style.overflow = ''; // Restore scrolling
-          }
-        });
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && calendlyModal.style.display === 'flex') {
-            calendlyModal.style.display = 'none';
-            document.body.style.overflow = ''; // Restore scrolling
-          }
-        });
-      }
-
-      // Chart Toggle Functionality
-      document.querySelectorAll('.chart-toggle').forEach(button => {
-        button.addEventListener('click', function() {
-          // Update button styles
-          document.querySelectorAll('.chart-toggle').forEach(btn => {
-            btn.style.background = 'rgba(110,160,233,0.2)';
-            btn.style.color = '#6ea0e9';
-          });
-          this.style.background = '#6ea0e9';
-          this.style.color = '#101214';
-          
-          // Toggle chart visibility
-          const view = this.dataset.view;
-          document.getElementById('roiChart').style.display = view === 'roi' ? 'block' : 'none';
-          document.getElementById('gainsChart').style.display = view === 'gains' ? 'block' : 'none';
-        });
-      });
-
-    // Back to Top Button
-    const backToTop = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) {
-        backToTop.style.display = 'block';
-      } else {
-        backToTop.style.display = 'none';
-      }
-    });
-    backToTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Portfolio Modal
-    document.querySelectorAll('.portfolio-item').forEach(item => {
-      item.addEventListener('click', function() {
-        document.getElementById('portfolioModalContent').innerHTML = this.getAttribute('data-modal-content');
-        document.getElementById('portfolioModal').style.display = 'flex';
-      });
-    });
-    document.querySelectorAll('.modal-close').forEach(btn => {
-      btn.addEventListener('click', function() {
-        this.closest('.modal').style.display = 'none';
-      });
-    });
-    window.addEventListener('click', function(e) {
-      document.querySelectorAll('.modal').forEach(modal => {
-        if (e.target === modal) modal.style.display = 'none';
-      });
-    });
-    window.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        document.querySelectorAll('.modal').forEach(modal => {
-          modal.style.display = 'none';
-        });
-      }
-    });
-
-    // Resume Modal
-    document.getElementById('resumeBtn').addEventListener('click', function(e) {
-      e.preventDefault();
-      document.getElementById('resumeModal').style.display = 'flex';
-    });
-
-    // Mobile nav toggle
-    const mobileNavToggle = document.getElementById('mobileNavToggle');
-    const mainNav = document.getElementById('mainNav');
-    mobileNavToggle.addEventListener('click', function() {
-      if (mainNav.style.display === 'flex' || mainNav.style.display === '') {
-        mainNav.style.display = 'none';
-      } else {
-        mainNav.style.display = 'flex';
-        mainNav.style.flexDirection = 'column';
-        mainNav.style.position = 'absolute';
-        mainNav.style.top = '64px';
-        mainNav.style.right = '16px';
-        mainNav.style.background = 'rgba(16,18,20,0.98)';
-        mainNav.style.borderRadius = '18px';
-        mainNav.style.boxShadow = '0 4px 24px rgba(110,160,233,0.18)';
-        mainNav.style.padding = '18px 24px';
-        mainNav.style.gap = '18px';
-        mainNav.style.zIndex = '30';
-      }
-    });
-    // Close nav on link click (mobile)
-    mainNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        if (window.innerWidth <= 700) mainNav.style.display = 'none';
-      });
-    });
-
-    // Navbar blur on scroll
-    window.addEventListener('scroll', function() {
-      const navbar = document.querySelector('.navbar');
-      if (window.scrollY > 30) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
-      }
-    });
-
-    // Scrollspy effect
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.navbar nav a');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop - 80;
-        if (pageYOffset >= sectionTop) {
-          current = section.getAttribute('id');
-        }
-      });
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').includes(current)) {
-          link.classList.add('active');
-        }
-      });
-    });
-    });
-
-    // Add this to your existing JavaScript
-    function toggleFounderStep(element) {
-      const content = element.querySelector('.step-content');
-      const isExpanded = content.style.display === 'block';
-      
-      // Close all other steps
-      document.querySelectorAll('.founder-step').forEach(step => {
-        step.querySelector('.step-content').style.display = 'none';
-        step.style.background = 'transparent';
-      });
-      
-      // Toggle current step
-      if (!isExpanded) {
-        content.style.display = 'block';
-        element.style.background = 'rgba(110,160,233,0.1)';
-      }
-    }
-  </script>
-  <!-- Add before closing body tag -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
-    particlesJS('particles-js', {
-      particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: '#6ea0e9' },
-        shape: { type: 'circle' },
-        opacity: {
-          value: 0.5,
-          random: true,
-          animation: { enable: true, speed: 1, minimumValue: 0.1, sync: false }
-        },
-        size: {
-          value: 3,
-          random: true,
-          animation: { enable: true, speed: 2, minimumValue: 0.1, sync: false }
-        },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: '#6ea0e9',
-          opacity: 0.2,
-          width: 1
-        },
-        move: {
-          enable: true,
-          speed: 1,
-          direction: 'none',
-          random: true,
-          straight: false,
-          outMode: 'out',
-          bounce: false
-        }
-      },
-      interactivity: {
-        detectsOn: 'canvas',
-        events: {
-          onHover: { enable: true, mode: 'grab' },
-          onClick: { enable: true, mode: 'push' },
-          resize: true
-        },
-        modes: {
-          grab: { distance: 140, line_linked: { opacity: 0.5 } },
-          push: { particles_nb: 4 }
-        }
-      },
-      retina_detect: true
-    });
-  </script>
-  <script>
-    // Add to the existing script section
-    // Scroll Progress Indicator
-    const scrollProgress = document.querySelector('.scroll-progress');
-    window.addEventListener('scroll', () => {
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled = (window.scrollY / windowHeight) * 100;
-      scrollProgress.style.transform = `scaleX(${scrolled / 100})`;
-    });
-  </script>
-  <script>
-    // Video Carousel Functionality
     document.addEventListener('DOMContentLoaded', function() {
-      const track = document.querySelector('.carousel-track');
-      const slides = document.querySelectorAll('.carousel-slide');
-      const nextButton = document.querySelector('.carousel-control.next');
-      const prevButton = document.querySelector('.carousel-control.prev');
-      const indicators = document.querySelectorAll('.indicator');
-      const carousel = document.querySelector('.video-carousel');
-      
-      let currentIndex = 0;
-      let players = [];
-      let isScrolling = false;
-      let scrollTimeout;
-      
-      // Initialize YouTube players
-      function onYouTubeIframeAPIReady() {
-        slides.forEach((slide, index) => {
-          const iframe = slide.querySelector('iframe');
-          const player = new YT.Player(iframe, {
-            events: {
-              'onStateChange': onPlayerStateChange
+      // Initialize AOS
+      AOS.init({ once: true });
+
+      // Make language dropdown function globally accessible
+      window.toggleLanguageDropdown = function() {
+        const dropdown = document.getElementById('languageDropdown');
+        const arrow = document.querySelector('.dropdown-arrow');
+        const button = document.querySelector('.language-button');
+        dropdown.classList.toggle('show');
+        const expanded = dropdown.classList.contains('show');
+        arrow.style.transform = expanded ? 'rotate(180deg)' : '';
+        button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+      };
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(event) {
+        const dropdown = document.getElementById('languageDropdown');
+        const button = document.querySelector('.language-button');
+        if (button && dropdown && !button.contains(event.target) && dropdown.classList.contains('show')) {
+          dropdown.classList.remove('show');
+          document.querySelector('.dropdown-arrow').style.transform = '';
+        }
+      });
+
+      // Handle language selection
+      document.querySelectorAll('.language-option').forEach(option => {
+        option.addEventListener('click', function(e) {
+          const lang = this.getAttribute('href');
+          window.location.href = lang;
+        });
+      });
+
+      // Learn More Modal Functions
+      window.openLearnMoreModal = function() {
+        const modal = document.getElementById('preipoModal');
+        if (modal) {
+          modal.classList.add('show');
+          modal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        }
+      };
+
+      window.closeLearnMoreModal = function() {
+        const modal = document.getElementById('preipoModal');
+        if (modal) {
+          modal.classList.remove('show');
+          setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+          }, 300);
+        }
+      };
+
+      // Close modal when clicking outside
+      const preipoModal = document.getElementById('preipoModal');
+      if (preipoModal) {
+        preipoModal.addEventListener('click', function(event) {
+          if (event.target === this) {
+            closeLearnMoreModal();
+          }
+        });
+
+        // Close button functionality
+        const closeButton = preipoModal.querySelector('.modal-close');
+        if (closeButton) {
+          closeButton.addEventListener('click', closeLearnMoreModal);
+        }
+      }
+
+      // Close modal with Escape key
+      document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+          closeLearnMoreModal();
+        }
+      });
+
+      // Particles.js configuration
+      particlesJS('particles-js', {
+        particles: {
+          number: { value: 80, density: { enable: true, value_area: 800 } },
+          color: { value: '#6ea0e9' },
+          shape: { type: 'circle' },
+          opacity: {
+            value: 0.5,
+            random: true,
+            animation: { enable: true, speed: 1, minimumValue: 0.1, sync: false }
+          },
+          size: {
+            value: 3,
+            random: true,
+            animation: { enable: true, speed: 2, minimumValue: 0.1, sync: false }
+          },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: '#6ea0e9',
+            opacity: 0.2,
+            width: 1
+          },
+          move: {
+            enable: true,
+            speed: 1,
+            direction: 'none',
+            random: true,
+            straight: false,
+            outMode: 'out',
+            bounce: false
+          }
+        },
+        interactivity: {
+          detect_on: 'canvas',
+          events: {
+            onhover: { enable: false },
+            onclick: { enable: false },
+            resize: true
+          }
+        },
+        retina_detect: true
+      });
+
+      // Handle scroll progress
+      const scrollProgress = document.querySelector('.scroll-progress');
+      window.addEventListener('scroll', () => {
+        const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (window.scrollY / windowHeight) * 100;
+        scrollProgress.style.transform = `scaleX(${scrolled / 100})`;
+      });
+
+      // Modal accessibility: trap focus and close with Escape
+      function trapFocus(modal) {
+        const focusableSelectors = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+        const focusableEls = modal.querySelectorAll(focusableSelectors);
+        if (!focusableEls.length) return;
+        const firstEl = focusableEls[0];
+        const lastEl = focusableEls[focusableEls.length - 1];
+        modal.addEventListener('keydown', function(e) {
+          if (e.key === 'Tab') {
+            if (e.shiftKey) {
+              if (document.activeElement === firstEl) {
+                e.preventDefault();
+                lastEl.focus();
+              }
+            } else {
+              if (document.activeElement === lastEl) {
+                e.preventDefault();
+                firstEl.focus();
+              }
             }
+          }
+          if (e.key === 'Escape') {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+          }
+        });
+        // Focus the first element
+        setTimeout(() => firstEl.focus(), 50);
+      }
+      // Attach trapFocus to all modals when opened
+      [
+        'modal-preipo', 'modal-vc', 'modal-web3', 'modal-consulting',
+        'resumeModal', 'portfolioModal', 'preipoModal', 'calendlyModal'
+      ].forEach(id => {
+        const modal = document.getElementById(id);
+        if (modal) {
+          modal.addEventListener('transitionend', function() {
+            if (modal.style.display === 'flex') trapFocus(modal);
           });
-          players.push(player);
-        });
-      }
-      
-      // Handle video state changes
-      function onPlayerStateChange(event) {
-        if (event.data === YT.PlayerState.ENDED) {
-          // Move to next video when current one ends
-          if (currentIndex < slides.length - 1) {
-            currentIndex++;
-          } else {
-            currentIndex = 0;
-          }
-          updateCarousel();
-          playCurrentVideo();
-        }
-      }
-      
-      // Play current video
-      function playCurrentVideo() {
-        players.forEach((player, index) => {
-          if (index === currentIndex) {
-            player.playVideo();
-          } else {
-            player.pauseVideo();
-          }
-        });
-      }
-      
-      // Handle scroll events
-      window.addEventListener('scroll', function() {
-        isScrolling = true;
-        clearTimeout(scrollTimeout);
-        
-        // Pause all videos while scrolling
-        players.forEach(player => player.pauseVideo());
-        
-        scrollTimeout = setTimeout(function() {
-          isScrolling = false;
-          // Check if carousel is in viewport
-          const rect = carousel.getBoundingClientRect();
-          const isInViewport = (
-            rect.top >= 0 &&
-            rect.left >= 0 &&
-            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-          );
-          
-          if (isInViewport) {
-            playCurrentVideo();
-          }
-        }, 150); // Wait 150ms after scrolling stops
-      });
-      
-      function updateCarousel() {
-        track.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-        
-        // Update indicators
-        indicators.forEach((indicator, index) => {
-          indicator.style.background = index === currentIndex ? 'var(--primary)' : 'rgba(110,160,233,0.3)';
-        });
-        
-        // Update button states
-        prevButton.style.opacity = currentIndex === 0 ? '0.5' : '1';
-        nextButton.style.opacity = currentIndex === slides.length - 1 ? '0.5' : '1';
-      }
-      
-      nextButton.addEventListener('click', () => {
-        if (currentIndex < slides.length - 1) {
-          currentIndex++;
-          updateCarousel();
-          playCurrentVideo();
         }
       });
-      
-      prevButton.addEventListener('click', () => {
-        if (currentIndex > 0) {
-          currentIndex--;
-          updateCarousel();
-          playCurrentVideo();
-        }
-      });
-      
-      indicators.forEach((indicator, index) => {
-        indicator.addEventListener('click', () => {
-          currentIndex = index;
-          updateCarousel();
-          playCurrentVideo();
-        });
-      });
-      
-      // Initialize carousel
-      const slideWidth = slides[0].offsetWidth;
-      updateCarousel();
-      
-      // Check if carousel is in viewport on page load
-      const rect = carousel.getBoundingClientRect();
-      const isInViewport = (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-      );
-      
-      if (isInViewport) {
-        playCurrentVideo();
-    }
     });
   </script>
-
-  <style>
-    /* Add to your existing styles */
-    .carousel-control:hover {
-      background: rgba(110,160,233,0.4) !important;
-      transform: translateY(-50%) scale(1.1) !important;
-    }
-    
-    .carousel-control:active {
-      transform: translateY(-50%) scale(0.95) !important;
-    }
-    
-    .indicator:hover {
-      transform: scale(1.2);
-    }
-    
-    .carousel-slide {
-      transition: transform 0.3s ease;
-    }
-    
-    .carousel-slide:hover {
-      transform: scale(1.02);
-    }
-  </style>
-
+  <!-- Earth Modal -->
+  <div id="earthModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="earthModalTitle" style="display:none; align-items:center; justify-content:center;">
+    <div class="modal-content" style="max-width:420px; width:90vw; padding:32px 24px; text-align:center; position:relative;">
+      <button class="modal-close" aria-label="Close Earth Modal" style="position:absolute; top:12px; right:18px; font-size:2rem; background:none; border:none; color:var(--primary); cursor:pointer;">&times;</button>
+      <h2 id="earthModalTitle" style="color:var(--primary); font-size:1.4rem; margin-bottom:18px;">Earth</h2>
+      <p style="color:var(--text); font-size:1.08rem; line-height:1.6; margin:0;">Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun. Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue-green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea.</p>
+    </div>
+  </div>
   <script>
-    // Add to your existing scripts
-    function toggleLanguageDropdown() {
-      const dropdown = document.getElementById('languageDropdown');
-      const arrow = document.querySelector('.dropdown-arrow');
-      dropdown.classList.toggle('show');
-      arrow.style.transform = dropdown.classList.contains('show') ? 'rotate(180deg)' : '';
-    }
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(event) {
-      const dropdown = document.getElementById('languageDropdown');
-      const button = document.querySelector('.language-button');
-      if (!button.contains(event.target) && dropdown.classList.contains('show')) {
-        dropdown.classList.remove('show');
-        document.querySelector('.dropdown-arrow').style.transform = '';
+    (function() {
+      const earthBtn = document.getElementById('earthLocation');
+      const earthModal = document.getElementById('earthModal');
+      const closeBtn = earthModal ? earthModal.querySelector('.modal-close') : null;
+      function openEarth() {
+        earthModal.style.display = 'flex';
+        setTimeout(()=>earthModal.classList.add('show'), 10);
+        document.body.style.overflow = 'hidden';
+        // Focus trap
+        const focusableEls = earthModal.querySelectorAll('button, [tabindex]:not([tabindex="-1"])');
+        if (focusableEls.length) setTimeout(()=>focusableEls[0].focus(), 50);
       }
-    });
-
-    // Language selection functionality
-    document.querySelectorAll('.language-option').forEach(option => {
-      option.addEventListener('click', function(e) {
-        e.preventDefault();
-        const lang = this.dataset.lang;
-        document.querySelector('.current-language').textContent = lang.toUpperCase();
-        document.getElementById('languageDropdown').classList.remove('show');
-        document.querySelector('.dropdown-arrow').style.transform = '';
-        // Here you would typically implement the actual language change logic
+      function closeEarth() {
+        earthModal.classList.remove('show');
+        setTimeout(()=>{
+          earthModal.style.display = 'none';
+          document.body.style.overflow = '';
+          earthBtn.focus();
+        }, 300);
+      }
+      if (earthBtn && earthModal) {
+        earthBtn.addEventListener('click', function(e) { e.preventDefault(); openEarth(); });
+        if (closeBtn) closeBtn.addEventListener('click', closeEarth);
+        earthModal.addEventListener('click', e => { if (e.target === earthModal) closeEarth(); });
+        document.addEventListener('keydown', e => {
+          if (earthModal.style.display === 'flex' && (e.key === 'Escape' || e.keyCode === 27)) closeEarth();
+        });
+      }
+    })();
+  </script>
+  <!-- Calendly Modal (robust, with fallback) -->
+  <div id="calendlyModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="calendlyModalTitle" style="display:none; align-items:center; justify-content:center;">
+    <div class="modal-content" style="max-width:600px; width:95vw; height:80vh; max-height:600px; padding:0; position:relative; display:flex; flex-direction:column; background:#fff;">
+      <button class="modal-close" aria-label="Close Calendar" style="position:absolute; top:12px; right:18px; font-size:2rem; background:none; border:none; color:var(--primary); cursor:pointer; z-index:3;">&times;</button>
+      <div id="calendlyLoader" style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(16,18,20,0.92); display:flex; align-items:center; justify-content:center; z-index:2;">
+        <div class="rocket-animated-wrapper" style="width:160px; height:170px; opacity:0.7;">
+          <svg class="animated-shuttle" width="160" height="160" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#222" stroke-width="3" stroke-linecap="round">
+              <line x1="160" y1="250" x2="160" y2="320" />
+              <line x1="160" y1="250" x2="60" y2="320" />
+              <line x1="160" y1="250" x2="260" y2="320" />
+              <line x1="160" y1="250" x2="20" y2="300" />
+              <line x1="160" y1="250" x2="300" y2="300" />
+              <line x1="160" y1="250" x2="100" y2="320" />
+              <line x1="160" y1="250" x2="220" y2="320" />
+            </g>
+            <g class="smoke-clouds" stroke="#222" stroke-width="3" fill="none">
+              <path d="M30 250 Q60 220 100 250 Q120 230 160 250 Q200 230 220 250 Q260 220 290 250" />
+              <path d="M60 270 Q90 250 120 270 Q140 260 160 270 Q180 260 200 270 Q230 250 260 270" />
+            </g>
+            <path class="plume" d="M160 180 Q170 220 160 250 Q150 220 160 180" fill="#fff8b0" stroke="#ffb347" stroke-width="3"/>
+            <g class="shuttle-group">
+              <g class="shuttle-body">
+                <rect x="148" y="100" width="24" height="60" rx="12" fill="#fff" stroke="#222" stroke-width="3"/>
+                <polygon points="160,60 148,100 172,100" fill="#fff" stroke="#222" stroke-width="3"/>
+                <rect x="154" y="120" width="12" height="18" rx="6" fill="#6ea0e9" stroke="#222" stroke-width="2"/>
+                <rect x="154" y="140" width="12" height="10" rx="5" fill="#6ea0e9" stroke="#222" stroke-width="2"/>
+              </g>
+              <polygon points="148,130 130,150 148,150" fill="#fff" stroke="#222" stroke-width="3"/>
+              <polygon points="172,130 190,150 172,150" fill="#fff" stroke="#222" stroke-width="3"/>
+              <polygon points="154,100 160,90 166,100" fill="#fff" stroke="#222" stroke-width="2"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div id="calendlyInline" style="width:100%; height:100%; min-height:400px; border-radius:24px; background:#fff; z-index:1;"></div>
+      <div id="calendlyFallback" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(16,18,20,0.97); color:#fff; z-index:4; align-items:center; justify-content:center; flex-direction:column; text-align:center; border-radius:24px; font-family:'Cinzel',serif; font-size:1.1rem; padding:32px;">
+        <div style="margin-bottom:18px; font-size:1.2rem; color:var(--accent); font-weight:bold;">Sorry, the calendar could not be loaded.</div>
+        <div style="margin-bottom:18px;">This may be due to browser security, ad blockers, or network issues.<br>Click below to open scheduling in a new tab:</div>
+        <a href="https://calendly.com/lucreativity/johncarter" target="_blank" rel="noopener" style="background:var(--primary); color:#fff; padding:12px 32px; border-radius:8px; font-weight:bold; text-decoration:none; font-size:1.1rem;">Open Calendly</a>
+      </div>
+    </div>
+  </div>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <style>
+  #calendlyModal .modal-content { max-width:600px; width:95vw; height:80vh; max-height:600px; min-width:320px; min-height:400px; }
+  #calendlyModal #calendlyInline { width:100%; height:100%; border-radius:24px; }
+  #calendlyModal .rocket-animated-wrapper { animation: shuttleFloat 2.5s ease-in-out infinite alternate; }
+  #calendlyModal .animated-shuttle { animation: shuttleLaunch 3.5s cubic-bezier(.4,1.6,.6,1) infinite alternate; }
+  @media (max-width:700px) { #calendlyModal .modal-content { max-width:98vw; width:98vw; height:90vh; min-width:0; min-height:300px; } }
+  </style>
+  <script>
+  (function() {
+    var calendlyScriptLoaded = false;
+    function loadCalendlyScript(callback) {
+      if (calendlyScriptLoaded) return callback();
+      var script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.onload = function() { calendlyScriptLoaded = true; callback(); };
+      document.body.appendChild(script);
+    }
+    function openCalendlyModal() {
+      var modal = document.getElementById('calendlyModal');
+      var calendlyDiv = document.getElementById('calendlyInline');
+      var loader = document.getElementById('calendlyLoader');
+      var fallback = document.getElementById('calendlyFallback');
+      if (modal && calendlyDiv) {
+        // Remove previous widget/iframe
+        calendlyDiv.innerHTML = '';
+        if (fallback) fallback.style.display = 'none';
+        modal.style.display = 'flex';
+        setTimeout(function() { modal.classList.add('show'); }, 10);
+        document.body.style.overflow = 'hidden';
+        if (loader) loader.style.display = 'flex';
+        // Load Calendly script only if needed
+        loadCalendlyScript(function() {
+          window.Calendly && Calendly.initInlineWidget({
+            url: 'https://calendly.com/lucreativity/johncarter',
+            parentElement: calendlyDiv,
+            prefill: {},
+            utm: {}
+          });
+          // Hide loader when Calendly iframe loads or after 8s fallback
+          var loaded = false;
+          var checkLoaded = setInterval(function() {
+            var iframe = calendlyDiv.querySelector('iframe');
+            if (iframe) {
+              iframe.onload = function() {
+                loaded = true;
+                if (loader) loader.style.display = 'none';
+              };
+              clearInterval(checkLoaded);
+            }
+          }, 200);
+          setTimeout(function() {
+            if (!loaded) {
+              if (loader) loader.style.display = 'none';
+              if (fallback) fallback.style.display = 'flex';
+            }
+          }, 8000);
+        });
+        // Focus trap
+        var focusableEls = modal.querySelectorAll('button, [tabindex]:not([tabindex="-1"])');
+        if (focusableEls.length) setTimeout(function() { focusableEls[0].focus(); }, 50);
+      }
+    }
+    function closeCalendlyModal() {
+      var modal = document.getElementById('calendlyModal');
+      var calendlyDiv = document.getElementById('calendlyInline');
+      var fallback = document.getElementById('calendlyFallback');
+      if (modal) {
+        modal.classList.remove('show');
+        setTimeout(function() {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+          // Remove Calendly widget/iframe for performance
+          if (calendlyDiv) calendlyDiv.innerHTML = '';
+          if (fallback) fallback.style.display = 'none';
+        }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var ctaSelectors = [
+        'a.button-primary.primary-cta',
+        '#scheduleConsultBtn',
+        'a[href*="calendly.com/lucreativity/johncarter"]'
+      ];
+      ctaSelectors.forEach(function(sel) {
+        document.querySelectorAll(sel).forEach(function(btn) {
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openCalendlyModal();
+          });
+        });
+      });
+      var closeBtn = document.querySelector('#calendlyModal .modal-close');
+      if (closeBtn) closeBtn.addEventListener('click', closeCalendlyModal);
+      var modal = document.getElementById('calendlyModal');
+      if (modal) modal.addEventListener('click', function(e) { if (e.target === modal) closeCalendlyModal(); });
+      document.addEventListener('keydown', function(e) {
+        if (modal && modal.style.display === 'flex' && (e.key === 'Escape' || e.keyCode === 27)) closeCalendlyModal();
       });
     });
+  })();
   </script>
+
 </body>
 </html> 
