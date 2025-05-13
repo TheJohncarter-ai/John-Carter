@@ -1849,6 +1849,14 @@
       });
     });
   </script>
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
 </head>
 <body>
   <div class="scroll-progress"></div>
@@ -2045,7 +2053,7 @@
       </div>
       <!-- Serial Position Effect: Add prominent CTA at the end of services -->
       <div style="text-align:center; margin-top: 40px;">
-        <a href="#contact" class="button-primary primary-cta">Get in Touch for a Custom Solution</a>
+        <a href="https://calendly.com/lucreativity/johncarter" class="button-primary primary-cta" target="_blank" rel="noopener">Let's Work Together</a>
       </div>
     </section>
 
@@ -2286,7 +2294,7 @@
 
           <!-- Call to Action -->
           <div style="display: flex; gap: 16px; margin-top: 24px;">
-            <a href="#" class="button-primary primary-cta" id="scheduleConsultBtn" style="flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; background: var(--primary); color: var(--secondary); border-radius: 8px; text-decoration: none; font-weight: bold; transition: all 0.3s ease; border: 1px solid transparent; min-height: 52px;">
+            <a href="https://calendly.com/lucreativity/johncarter" class="button-primary primary-cta" id="scheduleConsultBtn" style="flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 24px; background: var(--primary); color: var(--secondary); border-radius: 8px; text-decoration: none; font-weight: bold; transition: all 0.3s ease; border: 1px solid transparent; min-height: 52px;">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink: 0;">
                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
                 <line x1="16" y1="2" x2="16" y2="6"/>
@@ -2602,7 +2610,7 @@
       </div>
       <!-- Serial Position Effect: Add prominent CTA at the end of portfolio -->
       <div style="text-align:center; margin-top: 40px;">
-        <a href="#contact" class="button-primary primary-cta">Let's Work Together</a>
+        <a href="https://calendly.com/lucreativity/johncarter" class="button-primary primary-cta" target="_blank" rel="noopener">Let's Work Together</a>
       </div>
     </section>
     <!-- Contact Section -->
@@ -3471,5 +3479,151 @@
       }
     })();
   </script>
+  <!-- Calendly Modal (robust, with fallback) -->
+  <div id="calendlyModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="calendlyModalTitle" style="display:none; align-items:center; justify-content:center;">
+    <div class="modal-content" style="max-width:600px; width:95vw; height:80vh; max-height:600px; padding:0; position:relative; display:flex; flex-direction:column; background:#fff;">
+      <button class="modal-close" aria-label="Close Calendar" style="position:absolute; top:12px; right:18px; font-size:2rem; background:none; border:none; color:var(--primary); cursor:pointer; z-index:3;">&times;</button>
+      <div id="calendlyLoader" style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(16,18,20,0.92); display:flex; align-items:center; justify-content:center; z-index:2;">
+        <div class="rocket-animated-wrapper" style="width:160px; height:170px; opacity:0.7;">
+          <svg class="animated-shuttle" width="160" height="160" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#222" stroke-width="3" stroke-linecap="round">
+              <line x1="160" y1="250" x2="160" y2="320" />
+              <line x1="160" y1="250" x2="60" y2="320" />
+              <line x1="160" y1="250" x2="260" y2="320" />
+              <line x1="160" y1="250" x2="20" y2="300" />
+              <line x1="160" y1="250" x2="300" y2="300" />
+              <line x1="160" y1="250" x2="100" y2="320" />
+              <line x1="160" y1="250" x2="220" y2="320" />
+            </g>
+            <g class="smoke-clouds" stroke="#222" stroke-width="3" fill="none">
+              <path d="M30 250 Q60 220 100 250 Q120 230 160 250 Q200 230 220 250 Q260 220 290 250" />
+              <path d="M60 270 Q90 250 120 270 Q140 260 160 270 Q180 260 200 270 Q230 250 260 270" />
+            </g>
+            <path class="plume" d="M160 180 Q170 220 160 250 Q150 220 160 180" fill="#fff8b0" stroke="#ffb347" stroke-width="3"/>
+            <g class="shuttle-group">
+              <g class="shuttle-body">
+                <rect x="148" y="100" width="24" height="60" rx="12" fill="#fff" stroke="#222" stroke-width="3"/>
+                <polygon points="160,60 148,100 172,100" fill="#fff" stroke="#222" stroke-width="3"/>
+                <rect x="154" y="120" width="12" height="18" rx="6" fill="#6ea0e9" stroke="#222" stroke-width="2"/>
+                <rect x="154" y="140" width="12" height="10" rx="5" fill="#6ea0e9" stroke="#222" stroke-width="2"/>
+              </g>
+              <polygon points="148,130 130,150 148,150" fill="#fff" stroke="#222" stroke-width="3"/>
+              <polygon points="172,130 190,150 172,150" fill="#fff" stroke="#222" stroke-width="3"/>
+              <polygon points="154,100 160,90 166,100" fill="#fff" stroke="#222" stroke-width="2"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div id="calendlyInline" style="width:100%; height:100%; min-height:400px; border-radius:24px; background:#fff; z-index:1;"></div>
+      <div id="calendlyFallback" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(16,18,20,0.97); color:#fff; z-index:4; align-items:center; justify-content:center; flex-direction:column; text-align:center; border-radius:24px; font-family:'Cinzel',serif; font-size:1.1rem; padding:32px;">
+        <div style="margin-bottom:18px; font-size:1.2rem; color:var(--accent); font-weight:bold;">Sorry, the calendar could not be loaded.</div>
+        <div style="margin-bottom:18px;">This may be due to browser security, ad blockers, or network issues.<br>Click below to open scheduling in a new tab:</div>
+        <a href="https://calendly.com/lucreativity/johncarter" target="_blank" rel="noopener" style="background:var(--primary); color:#fff; padding:12px 32px; border-radius:8px; font-weight:bold; text-decoration:none; font-size:1.1rem;">Open Calendly</a>
+      </div>
+    </div>
+  </div>
+  <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  <style>
+  #calendlyModal .modal-content { max-width:600px; width:95vw; height:80vh; max-height:600px; min-width:320px; min-height:400px; }
+  #calendlyModal #calendlyInline { width:100%; height:100%; border-radius:24px; }
+  #calendlyModal .rocket-animated-wrapper { animation: shuttleFloat 2.5s ease-in-out infinite alternate; }
+  #calendlyModal .animated-shuttle { animation: shuttleLaunch 3.5s cubic-bezier(.4,1.6,.6,1) infinite alternate; }
+  @media (max-width:700px) { #calendlyModal .modal-content { max-width:98vw; width:98vw; height:90vh; min-width:0; min-height:300px; } }
+  </style>
+  <script>
+  (function() {
+    var calendlyScriptLoaded = false;
+    function loadCalendlyScript(callback) {
+      if (calendlyScriptLoaded) return callback();
+      var script = document.createElement('script');
+      script.src = 'https://assets.calendly.com/assets/external/widget.js';
+      script.onload = function() { calendlyScriptLoaded = true; callback(); };
+      document.body.appendChild(script);
+    }
+    function openCalendlyModal() {
+      var modal = document.getElementById('calendlyModal');
+      var calendlyDiv = document.getElementById('calendlyInline');
+      var loader = document.getElementById('calendlyLoader');
+      var fallback = document.getElementById('calendlyFallback');
+      if (modal && calendlyDiv) {
+        // Remove previous widget/iframe
+        calendlyDiv.innerHTML = '';
+        if (fallback) fallback.style.display = 'none';
+        modal.style.display = 'flex';
+        setTimeout(function() { modal.classList.add('show'); }, 10);
+        document.body.style.overflow = 'hidden';
+        if (loader) loader.style.display = 'flex';
+        // Load Calendly script only if needed
+        loadCalendlyScript(function() {
+          window.Calendly && Calendly.initInlineWidget({
+            url: 'https://calendly.com/lucreativity/johncarter',
+            parentElement: calendlyDiv,
+            prefill: {},
+            utm: {}
+          });
+          // Hide loader when Calendly iframe loads or after 8s fallback
+          var loaded = false;
+          var checkLoaded = setInterval(function() {
+            var iframe = calendlyDiv.querySelector('iframe');
+            if (iframe) {
+              iframe.onload = function() {
+                loaded = true;
+                if (loader) loader.style.display = 'none';
+              };
+              clearInterval(checkLoaded);
+            }
+          }, 200);
+          setTimeout(function() {
+            if (!loaded) {
+              if (loader) loader.style.display = 'none';
+              if (fallback) fallback.style.display = 'flex';
+            }
+          }, 8000);
+        });
+        // Focus trap
+        var focusableEls = modal.querySelectorAll('button, [tabindex]:not([tabindex="-1"])');
+        if (focusableEls.length) setTimeout(function() { focusableEls[0].focus(); }, 50);
+      }
+    }
+    function closeCalendlyModal() {
+      var modal = document.getElementById('calendlyModal');
+      var calendlyDiv = document.getElementById('calendlyInline');
+      var fallback = document.getElementById('calendlyFallback');
+      if (modal) {
+        modal.classList.remove('show');
+        setTimeout(function() {
+          modal.style.display = 'none';
+          document.body.style.overflow = '';
+          // Remove Calendly widget/iframe for performance
+          if (calendlyDiv) calendlyDiv.innerHTML = '';
+          if (fallback) fallback.style.display = 'none';
+        }, 300);
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      var ctaSelectors = [
+        'a.button-primary.primary-cta',
+        '#scheduleConsultBtn',
+        'a[href*="calendly.com/lucreativity/johncarter"]'
+      ];
+      ctaSelectors.forEach(function(sel) {
+        document.querySelectorAll(sel).forEach(function(btn) {
+          btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            openCalendlyModal();
+          });
+        });
+      });
+      var closeBtn = document.querySelector('#calendlyModal .modal-close');
+      if (closeBtn) closeBtn.addEventListener('click', closeCalendlyModal);
+      var modal = document.getElementById('calendlyModal');
+      if (modal) modal.addEventListener('click', function(e) { if (e.target === modal) closeCalendlyModal(); });
+      document.addEventListener('keydown', function(e) {
+        if (modal && modal.style.display === 'flex' && (e.key === 'Escape' || e.keyCode === 27)) closeCalendlyModal();
+      });
+    });
+  })();
+  </script>
+
 </body>
 </html> 
