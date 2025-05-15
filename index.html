@@ -2428,6 +2428,45 @@
         line-height: 1.1 !important;
       }
     }
+    @media (max-width: 500px) {
+      /* Center all section containers */
+      .section > div,
+      .bar-graph-row,
+      .chart-title-wrapper {
+        margin: 0 auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 98vw !important;
+      }
+      /* Bar chart: horizontal scroll and min-width for bars */
+      .bar-graph-row {
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        gap: 8px !important;
+        padding: 0 2vw !important;
+        width: 100% !important;
+        max-width: 98vw !important;
+      }
+      .company-bar-group {
+        min-width: 70px !important;
+        text-align: center !important;
+      }
+      .company-link-3d {
+        font-size: 0.85rem !important;
+        word-break: break-word !important;
+        display: block !important;
+        margin: 0 auto !important;
+      }
+      /* Content boxes: consistent padding and border radius */
+      .section > div,
+      .bar-graph-row,
+      .chart-title-wrapper {
+        border-radius: 16px !important;
+        padding: 10px 4px !important;
+      }
+    }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -3244,7 +3283,9 @@
             <span id="earthLocation" style="color: var(--accent); text-decoration: underline; cursor: pointer; font-weight: 500;">Based on Earth</span>
           </div>
         </div>
-        <a href="https://www.linkedin.com/in/john-carter-231b5a251/" target="_blank" rel="noopener" style="display: block;">
+           <a href="https://www.linkedin.com/in/john-carter-231b5a251/" target="_blank" rel="noopener" style="display: block;">
+     <img src="profile pic.jpeg" alt="John Carter Profile Photo" class="profile-photo responsive-img" loading="lazy" />
+   </a>
           <img src="profile pic.jpeg" alt="John Carter Profile Photo" class="profile-photo responsive-img" loading="lazy" />
         </a>
       </div>
