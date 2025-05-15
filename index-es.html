@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
-  <meta name="language" content="English">
+  <meta name="language" content="Spanish">
   <title>John Carter | Portfolio</title>
   <!-- Language alternates -->
   <link rel="alternate" hreflang="en" href="index.html">
@@ -2052,6 +2052,19 @@
       text-shadow: 0 0 16px #1bb89a, 0 0 32px #1bb89a, 0 0 48px #1bb89a, 0 2px 8px #000;
       transform: scale(1.08);
     }
+    .company-bar-labels {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 18px;
+      width: 100%;
+      padding: 0 12px;
+    }
+    .company-bar-labels > a {
+      flex: 1 1 0;
+      text-align: center;
+    }
+    /* Add the following to the main style block, not as a separate <style> tag */
     .company-bar-group {
       display: flex;
       flex-direction: column;
@@ -2061,13 +2074,36 @@
       height: 100%;
       justify-content: flex-end;
     }
-    .bar-graph-row {
+    .company-bar-labels {
       display: flex;
-      height: 200px;
+      justify-content: space-between;
       align-items: flex-end;
-      gap: 12px;
+      margin-top: 0;
+      width: 100%;
       padding: 0 12px;
+      gap: 12px;
     }
+    @media (max-width: 900px) {
+      .company-link-3d {
+        font-size: 1.1rem;
+        margin-top: 10px;
+      }
+      .company-bar-labels {
+        gap: 6px;
+        padding: 0 2vw;
+      }
+    }
+    @media (max-width: 600px) {
+      .company-link-3d {
+        font-size: 0.95rem;
+        margin-top: 6px;
+      }
+      .company-bar-labels {
+        gap: 2px;
+        padding: 0 1vw;
+      }
+    }
+    /* Add to the main style block */
     .chart-title-wrapper {
       text-align: left;
       margin-bottom: 28px;
@@ -2119,15 +2155,7 @@
       box-shadow: 0 2px 12px #1bb89a, 0 0px 8px #6ea0e9;
       opacity: 1;
     }
-    @media (max-width: 900px) {
-      .company-link-3d {
-        font-size: 1.1rem;
-        margin-top: 10px;
-      }
-      .bar-graph-row {
-        gap: 6px;
-        padding: 0 2vw;
-      }
+    @media (max-width: 700px) {
       .chart-title-wrapper {
         padding-left: 4px;
         margin-bottom: 18px;
@@ -2143,16 +2171,7 @@
         bottom: -5px;
       }
     }
-    @media (max-width: 600px) {
-      .company-link-3d {
-        font-size: 0.95rem;
-        margin-top: 6px;
-      }
-      .bar-graph-row {
-        gap: 2px;
-        padding: 0 1vw;
-      }
-    }
+    /* Add after .section-title or as a modifier */
     .preipo-title {
       font-size: 2.1rem;
       color: #f7fff7;
@@ -2167,46 +2186,128 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       text-fill-color: transparent;
-      font-weight: 950;
-      letter-spacing: 0.13em;
-      text-shadow: 0 2px 8px #a8edea, 0 1px 2px #fff, 0 0 2px #22304a, 0 0 1px #fff, 0 0 0.5px #1bb89a;
-      -webkit-text-stroke: 0.5px #6ea0e9;
-      text-stroke: 0.5px #6ea0e9;
+      font-weight: 900;
+      letter-spacing: 0.12em;
+      text-shadow: 0 2px 8px #a8edea, 0 1px 2px #fff;
     }
-    /* --- Mobile & Cleanliness Fixes: Navbar & Hero --- */
+    .advantages-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      justify-items: center;
+      align-items: stretch;
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+    .adv-square {
+      background: rgba(16,18,30,0.95);
+      border-radius: 14px;
+      padding: 10px 6px 8px 6px;
+      text-align: center;
+      min-width: 0;
+      max-width: 260px;
+      min-height: 100px;
+      box-shadow: 0 2px 8px rgba(110,160,233,0.08);
+      border: 1px solid rgba(110,160,233,0.13);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      aspect-ratio: 1/1;
+      word-break: normal;
+      white-space: normal;
+    }
+    .adv-icon {
+      font-size: 1.7rem;
+      margin-bottom: 6px;
+    }
+    .adv-title {
+      font-weight: bold;
+      color: #f7fff7;
+      font-size: 0.98rem;
+      margin-bottom: 2px;
+      line-height: 1.15;
+    }
+    .adv-desc {
+      font-size: 0.82rem;
+      color: #a8edea;
+      line-height: 1.1;
+      min-height: 3.3em;
+      max-height: 3.3em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+    }
+    @media (max-width: 1100px) {
+      .advantages-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+        max-width: 98vw;
+      }
+    }
+    @media (max-width: 700px) {
+      .advantages-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        max-width: 98vw;
+      }
+      .adv-square {
+        min-height: 110px;
+        padding: 10px 4px 6px 4px;
+      }
+    }
+    /* --- Responsive Consulting Cards Layout --- */
+    .consulting-cards-fun {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: nowrap;
+    }
+    @media (max-width: 1200px) {
+      .consulting-cards-fun {
+        gap: 18px;
+      }
+    }
+    @media (max-width: 1000px) {
+      .consulting-cards-fun {
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+    }
+    @media (max-width: 900px) {
+      .consulting-cards-fun {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .consulting-card-fun {
+        min-width: 0;
+        width: 98vw;
+        max-width: 400px;
+      }
+    }
+    .fade-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      background: var(--background);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 99999;
+      transition: opacity 0.6s cubic-bezier(.4,1.6,.6,1);
+    }
+    .fade-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
     @media (max-width: 400px) {
-      .navbar {
-        padding: 10px 0 0 0 !important;
-      }
-      .language-selector {
-        right: 60px !important;
-        top: 12px !important;
-        transform: none !important;
-      }
-      .language-dropdown {
-        min-width: 110px !important;
-        font-size: 0.85rem !important;
-        right: 0 !important;
-      }
-      .mobile-nav-toggle {
-        top: 10px !important;
-        right: 10px !important;
-        width: 36px !important;
-        height: 36px !important;
-      }
-      .navbar nav a {
-        font-size: 0.85rem !important;
-        padding: 10px 8px !important;
-      }
-      .hero {
-        padding: 8px 2vw 4px 2vw !important;
-      }
       .rocket-animated-wrapper {
         width: 90vw !important;
         max-width: 220px !important;
         height: auto !important;
-        min-width: 60px !important;
-        min-height: 60px !important;
       }
       .rocket-animated-wrapper svg.animated-shuttle {
         width: 90vw !important;
@@ -2216,216 +2317,78 @@
       .floating-circle {
         display: none !important;
       }
+      .hero {
+        padding: 8px 2vw 4px 2vw !important;
+      }
       .hero-name {
-        font-size: 1.2rem !important;
-        padding: 0 2vw !important;
+        font-size: 1.5rem !important;
       }
       .hero-desc {
-        font-size: 0.95rem !important;
-        padding: 0 2vw !important;
+        font-size: 1rem !important;
       }
-      .cta {
-        gap: 6px !important;
-        flex-direction: column !important;
-        padding: 0 2vw !important;
+      .hero .cta a.button-primary {
+        width: 100% !important;
+        margin-bottom: 10px !important;
       }
-      .button-primary, .button-secondary {
-        font-size: 0.92rem !important;
-        padding: 10px 0 !important;
-        min-width: 44px !important;
-        min-height: 44px !important;
-      }
-      #aboutMeModal .modal-content {
-        max-width: 98vw !important;
-        padding: 10px 4px !important;
-        font-size: 0.98rem !important;
+      .aboutMeModal .modal-content, #aboutMeModal .modal-content {
+        max-height: 90vh !important;
+        overflow-y: auto !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        padding: 12px 4px !important;
       }
       #aboutMeModal .modal-close {
-        top: 4px !important;
-        right: 8px !important;
-        font-size: 1.3rem !important;
-      }
-    }
-    /* --- Mobile & Cleanliness Fixes: Services & Service Details --- */
-    @media (max-width: 400px) {
-      .services-grid {
-        gap: 8px !important;
-        grid-template-columns: 1fr !important;
-      }
-      .service-card {
-        padding: 6px 2px 8px 2px !important;
-        font-size: 0.92rem !important;
-        min-width: 0 !important;
-        min-height: 120px !important;
-        word-break: break-word !important;
-      }
-      .service-badge, .service-badge-popular {
-        font-size: 0.7rem !important;
-        padding: 3px 8px !important;
         top: 8px !important;
         right: 8px !important;
       }
-      .service-info {
-        top: 8px !important;
-        left: 8px !important;
+      .language-selector {
+        position: static !important;
+        margin-top: 12px !important;
+        width: 100vw !important;
+        display: flex;
+        justify-content: center;
       }
-      .service-icon, .service-icon-svg {
-        width: 32px !important;
-        height: 32px !important;
-        min-width: 24px !important;
-        min-height: 24px !important;
-      }
-      .bar-graph-row {
-        gap: 2px !important;
-        padding: 0 1vw !important;
-        overflow-x: auto !important;
-        max-width: 98vw !important;
-      }
-      .company-bar-group {
-        min-width: 32px !important;
-      }
-      .chart-title, .preipo-title {
-        font-size: 1.1rem !important;
-      }
-      .fc-highlight {
-        font-size: 0.95rem !important;
-      }
-      .advantages-row {
-        grid-template-columns: 1fr !important;
-        gap: 8px !important;
-      }
-      .adv-square {
-        min-height: 80px !important;
-        padding: 8px 2px 6px 2px !important;
-      }
-      .consulting-cards-fun {
-        flex-direction: column !important;
-        gap: 8px !important;
-        align-items: stretch !important;
-      }
-      .consulting-card-fun {
-        min-width: 0 !important;
-        max-width: 98vw !important;
-        padding: 8px 2px 6px 2px !important;
-        font-size: 0.92rem !important;
-      }
-      .consulting-icon-fun {
-        font-size: 1.2rem !important;
-        margin-bottom: 4px !important;
-      }
-      .consulting-title-fun {
-        font-size: 0.98rem !important;
-      }
-      .consulting-card-fun li {
-        font-size: 0.82rem !important;
-      }
-      .region-chips-fun span {
-        font-size: 0.82rem !important;
-        padding: 4px 8px !important;
+      .language-dropdown {
+        left: 0 !important;
+        right: 0 !important;
+        min-width: 100vw !important;
+        border-radius: 0 0 8px 8px !important;
       }
     }
-    /* --- Mobile & Cleanliness Fixes: Portfolio & Contact --- */
-    @media (max-width: 400px) {
-      .profile-cards-fun {
-        gap: 8px !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
+
+    /* Mobile nav open/close logic */
+    @media (max-width: 700px) {
+      .navbar.nav-open nav {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100vw;
+        background: rgba(16,18,20,0.98);
+        z-index: 200;
+        gap: 0;
+        box-shadow: 0 4px 24px rgba(110,160,233,0.18);
       }
-      .profile-card-fun {
-        min-width: 0 !important;
-        max-width: 98vw !important;
-        padding: 8px 2px 6px 2px !important;
-        font-size: 0.92rem !important;
+      .navbar.nav-open .mobile-nav-toggle {
+        background: var(--primary-dark);
       }
-      .profile-icon-fun {
-        font-size: 1.5rem !important;
-        margin-bottom: 6px !important;
+      .navbar.nav-open .language-selector {
+        position: absolute !important;
+        top: 60px;
+        right: 0;
+        left: auto;
+        width: auto;
+        margin-top: 0;
       }
-      .profile-title-fun {
-        font-size: 0.98rem !important;
-      }
-      .profile-card-fun li {
-        font-size: 0.82rem !important;
-      }
-      .profile-photo {
-        width: 90vw !important;
-        max-width: 120px !important;
-        height: auto !important;
-      }
-      .contact-flex {
-        flex-direction: column !important;
-        gap: 8px !important;
-        align-items: stretch !important;
-        padding: 0 2vw !important;
-      }
-      .contact-info, .contact-form {
-        padding: 8px 2px !important;
-        max-width: 98vw !important;
-      }
-      .contact-row {
-        gap: 8px !important;
-      }
-      .contact-icon {
-        width: 18px !important;
-        height: 18px !important;
-      }
-      .contact-link, #earthLocation {
-        font-size: 0.92rem !important;
-      }
-      .char-count {
-        font-size: 0.75rem !important;
-        right: 2px !important;
-        bottom: -18px !important;
-        padding: 2px 4px !important;
-      }
-      .error-message, .success-message {
-        font-size: 0.82rem !important;
-        padding: 2px 4px !important;
-        margin-top: 2px !important;
-      }
-      .modal-content {
-        max-width: 98vw !important;
-        width: 98vw !important;
-        padding: 8px !important;
-        font-size: 0.98rem !important;
-      }
-      .modal-close {
-        top: 4px !important;
-        right: 8px !important;
-        font-size: 1.3rem !important;
-      }
-    }
-    /* --- Mobile & Cleanliness Fixes: Footer & Social Icons --- */
-    @media (max-width: 400px) {
-      footer {
-        padding: 12px 0 8px 0 !important;
-        font-size: 0.85rem !important;
-        margin-top: 18px !important;
-      }
-      .social-icons {
-        gap: 6px !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-      }
-      .social-icon-link {
-        width: 48px !important;
-        padding: 4px !important;
-        font-size: 0.8rem !important;
-      }
-      .social-icon-wrapper {
-        width: 18px !important;
-        height: 18px !important;
-      }
-      .social-icon {
-        width: 14px !important;
-        height: 14px !important;
-      }
-      .social-icon-label {
-        font-size: 0.65rem !important;
-        word-break: break-word !important;
-        text-align: center !important;
-        max-width: 48px !important;
-        line-height: 1.1 !important;
+      .navbar nav a {
+        min-width: 100vw;
+        min-height: 48px;
+        padding: 16px 0;
+        text-align: center;
+        border-bottom: 1px solid #222;
+        font-size: 1.1rem;
       }
     }
   </style>
@@ -2593,16 +2556,17 @@
   <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
 </head>
 <body>
+  <div class="fade-overlay" id="fadeOverlay"></div>
   <div class="scroll-progress"></div>
   <header class="navbar" role="banner">
     <div class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation" tabindex="0" role="button" aria-pressed="false">
       <span></span><span></span><span></span>
     </div>
     <nav id="mainNav" role="navigation" aria-label="Main Navigation">
-      <a href="#hero" tabindex="0">Home</a>
-      <a href="#services" tabindex="0">Services</a>
-      <a href="#portfolio" tabindex="0">Portfolio</a>
-      <a href="#contact" tabindex="0">Contact</a>
+      <a href="#hero" tabindex="0">Inicio</a>
+      <a href="#services" tabindex="0">Servicios</a>
+      <a href="#portfolio" tabindex="0">Portafolio</a>
+      <a href="#contact" tabindex="0">Contacto</a>
     </nav>
     <div class="language-selector" role="region" aria-label="Language Selector">
       <button type="button" class="language-button" aria-label="Select Language" aria-haspopup="listbox" aria-expanded="false" aria-controls="languageDropdown" onclick="toggleLanguageDropdown()">
@@ -2611,7 +2575,7 @@
           <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
           <path d="M2 12h20"/>
         </svg>
-        <span class="current-language">EN</span>
+        <span class="current-language">ES</span>
         <svg class="dropdown-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false">
           <path d="M6 9l6 6 6-6"/>
         </svg>
@@ -2675,38 +2639,40 @@
       </div>
       <!-- Serial Position Effect: Add prominent CTA at the top of hero -->
       <div class="hero-cta-top">
-        <a href="#contact" class="button-primary primary-cta" style="margin-top: 24px; position: relative;">
-          <span class="primary-cta-badge" aria-label="Limited availability">Limited</span>
-          Start Your Project
+        <a href="#contactForm" class="button-primary primary-cta" style="margin-top: 24px; position: relative;">
+          <span class="primary-cta-badge" aria-label="Limitado">Limitado</span>
+          Iniciar Su Proyecto
         </a>
       </div>
       <div class="hero-content">
         <div class="hero-name" data-aos="fade-down" data-aos-duration="1000">John Carter</div>
         <!-- About Me Button -->
         <div style="margin-bottom: 18px;">
-          <button id="aboutMeBtn" class="button-primary" style="font-size:1rem; padding:8px 24px; border-radius:8px; margin-top:0;" aria-haspopup="dialog" aria-controls="aboutMeModal" aria-expanded="false">About Me</button>
+          <button id="aboutMeBtn" class="button-primary" style="font-size:1rem; padding:8px 24px; border-radius:8px; margin-top:0;" aria-haspopup="dialog" aria-controls="aboutMeModal" aria-expanded="false">Sobre Mí</button>
         </div>
         <!-- About Me Modal -->
         <div id="aboutMeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="aboutMeTitle" tabindex="-1" style="display:none; align-items:center; justify-content:center;">
           <div class="modal-content" style="max-width:420px; width:90vw; padding:32px 24px; text-align:center; position:relative;">
             <button class="modal-close" aria-label="Close About Me" style="position:absolute; top:12px; right:18px; font-size:2rem; background:none; border:none; color:var(--primary); cursor:pointer;">&times;</button>
-            <h2 id="aboutMeTitle" style="color:var(--primary); font-size:1.4rem; margin-bottom:18px;">About Me</h2>
+            <h2 id="aboutMeTitle" style="color:var(--primary); font-size:1.4rem; margin-bottom:18px;">Sobre Mí</h2>
             <p style="color:var(--text); font-size:1.08rem; line-height:1.6; margin:0;">Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun. Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue-green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea.</p>
           </div>
         </div>
         <div class="hero-desc" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-          <a href="#service-preipo" class="highlight-text" style="display: inline-block; margin-bottom: 8px; text-decoration: none; color: inherit; cursor: pointer;">Private Pre-IPO Investments</a><br>
-          <a href="#service-consulting" class="highlight-text" style="display: inline-block; margin-bottom: 8px; text-decoration: none; color: inherit; cursor: pointer;">Ai & Space Venture Capital</a><br>
-          <a href="#service-webdev" class="highlight-text" style="display: inline-block; text-decoration: none; color: inherit; cursor: pointer;">Web2, Web3 & Blockchain</a>
+          <a href="#service-preipo" class="highlight-text" style="display: inline-block; margin-bottom: 8px; text-decoration: none; color: inherit; cursor: pointer;">
+            Inversiones Privadas en Inteligencia Artificial<br>y Espacio Antes de Salida a Bolsa
+          </a><br>
+          <a href="#service-webdev" class="highlight-text" style="display: inline-block; text-decoration: none; color: inherit; cursor: pointer;">Web2, Web3 & Blockchain</a><br>
+          <a href="#service-consulting" class="highlight-text" style="display: inline-block; text-decoration: none; color: inherit; cursor: pointer;">Consultoría Estratégica Global</a>
         </div>
         <div class="cta" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
           <a href="#services" class="button-primary" aria-label="Explore Services" tabindex="0" role="button">
             <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-            Explore Services
+            Explorar Servicios
           </a>
           <a href="#portfolio" class="button-primary" aria-label="View Portfolio" tabindex="0" role="button">
             <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M6 10l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-            View Portfolio
+            Ver Portafolio
           </a>
         </div>
       </div>
@@ -2720,7 +2686,7 @@
         <div class="floating-shape floating-shape2"></div>
         <div class="floating-shape floating-shape3"></div>
       </div>
-      <h2 class="section-title">Our Services</h2>
+      <h2 class="section-title">Nuestros Servicios</h2>
       <div class="services-grid">
         <!-- Pre-IPO Investments -->
         <div class="service-card" data-aos="fade-up" data-aos-delay="0" onclick="scrollToSection('service-preipo')">
@@ -2734,12 +2700,12 @@
               <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
             </svg>
           </div>
-          <h3>Pre-IPO Investments</h3>
-          <p>Access exclusive investment opportunities in tomorrow's market leaders.</p>
+          <h3>Inversiones Pre-IPO</h3>
+          <p>Acceda a oportunidades de inversión exclusivas en los líderes del mercado del mañana.</p>
         </div>
         <!-- AI & Space VC -->
         <div class="service-card" data-aos="fade-up" data-aos-delay="120" onclick="openServiceModal('vc')" style="position: relative;">
-          <span class="service-badge service-badge-popular" aria-label="High demand">High Demand</span>
+          <span class="service-badge service-badge-popular" aria-label="High demand">Alta Demanda</span>
           <div class="service-info" onclick="event.stopPropagation();">
             <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
             <div class="service-tooltip">AI & Space VC is our most in-demand service</div>
@@ -2750,8 +2716,8 @@
               <path d="M12 2v20M2 12h20"/>
             </svg>
           </div>
-          <h3>AI & Space VC</h3>
-          <p>Strategic investments in cutting-edge technology ventures.</p>
+          <h3>Capital de Riesgo en IA y Espacio</h3>
+          <p>Inversiones estratégicas en empresas de tecnología de vanguardia.</p>
         </div>
         <!-- Web3 Development -->
         <div class="service-card" data-aos="fade-up" data-aos-delay="240" onclick="openServiceModal('web3')">
@@ -2765,8 +2731,8 @@
               <path d="M8 12h8M12 8v8"/>
             </svg>
           </div>
-          <h3>Web3 Development</h3>
-          <p>Building the future of decentralized applications.</p>
+          <h3>Desarrollo Web3</h3>
+          <p>Construyendo el futuro de las aplicaciones descentralizadas.</p>
         </div>
         <!-- Consulting -->
         <div class="service-card" data-aos="fade-up" data-aos-delay="360" onclick="openServiceModal('consulting')">
@@ -2781,43 +2747,43 @@
               <path d="M9 9h.01M15 9h.01"/>
             </svg>
           </div>
-          <h3>Consulting</h3>
-          <p>Expert guidance for growth, innovation, and market expansion.</p>
+          <h3>Consultoría</h3>
+          <p>Asesoramiento experto para el crecimiento, la innovación y la expansión de mercado.</p>
         </div>
       </div>
       <!-- Serial Position Effect: Add prominent CTA at the end of services -->
       <div style="text-align:center; margin-top: 40px;">
-        <a href="https://calendly.com/lucreativity/johncarter" class="button-primary primary-cta" target="_blank" rel="noopener">Let's Work Together</a>
+        <a href="https://calendly.com/lucreativity/johncarter" class="button-primary primary-cta" target="_blank" rel="noopener">Trabajemos Juntos</a>
       </div>
     </section>
 
     <!-- Service Modals -->
     <div id="modal-preipo" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-preipo-title">
       <div class="modal-content">
-        <button class="modal-close" aria-label="Close Pre-IPO Investments Modal" onclick="closeServiceModal('preipo')">&times;</button>
-        <h2 id="modal-preipo-title">Pre-IPO Investments</h2>
-        <p>Access exclusive pre-IPO investment opportunities in transformative technology companies. Our team leverages deep industry expertise and a rigorous selection process to identify tomorrow's market leaders.</p>
+        <button class="modal-close" aria-label="Cerrar Modal de Inversiones Pre-IPO" onclick="closeServiceModal('preipo')">&times;</button>
+        <h2 id="modal-preipo-title">Inversiones Pre-IPO</h2>
+        <p>Acceda a oportunidades exclusivas de inversión pre-IPO en empresas tecnológicas transformadoras. Nuestro equipo aprovecha una profunda experiencia en la industria y un riguroso proceso de selección para identificar a los líderes del mercado del mañana.</p>
       </div>
     </div>
     <div id="modal-vc" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-vc-title">
       <div class="modal-content">
-        <button class="modal-close" aria-label="Close AI & Space Venture Capital Modal" onclick="closeServiceModal('vc')">&times;</button>
-        <h2 id="modal-vc-title">AI & Space Venture Capital</h2>
-        <p>Strategic investments in AI, machine learning, and space technology ventures. We connect you with the most promising startups and scale-ups in the industry.</p>
+        <button class="modal-close" aria-label="Cerrar Modal de Capital de Riesgo en IA y Espacio" onclick="closeServiceModal('vc')">&times;</button>
+        <h2 id="modal-vc-title">Capital de Riesgo en IA y Espacio</h2>
+        <p>Inversiones estratégicas en empresas de inteligencia artificial, aprendizaje automático y tecnología espacial. Le conectamos con las startups y scale-ups más prometedoras del sector.</p>
       </div>
     </div>
     <div id="modal-web3" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-web3-title">
       <div class="modal-content">
-        <button class="modal-close" aria-label="Close Web3 Development Modal" onclick="closeServiceModal('web3')">&times;</button>
-        <h2 id="modal-web3-title">Web3 Development</h2>
-        <p>We build secure, scalable, and user-centric decentralized applications, smart contracts, and blockchain solutions for the next generation of the web.</p>
+        <button class="modal-close" aria-label="Cerrar Modal de Desarrollo Web3" onclick="closeServiceModal('web3')">&times;</button>
+        <h2 id="modal-web3-title">Desarrollo Web3</h2>
+        <p>Construimos aplicaciones descentralizadas, contratos inteligentes y soluciones blockchain seguras, escalables y centradas en el usuario para la próxima generación de la web.</p>
       </div>
     </div>
     <div id="modal-consulting" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-consulting-title">
       <div class="modal-content">
-        <button class="modal-close" aria-label="Close Consulting Modal" onclick="closeServiceModal('consulting')">&times;</button>
-        <h2 id="modal-consulting-title">Consulting</h2>
-        <p>Expert guidance for businesses and startups, focusing on growth, innovation, and market expansion. Leverage our global network and experience for your success.</p>
+        <button class="modal-close" aria-label="Cerrar Modal de Consultoría" onclick="closeServiceModal('consulting')">&times;</button>
+        <h2 id="modal-consulting-title">Consultoría</h2>
+        <p>Asesoría experta para empresas y startups, enfocada en el crecimiento, la innovación y la expansión de mercado. Aproveche nuestra red global y experiencia para su éxito.</p>
       </div>
     </div>
 
@@ -2854,12 +2820,12 @@
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 36px; justify-content: center;">
         <div style="flex:1; min-width:260px;">
           <h2 class="section-title preipo-title">
-            Private Pre-IPO Investment <span class="preipo-highlight">Opportunities</span>
+            Oportunidades de Inversión Privada <span class="preipo-highlight">Pre-IPO</span>
           </h2>
           <!-- Investment Performance Chart -->
           <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 16px 16px 36px 16px; margin: 18px 0;">
             <div class="chart-title-wrapper" style="text-align: left; margin-bottom: 28px; padding-left: 12px;">
-              <h3 class="chart-title" style="text-align: left; margin-bottom: 0;">Firsthand Capital's Historic Top Gainers <span class="fc-highlight"><span class="fc-highlight-text">Firsthand Capital</span><span class="fc-underline"></span></span></h3>
+              <h3 class="chart-title" style="text-align: left; margin-bottom: 0;">Los Mayores Rendimientos Históricos de <span class="fc-highlight"><span class="fc-highlight-text">Firsthand Capital</span><span class="fc-underline"></span></span></h3>
             </div>
             <div class="bar-graph-row" style="display: flex; height: 200px; align-items: flex-end; gap: 12px; padding: 0 12px;">
               <div class="company-bar-group">
@@ -2892,37 +2858,41 @@
                   <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
                 </svg>
               </div>
-              <h3 style="color: #6ea0e9; margin: 0; font-size: 1.4rem;">Exclusive Access to Tomorrow's Giants</h3>
+              <h3 style="color: #6ea0e9; margin: 0; font-size: 1.4rem;">Acceso Exclusivo a los Gigantes del Mañana</h3>
             </div>
             <p style="margin-bottom: 16px; line-height: 1.6;">
-              <span style="color: #6ea0e9; font-weight: bold;">Transform Your Portfolio</span> with pre-IPO investments in revolutionary companies that are shaping the future of technology and innovation.
+              <span style="color: #6ea0e9; font-weight: bold;">Transforme Su Portafolio</span> con inversiones pre-IPO en empresas revolucionarias que están dando forma al futuro de la tecnología y la innovación.
             </p>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0;">
               <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 16px;">
-                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">AI & Machine Learning</div>
-                <div style="font-size: 0.9rem; color: #F7FFF7;">OpenAI, Anthropic, and emerging AI leaders</div>
+                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">IA y Aprendizaje Automático</div>
+                <div style="font-size: 0.9rem; color: #F7FFF7;">OpenAI, Anthropic y líderes emergentes en IA</div>
               </div>
               <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 16px;">
-                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">Space Technology</div>
-                <div style="font-size: 0.9rem; color: #F7FFF7;">SpaceX, Anduril, and next-gen aerospace</div>
+                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">Tecnología Espacial</div>
+                <div style="font-size: 0.9rem; color: #F7FFF7;">SpaceX, Anduril y aeroespacial de próxima generación</div>
               </div>
               <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 16px;">
-                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">Deep Tech</div>
-                <div style="font-size: 0.9rem; color: #F7FFF7;">Quantum computing, robotics, and more</div>
+                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">Tecnología Avanzada</div>
+                <div style="font-size: 0.9rem; color: #F7FFF7;">Computación cuántica, robótica y más</div>
               </div>
             </div>
-            <div style="display: flex; align-items: center; gap: 12px; margin-top: 16px;"></div>
+            <div style="display: flex; align-items: center; gap: 12px; margin-top: 16px;">
+              
+
+            </div>
           </div>
           <div style="display: flex; gap: 12px; margin-top: 24px;">
             <a href="#contact" class="button-primary primary-cta">
               <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-              Request Access
+              Solicitar Acceso
             </a>
             <button class="button-primary" onclick="openLearnMoreModal()">
               <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M6 10l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-              Learn More
+              Aprender Más
             </button>
           </div>
+          <!-- Testimonial -->
         </div>
         <!-- Removed Unsplash image -->
         <div style="max-width:220px;"></div>
@@ -2938,55 +2908,55 @@
     <section class="section" id="service-consulting" style="background: linear-gradient(135deg, #101214 0%, #6ea0e9 100%);" data-aos="fade-up">
       <div class="geometric-pattern"></div>
       <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 36px; justify-content: center;">
-        <div style="flex:1; min-width:260px; max-width: 800px;">
+        <div style="flex:1; min-width:260px; max-width: 1100px;">
           <div style="background: linear-gradient(135deg, #101214 0%, #6ea0e9 100%); border-radius: 20px; padding: 36px 18px; margin-bottom: 32px; box-shadow: 0 4px 24px rgba(110,160,233,0.10); position: relative;">
             <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 12px;">
-              <span style="background: #1bb89a; color: #fff; font-weight: bold; border-radius: 16px; padding: 6px 18px; font-size: 1rem; margin-right: 12px; letter-spacing: 0.08em;">🌍 Global Strategic Consulting</span>
+              <span style="background: #1bb89a; color: #fff; font-weight: bold; border-radius: 16px; padding: 6px 18px; font-size: 1rem; margin-right: 12px; letter-spacing: 0.08em;">🌍 Consultoría Estratégica Global</span>
               <span style="font-size: 1.5rem;">✨</span>
             </div>
-            <h2 class="section-title" style="margin-bottom: 10px;">Transform Your Vision into Reality</h2>
+            <h2 class="section-title" style="margin-bottom: 10px;">Transforme Su Visión en Realidad</h2>
             <p style="color: #a8edea; font-size: 1.1rem; text-align: center; margin-bottom: 32px;">
-              Comprehensive, creative guidance for <b>businesses</b>, <b>startups</b>, <b>funds</b>, and <b>international projects</b>.<br>
-              <span style="color: #fff;">Leverage our global network of experts to unlock your next big opportunity!</span>
+              Guía integral y creativa para <b>negocios</b>, <b>startups</b>, <b>fondos</b> y <b>proyectos internacionales</b>.<br>
+              <span style="color: #fff;">¡Aproveche nuestra red global de expertos para desbloquear su próxima gran oportunidad!</span>
             </p>
             <div class="consulting-cards-fun">
               <div class="consulting-card-fun" style="animation-delay:0s;">
                 <div class="consulting-icon-fun">🧭</div>
-                <div class="consulting-title-fun">Business Strategy</div>
+                <div class="consulting-title-fun">Estrategia Empresarial</div>
                 <ul>
-                  <li>🗺️ Market entry roadmap development</li>
-                  <li>🔍 Competitive landscape analysis</li>
-                  <li>🎯 Position refinement for target audiences</li>
+                  <li>🗺️ Desarrollo de hojas de ruta para la entrada en el mercado</li>
+                  <li>🔍 Análisis del panorama competitivo</li>
+                  <li>🎯 Refinamiento del posicionamiento para audiencias objetivo</li>
                 </ul>
               </div>
               <div class="consulting-card-fun" style="animation-delay:0.1s;">
                 <div class="consulting-icon-fun">🤖</div>
-                <div class="consulting-title-fun">Technology Enhancement</div>
+                <div class="consulting-title-fun">Mejora Tecnológica</div>
                 <ul>
-                  <li>🛠️ Technology stack assessment & alignment</li>
-                  <li>🧠 Strategic AI implementation planning</li>
-                  <li>🚀 Digital capabilities advancement</li>
+                  <li>🛠️ Evaluación y alineación de la pila tecnológica</li>
+                  <li>🧠 Planificación estratégica de la implementación de IA</li>
+                  <li>🚀 Avance de las capacidades digitales</li>
                 </ul>
               </div>
               <div class="consulting-card-fun" style="animation-delay:0.2s;">
                 <div class="consulting-icon-fun">🌱</div>
-                <div class="consulting-title-fun">Sustainable Growth</div>
+                <div class="consulting-title-fun">Crecimiento Sostenible</div>
                 <ul>
-                  <li>📊 Data-driven growth optimization</li>
-                  <li>💸 Revenue stream diversification</li>
-                  <li>🌏 Market expansion planning</li>
+                  <li>📊 Optimización del crecimiento basada en datos</li>
+                  <li>💸 Diversificación de las fuentes de ingresos</li>
+                  <li>🌏 Planificación de la expansión del mercado</li>
                 </ul>
               </div>
             </div>
             <div style="margin-top: 32px; text-align: center;">
-              <div style="color: #6ea0e9; font-weight: bold; font-size: 1.1rem; margin-bottom: 8px;">🌐 Global Reach & Network</div>
-              <div style="color: #fff; margin-bottom: 12px;">Access to a curated network of industry experts, investors, and strategic partners across:</div>
+              <div style="color: #6ea0e9; font-weight: bold; font-size: 1.1rem; margin-bottom: 8px;">🌐 Alcance y Red Global</div>
+              <div style="color: #fff; margin-bottom: 12px;">Acceso a una red selecta de expertos de la industria, inversores y socios estratégicos en:</div>
               <div class="region-chips-fun">
-                <span>North America</span>
-                <span>Europe</span>
+                <span>América del Norte</span>
+                <span>Europa</span>
                 <span>Asia</span>
-                <span>Latin America</span>
-                <span>Middle East</span>
+                <span>América Latina</span>
+                <span>Medio Oriente</span>
               </div>
             </div>
           </div>
@@ -2996,16 +2966,17 @@
     <style>
     .consulting-cards-fun {
       display: flex;
-      gap: 18px;
+      flex-direction: row;
       justify-content: center;
-      flex-wrap: wrap;
+      gap: 18px;
+      flex-wrap: nowrap;
     }
     .consulting-card-fun {
       background: rgba(255,255,255,0.10);
       border-radius: 16px;
       padding: 22px 18px 18px 18px;
       min-width: 220px;
-      max-width: 270px;
+      max-width: 280px;
       box-shadow: 0 2px 12px rgba(110,160,233,0.10);
       color: #fff;
       display: flex;
@@ -3126,7 +3097,6 @@
               <li>📈 Led <b>$6M+</b> sales projections in Central and South America</li>
               <li>🗣️ English & Spanish client services</li>
               <li>🛡️ Navigated complex international regulatory challenges</li>
-              <li>🚀 Worked with <a href="https://www.spacex.com/" target="_blank" rel="noopener" style="color:#1bb89a; font-weight:bold; text-decoration:underline; font-size:1.08em; background:rgba(110,160,233,0.10); padding:2px 8px; border-radius:8px; box-shadow:0 2px 8px rgba(110,160,233,0.10); display:inline-flex; align-items:center; gap:4px;">SpaceX <svg width='16' height='16' fill='none' stroke='#1bb89a' stroke-width='2' viewBox='0 0 24 24' style='vertical-align:middle;'><path d='M5 12h14M12 5l7 7-7 7'/></svg></a></li>
             </ul>
           </div>
           <div class="profile-card-fun">
@@ -3212,9 +3182,9 @@
     </style>
     <!-- Contact Section -->
     <section class="section" id="contact" data-aos="fade-up">
-      <h2 style="color: var(--primary); text-align:center; font-family: 'Cinzel', serif; letter-spacing: 0.2em; margin-bottom: 48px;">Contact</h2>
+      <h2 style="color: var(--primary); text-align:center; font-family: 'Cinzel', serif; letter-spacing: 0.2em; margin-bottom: 48px;">Contacto</h2>
       <div class="contact-flex" style="display: flex; align-items: flex-start; gap: 48px; justify-content: center; margin: 0 auto; max-width: 1200px; padding: 0 20px;">
-        <div class="contact-info" style="background: rgba(16,18,20,0.95); padding: 32px; border-radius: 16px; border: 1px solid rgba(110,160,233,0.1); box-shadow: 0 4px 24px rgba(0,0,0,0.1); flex-shrink: 0;">
+        <div class="contact-info" style="background: rgba(16,18,20,0.95); padding: 32px; border-radius: 16px; border: 1px solid rgba(110,160,233,0.1); box-shadow: 0 8px 32px rgba(110,160,233,0.18); flex-shrink: 0;">
           <div class="contact-row" style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
             <svg class="contact-icon" viewBox="0 0 24 24" style="width: 24px; height: 24px; color: var(--primary);" aria-label="Phone icon" role="img">
               <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5h3.5a1 1 0 011 1c0 1.35.26 2.67.76 3.88a1 1 0 01-.21 1.11l-2.2 2.2z" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -3227,7 +3197,7 @@
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.031-.967-.273-.099-.472-.148-.67.15-.198.297-.767.967-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.007-.372-.009-.571-.009-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.099 3.205 5.077 4.372.71.306 1.263.489 1.695.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.288.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 6.17h-.001a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.455 4.436-9.89 9.893-9.89 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.896 6.995c-.003 5.456-4.438 9.891-9.893 9.891zm8.413-18.282A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.304-1.678a11.86 11.86 0 005.74 1.463h.005c6.554 0 11.89-5.335 11.893-11.893a11.822 11.822 0 00-3.477-8.462z"/>
               </svg>
             </a>
-            <span style="color: var(--accent); font-weight: 500; font-size: 1.05rem;">Connect via WhatsApp</span>
+            <span style="color: var(--accent); font-weight: 500; font-size: 1.05rem;">Conectar por WhatsApp</span>
           </div>
           <div class="contact-row" style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
             <svg class="contact-icon" viewBox="0 0 24 24" style="width: 24px; height: 24px; color: var(--primary);">
@@ -3241,35 +3211,35 @@
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="none" stroke="currentColor" stroke-width="2"/>
               <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="2" fill="none"/>
             </svg>
-            <span id="earthLocation" style="color: var(--accent); text-decoration: underline; cursor: pointer; font-weight: 500;">Based on Earth</span>
+            <span id="earthLocation" style="color: var(--accent); text-decoration: underline; cursor: pointer; font-weight: 500;">Basado en la Tierra</span>
           </div>
         </div>
         <a href="https://www.linkedin.com/in/john-carter-231b5a251/" target="_blank" rel="noopener" style="display: block;">
-          <img src="profile pic.jpeg" alt="John Carter Profile Photo" class="profile-photo responsive-img" loading="lazy" />
+          <img src="profile pic.jpeg" alt="Foto de perfil de John Carter" class="profile-photo responsive-img" loading="lazy" />
         </a>
       </div>
-      <form class="contact-form" id="contactForm" novalidate aria-labelledby="contactFormTitle" style="max-width: 600px; margin: 48px auto; padding: 48px 80px; background: rgba(16,18,20,0.95); border-radius: 16px; box-shadow: 0 4px 24px rgba(110,160,233,0.1); border: 1px solid rgba(110,160,233,0.1); display: flex; flex-direction: column; align-items: center;" autocomplete="on">
-        <h2 id="contactFormTitle" class="sr-only">Contact Form</h2>
+      <form class="contact-form" id="contactForm" novalidate aria-labelledby="contactFormTitle" style="max-width: 600px; margin: 48px auto; padding: 48px 80px; background: linear-gradient(135deg, rgba(16,18,20,0.97) 60%, rgba(110,160,233,0.10) 100%); border-radius: 16px; box-shadow: 0 8px 32px rgba(110,160,233,0.18); border: 1px solid rgba(110,160,233,0.1); display: flex; flex-direction: column; align-items: center;" autocomplete="on">
+        <h2 id="contactFormTitle" class="sr-only">Formulario de Contacto</h2>
         <div class="form-group" style="margin-bottom: 32px; position: relative; width: 100%;">
           <input type="text" id="name" name="name" placeholder=" " required pattern="[A-Za-z\s]{2,50}" aria-required="true" aria-invalid="false" aria-describedby="nameError" style="width: 100%; padding: 12px 16px; border: 2px solid rgba(110,160,233,0.2); border-radius: 8px; background: rgba(16,18,20,0.95); color: var(--text); font-family: 'Cinzel', serif; font-size: 1rem; transition: all 0.3s ease;" autocapitalize="words" autocomplete="name" />
-          <label for="name" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: rgba(247,255,247,0.5); transition: all 0.3s ease; pointer-events: none; background: rgba(16,18,20,0.95); padding: 0 4px;">Your Name</label>
+          <label for="name" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: rgba(247,255,247,0.5); transition: all 0.3s ease; pointer-events: none; background: rgba(16,18,20,0.95); padding: 0 4px;">Tu Nombre</label>
           <span id="nameError" class="error-message" aria-live="polite"></span>
         </div>
         <div class="form-group" style="margin-bottom: 32px; position: relative; width: 100%;">
           <input type="email" id="email" name="email" placeholder=" " required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" aria-required="true" aria-invalid="false" aria-describedby="emailError" style="width: 100%; padding: 12px 16px; border: 2px solid rgba(110,160,233,0.2); border-radius: 8px; background: rgba(16,18,20,0.95); color: var(--text); font-family: 'Cinzel', serif; font-size: 1rem; transition: all 0.3s ease;" autocomplete="email" />
-          <label for="email" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: rgba(247,255,247,0.5); transition: all 0.3s ease; pointer-events: none; background: rgba(16,18,20,0.95); padding: 0 4px;">Your Email</label>
+          <label for="email" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: rgba(247,255,247,0.5); transition: all 0.3s ease; pointer-events: none; background: rgba(16,18,20,0.95); padding: 0 4px;">Tu Correo</label>
           <span id="emailError" class="error-message" aria-live="polite"></span>
         </div>
         <div class="form-group" style="margin-bottom: 32px; position: relative; width: 100%;">
           <fieldset style="border: none; padding: 0; margin: 0;">
-            <legend style="font-size: 1rem; color: var(--primary); margin-bottom: 4px; font-weight: 600;">Service of Interest</legend>
-            <div style="font-size: 0.95rem; color: rgba(247,255,247,0.7); margin-bottom: 8px;">What can we help you with?</div>
+            <legend style="font-size: 1rem; color: var(--primary); margin-bottom: 4px; font-weight: 600;">Servicio de Interés</legend>
+            <div style="font-size: 0.95rem; color: rgba(247,255,247,0.7); margin-bottom: 8px;">¿En qué podemos ayudarte?</div>
             <select name="service" id="service" required aria-required="true" aria-invalid="false" aria-describedby="serviceError" style="width: 100%; padding: 12px 16px; border: 2px solid rgba(110,160,233,0.2); border-radius: 8px; background: rgba(16,18,20,0.95); color: var(--text); font-family: 'Cinzel', serif; font-size: 1rem; transition: all 0.3s ease; cursor: pointer;">
-              <option value="">Select service of interest</option>
-              <option value="preipo">Private Pre-IPO Investment</option>
-              <option value="webdev">Web3/Web2 Product Development</option>
-              <option value="consulting">Consulting</option>
-              <option value="media">Media/Interviews</option>
+              <option value="">Selecciona un servicio</option>
+              <option value="preipo">Inversión Privada Pre-IPO</option>
+              <option value="webdev">Desarrollo Web3/Web2</option>
+              <option value="consulting">Consultoría</option>
+              <option value="media">Medios/Entrevistas</option>
             </select>
             <span id="serviceError" class="error-message" aria-live="polite"></span>
           </fieldset>
@@ -3277,15 +3247,13 @@
         <div class="form-group" style="margin-bottom: 32px; position: relative; width: 100%;">
           <textarea id="message" name="message" rows="4" placeholder=" " required minlength="10" maxlength="1000" aria-required="true" aria-invalid="false" aria-describedby="messageError" style="width: 100%; padding: 12px 16px; border: 2px solid rgba(110,160,233,0.2); border-radius: 8px; background: rgba(16,18,20,0.95); color: var(--text); font-family: 'Cinzel', serif; font-size: 1rem; transition: all 0.3s ease; resize: vertical; min-height: 120px;" autocomplete="off"></textarea>
           <span id="charCount" class="char-count">0</span>
-          <label for="message" style="position: absolute; left: 16px; top: 16px; color: rgba(247,255,247,0.5); transition: all 0.3s ease; pointer-events: none; background: rgba(16,18,20,0.95); padding: 0 4px;">How can we help?</label>
+          <label for="message" style="position: absolute; left: 16px; top: 16px; color: rgba(247,255,247,0.5); transition: all 0.3s ease; pointer-events: none; background: rgba(16,18,20,0.95); padding: 0 4px;">¿Cómo podemos ayudarte?</label>
           <span id="messageError" class="error-message" aria-live="polite"></span>
         </div>
-
-        <button type="submit" id="submitBtn" class="submit-button" style="width: 100%; padding: 12px; background: var(--primary); color: var(--secondary); border: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; font-family: 'Cinzel', serif; letter-spacing: 0.1em; margin-top: 8px;" aria-label="Send Message">
-          <span class="button-text">Send Message</span>
+        <button type="submit" id="submitBtn" class="submit-button" style="width: 100%; padding: 12px; background: var(--primary); color: var(--secondary); border: none; border-radius: 8px; font-weight: bold; font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; position: relative; overflow: hidden; font-family: 'Cinzel', serif; letter-spacing: 0.1em; margin-top: 8px;" aria-label="Enviar Mensaje">
+          <span class="button-text">Enviar Mensaje</span>
           <span class="loading-spinner" style="display: none;"></span>
         </button>
-
         <style>
           .contact-form input:focus + label,
           .contact-form textarea:focus + label,
@@ -3294,7 +3262,6 @@
             transform: translateY(-28px) scale(0.9);
             color: var(--primary);
           }
-
           .contact-form input:focus,
           .contact-form textarea:focus,
           .contact-form select:focus {
@@ -3302,47 +3269,32 @@
             outline: none;
             box-shadow: 0 0 0 3px rgba(110,160,233,0.1);
           }
-
           @media (max-width: 768px) {
-            .contact-form {
-              padding: 24px;
-            }
-
-            .form-group {
-              margin-bottom: 28px;
-            }
-
+            .contact-form { padding: 24px; }
+            .form-group { margin-bottom: 28px; }
             .form-group input,
             .form-group select,
             .form-group textarea,
-            .submit-button {
-              height: 52px;
-              padding: 14px 16px;
-            }
-
-            .form-group textarea {
-              min-height: 120px;
-            }
+            .submit-button { height: 52px; padding: 14px 16px; }
+            .form-group textarea { min-height: 120px; }
           }
         </style>
       </form>
-
       <div class="form-status">
         <div class="success-message" id="successMessage" aria-live="polite">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
             <polyline points="22 4 12 14.01 9 11.01"/>
           </svg>
-          <span>Thank you! We've received your message and will be in touch soon.</span>
+          <span>¡Gracias! Hemos recibido tu mensaje y nos pondremos en contacto pronto.</span>
         </div>
         <div class="error-message" id="formError" aria-live="assertive">
-        <div class="error-message" id="formError">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <circle cx="12" cy="12" r="10"/>
             <line x1="12" y1="8" x2="12" y2="12"/>
             <line x1="12" y1="16" x2="12.01" y2="16"/>
           </svg>
-          <span>Sorry, something went wrong. Please try again or email us directly.</span>
+          <span>Lo sentimos, algo salió mal. Por favor, inténtalo de nuevo o escríbenos directamente.</span>
         </div>
       </div>
     </section>
@@ -3686,27 +3638,27 @@
         <div style="color:#F7FFF7; font-family:'Cinzel',serif; height: calc(100% - 60px); overflow-y: auto; padding-right: 12px; position: absolute; top: 60px; left: 0; right: 0; bottom: 0;">
           <!-- Fund Overview -->
           <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px; margin-bottom: 24px;">
-            <h3 style="color:#6ea0e9; margin:0 0 16px 0; font-size: 1.4rem;">Fund Overview</h3>
+            <h3 style="color:#6ea0e9; margin:0 0 16px 0; font-size: 1.4rem;">Resumen del Fondo</h3>
             <p style="margin-bottom: 16px; line-height: 1.6;">
-              <span style="color:#fff; font-weight:bold;">Firsthand Capital</span> is a specialized investment fund based in <span style="color:#6ea0e9; font-weight:bold;">Silicon Valley</span>, the heart of global technology, innovation, and entrepreneurship. We focus on pre-IPO opportunities in transformative technology companies, combining deep industry expertise with a rigorous selection process to identify and invest in tomorrow's market leaders—right at the source of the world's most influential tech giants and groundbreaking startups.
+              <span style="color:#fff; font-weight:bold;">Firsthand Capital</span> es un fondo de inversión especializado con sede en <span style="color:#6ea0e9; font-weight:bold;">Silicon Valley</span>, el corazón de la tecnología global, la innovación y el emprendimiento. Nos enfocamos en oportunidades pre-IPO en empresas de tecnología transformadora, combinando una profunda experiencia en la industria con un riguroso proceso de selección para identificar e invertir en los líderes del mercado del mañana, directamente en la cuna de los gigantes tecnológicos y las startups más innovadoras del mundo.
             </p>
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 24px;">
               <div>
-                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">Investment Focus</h4>
+                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">Foco de Inversión</h4>
                 <ul style="margin: 0; padding-left: 20px;">
-                  <li>Artificial Intelligence & Machine Learning</li>
-                  <li>Space Technology & Aerospace</li>
-                  <li>Clean Energy & Sustainability</li>
-                  <li>Web3 & Blockchain Infrastructure</li>
+                  <li>Inteligencia Artificial y Aprendizaje Automático</li>
+                  <li>Tecnología Espacial y Aeroespacial</li>
+                  <li>Energía Limpia y Sostenibilidad</li>
+                  <li>Infraestructura Web3 y Blockchain</li>
                 </ul>
               </div>
               <div>
-                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">Investment Criteria</h4>
+                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">Criterios de Inversión</h4>
                 <ul style="margin: 0; padding-left: 20px;">
-                  <li>Proven Technology & Market Fit</li>
-                  <li>Strong Management Team</li>
-                  <li>Clear Path to IPO</li>
-                  <li>Competitive Advantage</li>
+                  <li>Tecnología Probada y Adecuación al Mercado</li>
+                  <li>Sólido Equipo de Gestión</li>
+                  <li>Camino Claro a la OPI</li>
+                  <li>Ventaja Competitiva</li>
                 </ul>
               </div>
             </div>
@@ -3714,51 +3666,51 @@
 
           <!-- Investment Process -->
           <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px; margin-bottom: 24px;">
-            <h3 style="color:#6ea0e9; margin:0 0 16px 0; font-size: 1.4rem;">Investment Process</h3>
+            <h3 style="color:#6ea0e9; margin:0 0 16px 0; font-size: 1.4rem;">Proceso de Inversión</h3>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
               <div style="text-align: center; padding: 16px; background: rgba(110,160,233,0.1); border-radius: 12px;">
-                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">1. Deal Sourcing</h4>
-                <p style="margin: 0; font-size: 0.9rem;">Extensive network and relationships with founders, VCs, and investment banks</p>
+                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">1. Búsqueda de Acuerdos</h4>
+                <p style="margin: 0; font-size: 0.9rem;">Amplia red y relaciones con fundadores, capitales de riesgo y bancos de inversión</p>
               </div>
               <div style="text-align: center; padding: 16px; background: rgba(110,160,233,0.1); border-radius: 12px;">
-                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">2. Due Diligence</h4>
-                <p style="margin: 0; font-size: 0.9rem;">Expert evaluation of technology viability, market opportunity, team capabilities, and financial projections</p>
+                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">2. Diligencia Debida</h4>
+                <p style="margin: 0; font-size: 0.9rem;">Evaluación experta de la viabilidad de la tecnología, la oportunidad de mercado, las capacidades del equipo y las proyecciones financieras</p>
               </div>
               <div style="text-align: center; padding: 16px; background: rgba(110,160,233,0.1); border-radius: 12px;">
-                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">3. Investment</h4>
-                <p style="margin: 0; font-size: 0.9rem;">Strategic investment with active portfolio management</p>
+                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">3. Inversión</h4>
+                <p style="margin: 0; font-size: 0.9rem;">Inversión estratégica con gestión activa de la cartera</p>
               </div>
               <div style="text-align: center; padding: 16px; background: rgba(110,160,233,0.1); border-radius: 12px;">
-                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">4. Value Add</h4>
-                <p style="margin: 0; font-size: 0.9rem;">Active support in growth, strategy, and exit planning</p>
+                <h4 style="color:#6ea0e9; margin:0 0 8px 0;">4. Valor Añadido</h4>
+                <p style="margin: 0; font-size: 0.9rem;">Apoyo activo en crecimiento, estrategia y planificación de salida</p>
               </div>
             </div>
           </div>
 
           <!-- Why Invest With Us -->
           <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px;">
-            <h3 style="color:#6ea0e9; margin:0 0 12px 0; font-size: 1.3rem; text-align:center;">Why Invest With Us</h3>
-            <h4 style="color:#6ea0e9; margin:0 0 18px 0; text-align:center; font-size:1.1rem;">Our Advantages</h4>
+            <h3 style="color:#6ea0e9; margin:0 0 12px 0; font-size: 1.3rem; text-align:center;">Por Qué Invertir Con Nosotros</h3>
+            <h4 style="color:#6ea0e9; margin:0 0 18px 0; text-align:center; font-size:1.1rem;">Nuestras Ventajas</h4>
             <div class="advantages-row">
               <div class="adv-square">
                 <div class="adv-icon">🏆</div>
-                <div class="adv-title">Proven Track Record</div>
-                <div class="adv-desc">Consistent success in high-growth investments</div>
+                <div class="adv-title">Historial Comprobado</div>
+                <div class="adv-desc">Éxito constante en inversiones de alto crecimiento</div>
               </div>
               <div class="adv-square">
                 <div class="adv-icon">🚀</div>
-                <div class="adv-title">Access to Top Deals</div>
-                <div class="adv-desc">Exclusive opportunities in leading tech companies</div>
+                   <div class="adv-title">Acceso a las<br>Mejores Operaciones</div>
+                <div class="adv-desc">Oportunidades exclusivas en empresas tecnológicas líderes</div>
               </div>
               <div class="adv-square">
                 <div class="adv-icon">📈</div>
-                <div class="adv-title">Active Portfolio Management</div>
-                <div class="adv-desc">Hands-on support to maximize returns</div>
+                <div class="adv-title">Gestión Activa de la Cartera</div>
+                <div class="adv-desc">Apoyo práctico para maximizar los rendimientos</div>
               </div>
               <div class="adv-square">
                 <div class="adv-icon">💡</div>
-                <div class="adv-title">Strategic Value Add</div>
-                <div class="adv-desc">Expertise and network to accelerate growth</div>
+                <div class="adv-title">Valor Estratégico Añadido</div>
+                <div class="adv-desc">Experiencia y red para acelerar el crecimiento</div>
               </div>
             </div>
           </div>
@@ -3766,58 +3718,69 @@
           .advantages-row {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
+            gap: 14px;
             justify-items: center;
             align-items: stretch;
             margin: 0 auto;
-            max-width: 900px;
+            max-width: 1200px;
           }
           .adv-square {
-            background: rgba(110,160,233,0.10);
+            background: rgba(16,18,30,0.95);
             border-radius: 14px;
-            padding: 18px 10px 10px 10px;
+            padding: 10px 6px 8px 6px;
             text-align: center;
             min-width: 0;
-            min-height: 180px;
+            max-width: 260px;
+            min-height: 100px;
             box-shadow: 0 2px 8px rgba(110,160,233,0.08);
             border: 1px solid rgba(110,160,233,0.13);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             aspect-ratio: 1/1;
+            word-break: normal;
+            white-space: normal;
           }
           .adv-icon {
-            font-size: 2rem;
-            margin-bottom: 8px;
+            font-size: 1.7rem;
+            margin-bottom: 6px;
           }
           .adv-title {
             font-weight: bold;
-            color: #fff;
-            font-size: 1.05rem;
-            margin-bottom: 4px;
+            color: #f7fff7;
+            font-size: 0.98rem;
+            margin-bottom: 2px;
+            line-height: 1.15;
           }
           .adv-desc {
-            font-size: 0.92rem;
+            font-size: 0.82rem;
             color: #a8edea;
-            line-height: 1.3;
+            line-height: 1.1;
+            min-height: 3.3em;
+            max-height: 3.3em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
           }
-          @media (max-width: 900px) {
+          @media (max-width: 1100px) {
             .advantages-row {
               grid-template-columns: 1fr 1fr;
-              gap: 12px;
+              gap: 14px;
               max-width: 98vw;
             }
           }
-          @media (max-width: 600px) {
+          @media (max-width: 700px) {
             .advantages-row {
               grid-template-columns: 1fr;
               gap: 10px;
               max-width: 98vw;
             }
             .adv-square {
-              min-height: 120px;
-              padding: 12px 6px 8px 6px;
+              min-height: 110px;
+              padding: 10px 4px 6px 4px;
             }
           }
         </style>
@@ -4117,8 +4080,8 @@
   <div id="earthModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="earthModalTitle" style="display:none; align-items:center; justify-content:center;">
     <div class="modal-content" style="max-width:420px; width:90vw; padding:32px 24px; text-align:center; position:relative;">
       <button class="modal-close" aria-label="Close Earth Modal" style="position:absolute; top:12px; right:18px; font-size:2rem; background:none; border:none; color:var(--primary); cursor:pointer;">&times;</button>
-      <h2 id="earthModalTitle" style="color:var(--primary); font-size:1.4rem; margin-bottom:18px;">Earth</h2>
-      <p style="color:var(--text); font-size:1.08rem; line-height:1.6; margin:0;">Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun. Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue-green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea.</p>
+      <h2 id="earthModalTitle" style="color:var(--primary); font-size:1.4rem; margin-bottom:18px;">La Tierra</h2>
+      <p style="color:var(--text); font-size:1.08rem; line-height:1.6; margin:0;">Muy lejos, en los inexplorados remansos del extremo menos de moda del brazo espiral occidental de la Galaxia, se encuentra un pequeño y poco considerado sol amarillo. Orbitando a una distancia de aproximadamente ciento cuarenta y ocho millones de kilómetros, hay un planeta azul verdoso absolutamente insignificante cuyos habitantes descendientes de simios son tan increíblemente primitivos que todavía piensan que los relojes digitales son una gran idea.</p>
     </div>
   </div>
   <script>
@@ -4273,6 +4236,272 @@
     });
   })();
   </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // About Me Modal functionality
+    const aboutMeBtn = document.getElementById('aboutMeBtn');
+    const aboutMeModal = document.getElementById('aboutMeModal');
+    const aboutMeClose = aboutMeModal ? aboutMeModal.querySelector('.modal-close') : null;
+    if (aboutMeBtn && aboutMeModal) {
+      aboutMeBtn.addEventListener('click', function() {
+        aboutMeModal.style.display = 'flex';
+        setTimeout(() => aboutMeModal.classList.add('show'), 10);
+        document.body.style.overflow = 'hidden';
+        // Focus trap
+        const focusableEls = aboutMeModal.querySelectorAll('button, [tabindex]:not([tabindex="-1"])');
+        if (focusableEls.length) setTimeout(() => focusableEls[0].focus(), 50);
+      });
+      if (aboutMeClose) aboutMeClose.addEventListener('click', closeAboutMe);
+      aboutMeModal.addEventListener('click', function(e) { if (e.target === aboutMeModal) closeAboutMe(); });
+      document.addEventListener('keydown', function(e) {
+        if (aboutMeModal.style.display === 'flex' && (e.key === 'Escape' || e.keyCode === 27)) closeAboutMe();
+      });
+      function closeAboutMe() {
+        aboutMeModal.classList.remove('show');
+        setTimeout(() => {
+          aboutMeModal.style.display = 'none';
+          document.body.style.overflow = '';
+          aboutMeBtn.focus();
+        }, 300);
+      }
+    }
+  });
+  </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scroll and focus for 'Iniciar Su Proyecto'
+    const projectBtn = document.querySelector('a.button-primary.primary-cta[href="#contactForm"]');
+    const contactForm = document.getElementById('contactForm');
+    if (projectBtn && contactForm) {
+      projectBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        contactForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => {
+          const firstInput = contactForm.querySelector('input, textarea, select');
+          if (firstInput) firstInput.focus();
+        }, 700);
+      });
+    }
+  });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // ...existing code ...
+      // Fade transition for language switch
+      const fadeOverlay = document.getElementById('fadeOverlay');
+      document.querySelectorAll('.language-option').forEach(option => {
+        option.addEventListener('click', function(e) {
+          e.preventDefault();
+          const lang = this.getAttribute('href');
+          fadeOverlay.classList.add('active');
+          setTimeout(() => {
+            window.location.href = lang;
+          }, 600); // match transition duration
+        });
+      });
+      // On page load, fade in
+      if (fadeOverlay) {
+        fadeOverlay.classList.add('active');
+        setTimeout(() => fadeOverlay.classList.remove('active'), 600);
+      }
+    });
+  </script>
+
+  <script>
+    // Mobile nav open/close logic
+    const mobileNavToggle = document.getElementById('mobileNavToggle');
+    const navbar = document.querySelector('.navbar');
+    const nav = document.getElementById('mainNav');
+    if (mobileNavToggle && navbar && nav) {
+      mobileNavToggle.addEventListener('click', function() {
+        navbar.classList.toggle('nav-open');
+        const expanded = navbar.classList.contains('nav-open');
+        mobileNavToggle.setAttribute('aria-pressed', expanded ? 'true' : 'false');
+        if (expanded) {
+          nav.style.display = 'flex';
+          setTimeout(() => nav.querySelector('a') && nav.querySelector('a').focus(), 100);
+        } else {
+          nav.style.display = '';
+        }
+      });
+      // Close nav when clicking outside
+      document.addEventListener('click', function(e) {
+        if (navbar.classList.contains('nav-open') && !navbar.contains(e.target)) {
+          navbar.classList.remove('nav-open');
+          nav.style.display = '';
+        }
+      });
+      // Close nav with Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navbar.classList.contains('nav-open')) {
+          navbar.classList.remove('nav-open');
+          nav.style.display = '';
+          mobileNavToggle.focus();
+        }
+      });
+    }
+  </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // ... existing code ...
+    // Service tooltip tap-to-modal for mobile
+    function showServiceTooltipModal(text) {
+      let modal = document.getElementById('serviceTooltipModal');
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'serviceTooltipModal';
+        modal.className = 'modal';
+        modal.innerHTML = `<div class="modal-content" style="max-width:320px;width:90vw;padding:18px 12px;text-align:center;position:relative;"><button class="modal-close" aria-label="Cerrar" style="position:absolute;top:8px;right:12px;font-size:1.5rem;background:none;border:none;color:var(--primary);cursor:pointer;">&times;</button><div id="serviceTooltipText"></div></div>`;
+        document.body.appendChild(modal);
+        modal.querySelector('.modal-close').onclick = () => { modal.classList.remove('show'); setTimeout(()=>modal.style.display='none', 200); };
+        modal.onclick = e => { if (e.target === modal) { modal.classList.remove('show'); setTimeout(()=>modal.style.display='none', 200); } };
+      }
+      document.getElementById('serviceTooltipText').textContent = text;
+      modal.style.display = 'flex';
+      setTimeout(()=>modal.classList.add('show'), 10);
+    }
+    document.querySelectorAll('.service-info').forEach(el => {
+      el.addEventListener('click', function(e) {
+        if (window.innerWidth <= 700) {
+          e.stopPropagation();
+          const tooltip = el.querySelector('.service-tooltip');
+          if (tooltip) showServiceTooltipModal(tooltip.textContent);
+        }
+      });
+    });
+    // ... existing code ...
+  </script>
+
+  <style>
+@media (max-width: 400px) {
+  /* Portfolio cards: padding, font, image */
+  .profile-cards-fun {
+    gap: 8px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .profile-card-fun {
+    min-width: 0 !important;
+    max-width: 98vw !important;
+    padding: 8px 2px 6px 2px !important;
+    font-size: 0.92rem !important;
+  }
+  .profile-icon-fun {
+    font-size: 1.5rem !important;
+    margin-bottom: 6px !important;
+  }
+  .profile-title-fun {
+    font-size: 0.98rem !important;
+  }
+  .profile-card-fun li {
+    font-size: 0.82rem !important;
+  }
+  .profile-photo {
+    width: 90vw !important;
+    max-width: 120px !important;
+    height: auto !important;
+    border-radius: 12px !important;
+    margin: 0 auto 8px auto !important;
+    display: block !important;
+  }
+  .section-title {
+    font-size: 1.1rem !important;
+  }
+  /* Contact section */
+  .contact-flex {
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+    padding: 0 2vw !important;
+  }
+  .contact-info, .contact-form {
+    width: 100% !important;
+    max-width: 98vw !important;
+    padding: 8px 2px !important;
+    font-size: 0.95rem !important;
+  }
+  .contact-row {
+    gap: 8px !important;
+    margin-bottom: 10px !important;
+  }
+  .contact-icon {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .contact-link, #earthLocation {
+    font-size: 0.95rem !important;
+  }
+  .char-count {
+    font-size: 0.85rem !important;
+    right: 2px !important;
+    bottom: -18px !important;
+    padding: 2px 4px !important;
+  }
+  .form-group {
+    margin-bottom: 14px !important;
+  }
+  .contact-form input, .contact-form textarea, .contact-form select {
+    font-size: 0.95rem !important;
+    padding: 10px 8px !important;
+  }
+  .success-message, .error-message {
+    font-size: 0.92rem !important;
+    padding: 8px 4px !important;
+    margin-top: 8px !important;
+  }
+  .submit-button {
+    font-size: 1rem !important;
+    padding: 10px !important;
+  }
+  /* Modal content in these sections */
+  .modal-content {
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    padding: 10px 4px !important;
+  }
+  /* Footer and social icons */
+  footer {
+    padding: 12px 0 8px 0 !important;
+    font-size: 0.85rem !important;
+    margin-top: 18px !important;
+  }
+  .social-icons {
+    gap: 6px !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  .social-icon-link {
+    width: 48px !important;
+    padding: 4px !important;
+    font-size: 0.8rem !important;
+  }
+  .social-icon-wrapper {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  .social-icon {
+    width: 16px !important;
+    height: 16px !important;
+  }
+  .social-icon-label {
+    font-size: 0.65rem !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+    text-align: center !important;
+    line-height: 1.1 !important;
+  }
+     footer > div[style*='color: var(--primary)'] {
+    font-size: 0.7rem !important;
+    margin-top: 6px !important;
+  }
+}
+</style>
+
+  
 
 </body>
 </html> 
