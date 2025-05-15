@@ -1815,7 +1815,7 @@
       display: flex !important;
     }
     #aboutMeModal .modal-content {
-      max-width: 420px;
+      max-width: 600px;
       width: 90vw;
       padding: 32px 24px;
       text-align: center;
@@ -1836,9 +1836,9 @@
     }
     @media (max-width: 500px) {
       #aboutMeModal .modal-content {
-        max-width: 98vw;
-        padding: 18px 6px;
-        font-size: 0.98rem;
+        max-width: 98vw !important;
+        padding: 12px 4px 8px 4px !important;
+        font-size: 0.98rem !important;
       }
     }
     #earthModal .modal-close {
@@ -2467,6 +2467,137 @@
         padding: 10px 4px !important;
       }
     }
+    /* --- About Me Modal Enhancements --- */
+    #aboutMeModal {
+      backdrop-filter: blur(8px) saturate(120%);
+      background: rgba(16,18,20,0.72) !important;
+    }
+    #aboutMeModal .aboutme-modal-content {
+      position: relative;
+      background: rgba(34,48,74,0.85);
+      border-radius: 28px;
+      box-shadow: 0 8px 40px 0 rgba(110,160,233,0.25), 0 1.5px 8px rgba(0,0,0,0.10);
+      border: 2.5px solid transparent;
+      overflow: visible;
+      padding: 40px 28px 32px 28px;
+      animation: aboutme-modal-in 0.7s cubic-bezier(.4,1.6,.6,1);
+      z-index: 10000;
+      min-width: 0;
+      max-width: 420px;
+      width: 90vw;
+      text-align: center;
+      transition: box-shadow 0.3s, border 0.3s;
+    }
+    #aboutMeModal.show .aboutme-modal-content {
+      animation: aboutme-modal-in 0.7s cubic-bezier(.4,1.6,.6,1);
+    }
+    @keyframes aboutme-modal-in {
+      0% { opacity: 0; transform: translateY(60px) scale(0.92); }
+      60% { opacity: 1; transform: translateY(-8px) scale(1.04); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    #aboutMeModal .aboutme-modal-content:hover {
+      box-shadow: 0 12px 48px 0 rgba(110,160,233,0.32), 0 2px 12px rgba(27,184,154,0.18);
+      border: 2.5px solid var(--accent);
+    }
+    #aboutMeModal .aboutme-modal-glow {
+      pointer-events: none;
+      position: absolute;
+      top: -4px; left: -4px; right: -4px; bottom: -4px;
+      border-radius: 32px;
+      border: 2.5px solid;
+      border-image: linear-gradient(120deg, #6ea0e9 10%, #1bb89a 60%, #fff 100%) 1;
+      filter: blur(3.5px) brightness(1.2);
+      opacity: 0.7;
+      z-index: 0;
+      animation: aboutme-glow-anim 2.5s linear infinite alternate;
+    }
+    @keyframes aboutme-glow-anim {
+      0% { filter: blur(3.5px) brightness(1.1); opacity: 0.6; }
+      100% { filter: blur(6px) brightness(1.4); opacity: 1; }
+    }
+    #aboutMeModal .aboutme-title {
+      color: #6ea0e9;
+      font-size: 2rem;
+      margin-bottom: 18px;
+      letter-spacing: 0.08em;
+      font-family: 'Cinzel', serif;
+      z-index: 2;
+      position: relative;
+      text-shadow: 0 2px 12px rgba(110,160,233,0.18);
+    }
+    #aboutMeModal .aboutme-bio {
+      color: #F7FFF7;
+      font-size: 1.08rem;
+      margin-bottom: 28px;
+      z-index: 2;
+      position: relative;
+      line-height: 1.7;
+      text-shadow: 0 1px 4px #22304a, 0 1px 2px #6ea0e9;
+    }
+    #aboutMeModal .aboutme-linkedin-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(90deg, #6ea0e9 0%, #1bb89a 100%);
+      color: #fff !important;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.08rem;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(110,160,233,0.10);
+      padding: 12px 28px;
+      margin-top: 8px;
+      margin-bottom: 0;
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.18s cubic-bezier(.4,1.6,.6,1);
+      z-index: 2;
+      position: relative;
+      animation: aboutme-cta-in 1.1s cubic-bezier(.4,1.6,.6,1);
+    }
+    #aboutMeModal .aboutme-linkedin-cta:hover, #aboutMeModal .aboutme-linkedin-cta:focus-visible {
+      background: linear-gradient(90deg, #1bb89a 0%, #6ea0e9 100%);
+      color: #fff;
+      transform: scale(1.06);
+      box-shadow: 0 4px 16px rgba(110,160,233,0.18);
+    }
+    @keyframes aboutme-cta-in {
+      0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    #aboutMeModal .aboutme-modal-close {
+      position: absolute;
+      top: 18px;
+      right: 24px;
+      font-size: 2.2rem;
+      color: #1bb89a;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+      transition: color 0.2s, transform 0.2s, text-shadow 0.2s;
+      text-shadow: 0 0 8px #6ea0e9, 0 0 2px #1bb89a;
+    }
+    #aboutMeModal .aboutme-modal-close:hover, #aboutMeModal .aboutme-modal-close:focus-visible {
+      color: #fff;
+      transform: rotate(90deg) scale(1.15);
+      text-shadow: 0 0 16px #1bb89a, 0 0 8px #6ea0e9;
+    }
+    #aboutMeModal .aboutme-modal-close:active {
+      color: #6ea0e9;
+      transform: scale(0.95);
+    }
+    @media (max-width: 500px) {
+      #aboutMeModal .aboutme-modal-content {
+        max-width: 98vw !important;
+        padding: 12px 4px 8px 4px !important;
+        font-size: 0.98rem !important;
+      }
+      #aboutMeModal .aboutme-title { font-size: 1.2rem !important; }
+      #aboutMeModal .aboutme-linkedin-cta { font-size: 0.98rem !important; padding: 10px 8px !important; }
+      #aboutMeModal .aboutme-modal-close { top: 4px !important; right: 8px !important; font-size: 1.3rem !important; }
+    }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -2714,7 +2845,7 @@
       </div>
       <!-- Serial Position Effect: Add prominent CTA at the top of hero -->
       <div class="hero-cta-top">
-        <a href="#contact" class="button-primary primary-cta" style="margin-top: 24px; position: relative;">
+        <a href="#contactForm" class="button-primary primary-cta" style="margin-top: 24px; position: relative;">
           <span class="primary-cta-badge" aria-label="Limited availability">Limited</span>
           Start Your Project
         </a>
@@ -2722,15 +2853,18 @@
       <div class="hero-content">
         <div class="hero-name" data-aos="fade-down" data-aos-duration="1000">John Carter</div>
         <!-- About Me Button -->
-        <div style="margin-bottom: 18px;">
-          <button id="aboutMeBtn" class="button-primary" style="font-size:1rem; padding:8px 24px; border-radius:8px; margin-top:0;" aria-haspopup="dialog" aria-controls="aboutMeModal" aria-expanded="false">About Me</button>
-        </div>
+        <button id="aboutMeBtn" class="button-primary" style="margin: 32px auto 0 auto; display: block;">About Me</button>
         <!-- About Me Modal -->
-        <div id="aboutMeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="aboutMeTitle" tabindex="-1" style="display:none; align-items:center; justify-content:center;">
-          <div class="modal-content" style="max-width:420px; width:90vw; padding:32px 24px; text-align:center; position:relative;">
-            <button class="modal-close" aria-label="Close About Me" style="position:absolute; top:12px; right:18px; font-size:2rem; background:none; border:none; color:var(--primary); cursor:pointer;">&times;</button>
-            <h2 id="aboutMeTitle" style="color:var(--primary); font-size:1.4rem; margin-bottom:18px;">About Me</h2>
-            <p style="color:var(--text); font-size:1.08rem; line-height:1.6; margin:0;">Far out in the uncharted backwaters of the unfashionable end of the western spiral arm of the Galaxy lies a small unregarded yellow sun. Orbiting this at a distance of roughly ninety-two million miles is an utterly insignificant little blue-green planet whose ape-descended life forms are so amazingly primitive that they still think digital watches are a pretty neat idea.</p>
+        <div id="aboutMeModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="aboutMeTitle" style="display:none; align-items:center; justify-content:center;">
+          <div class="modal-content aboutme-modal-content">
+            <button class="modal-close aboutme-modal-close" aria-label="Close About Me Modal">&times;</button>
+            <div class="aboutme-modal-glow"></div>
+            <h2 id="aboutMeTitle" class="aboutme-title">About Me</h2>
+            <p class="aboutme-bio">I'm an international venture investor passionate about connecting capital with breakthrough opportunities in AI, space, and blockchain. Through Firsthand Capital, I help investors and founders bridge markets across the Americas and beyond, leveraging my experience in cross-border business and fluency in English and Spanish. I take a rigorous, data-driven approach, but believe that trust and long-term relationships are the foundation of every great partnership. If you're looking for a thoughtful, globally-minded perspective on technology investing, let's connect.</p>
+            <a href="https://www.linkedin.com/in/john-carter-231b5a251/" target="_blank" rel="noopener" class="aboutme-linkedin-cta" aria-label="Connect on LinkedIn">
+              <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24" style="vertical-align:middle; margin-right:8px;"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              Connect on LinkedIn
+            </a>
           </div>
         </div>
         <div class="hero-desc" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
@@ -3286,8 +3420,7 @@
            <a href="https://www.linkedin.com/in/john-carter-231b5a251/" target="_blank" rel="noopener" style="display: block;">
      <img src="profile pic.jpeg" alt="John Carter Profile Photo" class="profile-photo responsive-img" loading="lazy" />
    </a>
-          <img src="profile pic.jpeg" alt="John Carter Profile Photo" class="profile-photo responsive-img" loading="lazy" />
-        </a>
+                 </a>
       </div>
       <form class="contact-form" id="contactForm" novalidate aria-labelledby="contactFormTitle" style="max-width: 600px; margin: 48px auto; padding: 48px 80px; background: rgba(16,18,20,0.95); border-radius: 16px; box-shadow: 0 4px 24px rgba(110,160,233,0.1); border: 1px solid rgba(110,160,233,0.1); display: flex; flex-direction: column; align-items: center;" autocomplete="on">
         <h2 id="contactFormTitle" class="sr-only">Contact Form</h2>
@@ -4292,9 +4425,10 @@
     }
     document.addEventListener('DOMContentLoaded', function() {
       var ctaSelectors = [
-        'a.button-primary.primary-cta',
+        // Only select buttons that actually link to Calendly, not the hero CTA
+        'a.button-primary.primary-cta[href="https://calendly.com/lucreativity/johncarter"]',
         '#scheduleConsultBtn',
-        'a[href*="calendly.com/lucreativity/johncarter"]'
+        'a[href*="calendly.com/lucreativity/johncarter"]:not([href="#contactForm"])'
       ];
       ctaSelectors.forEach(function(sel) {
         document.querySelectorAll(sel).forEach(function(btn) {
@@ -4313,6 +4447,57 @@
       });
     });
   })();
+  </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Smooth scroll and focus for 'Start Your Project'
+    const projectBtn = document.querySelector('a.button-primary.primary-cta[href="#contactForm"]');
+    const contactForm = document.getElementById('contactForm');
+    if (projectBtn && contactForm) {
+      projectBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        contactForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => {
+          const firstInput = contactForm.querySelector('input, textarea, select');
+          if (firstInput) firstInput.focus();
+        }, 700);
+      });
+    }
+  });
+  </script>
+
+  <script>
+    // Remove old About Me modal logic and add new, robust modal logic
+    (function() {
+      const aboutMeBtn = document.getElementById('aboutMeBtn');
+      const aboutMeModal = document.getElementById('aboutMeModal');
+      const aboutMeClose = aboutMeModal ? aboutMeModal.querySelector('.modal-close') : null;
+      function openAboutMe() {
+        aboutMeModal.style.display = 'flex';
+        setTimeout(()=>aboutMeModal.classList.add('show'), 10);
+        document.body.style.overflow = 'hidden';
+        // Focus trap
+        const focusableEls = aboutMeModal.querySelectorAll('button, [tabindex]:not([tabindex="-1"])');
+        if (focusableEls.length) setTimeout(()=>focusableEls[0].focus(), 50);
+      }
+      function closeAboutMe() {
+        aboutMeModal.classList.remove('show');
+        setTimeout(()=>{
+          aboutMeModal.style.display = 'none';
+          document.body.style.overflow = '';
+          aboutMeBtn.focus();
+        }, 300);
+      }
+      if (aboutMeBtn && aboutMeModal) {
+        aboutMeBtn.addEventListener('click', function() { openAboutMe(); });
+        if (aboutMeClose) aboutMeClose.addEventListener('click', closeAboutMe);
+        aboutMeModal.addEventListener('click', function(e) { if (e.target === aboutMeModal) closeAboutMe(); });
+        document.addEventListener('keydown', function(e) {
+          if (aboutMeModal.style.display === 'flex' && (e.key === 'Escape' || e.keyCode === 27)) closeAboutMe();
+        });
+      }
+    })();
   </script>
 
 </body>
