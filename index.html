@@ -4,12 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5">
   <meta name="language" content="English">
-  <title>John Carter | Portfolio</title>
+  <title>John Carter | Investment & Venture Capital Portfolio</title>
+  <meta name="description" content="John Carter - International venture investor specializing in Pre-IPO investments, AI & Space Venture Capital, Web3 Development, and Business Consulting. Based in Silicon Valley.">
+  <meta name="keywords" content="venture capital, pre-ipo investment, ai investment, space technology, web3 development, blockchain, consulting, silicon valley">
+  <meta name="author" content="John Carter">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://thejohncarter-ai.github.io/John-Carter/">
+  <meta property="og:title" content="John Carter | Investment & Venture Capital Portfolio">
+  <meta property="og:description" content="International venture investor specializing in Pre-IPO investments, AI & Space Venture Capital, Web3 Development, and Business Consulting.">
+  <meta property="og:image" content="https://thejohncarter-ai.github.io/John-Carter/profile pic.jpeg">
+  <meta property="og:site_name" content="John Carter Portfolio">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@The_JohnCarter">
+  <meta name="twitter:creator" content="@The_JohnCarter">
+  <meta name="twitter:title" content="John Carter | Investment & Venture Capital Portfolio">
+  <meta name="twitter:description" content="International venture investor specializing in Pre-IPO investments, AI & Space Venture Capital, Web3 Development, and Business Consulting.">
+  <meta name="twitter:image" content="https://thejohncarter-ai.github.io/John-Carter/profile pic.jpeg">
+
+  <!-- Additional SEO -->
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#6ea0e9">
+  <link rel="canonical" href="https://thejohncarter-ai.github.io/John-Carter/">
+
   <!-- Language alternates -->
   <link rel="alternate" hreflang="en" href="index.html">
   <link rel="alternate" hreflang="es" href="index-es.html">
-  <link rel="alternate" hreflang="fr" href="index-fr.html">
-  <link rel="alternate" hreflang="de" href="index-de.html">
+  <link rel="alternate" hreflang="x-default" href="index.html">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,6 +74,79 @@
       --shadow-sm: 0 2px 6px rgba(110,160,233,0.1);
       --shadow-md: 0 4px 12px rgba(110,160,233,0.15);
       --shadow-lg: 0 8px 24px rgba(110,160,233,0.2);
+    }
+
+    /* Smooth page load animation */
+    @keyframes fadeInPage {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    body {
+      animation: fadeInPage 0.6s ease-out;
+    }
+
+    /* Enhanced hover effects for interactive elements */
+    .button-primary,
+    .button-secondary,
+    .service-card,
+    .social-icon-link {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Subtle pulse animation for CTAs */
+    @keyframes subtlePulse {
+      0%, 100% {
+        box-shadow: 0 4px 16px rgba(110,160,233,0.2);
+      }
+      50% {
+        box-shadow: 0 6px 24px rgba(110,160,233,0.35);
+      }
+    }
+
+    .primary-cta {
+      animation: subtlePulse 3s ease-in-out infinite;
+    }
+
+    .primary-cta:hover {
+      animation: none;
+      box-shadow: 0 8px 32px rgba(110,160,233,0.4);
+    }
+
+    /* Improved text selection */
+    ::selection {
+      background: var(--primary);
+      color: var(--background);
+    }
+
+    ::-moz-selection {
+      background: var(--primary);
+      color: var(--background);
+    }
+
+    /* Smooth scrollbar styling for WebKit browsers */
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--background);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--primary-dark);
+      border-radius: 5px;
+      border: 2px solid var(--background);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--primary);
     }
 
     /* Mobile-first media queries */
@@ -211,24 +309,9 @@
         padding: 12px 16px;
       }
     }
-    html {
-      scroll-behavior: smooth;
-    }
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      font-family: 'Cinzel', serif, Arial, sans-serif; /* Added sans-serif fallback */
-      color: var(--text);
-      background: var(--background);
-      min-height: 100vh;
-      font-size: 17px; /* Slightly larger for readability */
-      line-height: 1.7; /* Improved line height for readability */
-    }
     body {
       position: relative;
       z-index: 1;
-      background: var(--background);
     }
     /* Navbar */
     .navbar {
@@ -2761,8 +2844,75 @@
   <link rel="manifest" href="site.webmanifest">
   <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+
+  <!-- Structured Data (JSON-LD) for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "John Carter",
+    "jobTitle": "International Venture Investor",
+    "description": "International venture investor specializing in Pre-IPO investments, AI & Space Venture Capital, Web3 Development, and Business Consulting.",
+    "url": "https://thejohncarter-ai.github.io/John-Carter/",
+    "image": "https://thejohncarter-ai.github.io/John-Carter/profile pic.jpeg",
+    "email": "Johncarter@lucreativity.io",
+    "sameAs": [
+      "https://www.linkedin.com/in/john-carter-231b5a251/",
+      "https://x.com/The_JohnCarter"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Firsthand Capital",
+      "description": "Specialized investment fund based in Silicon Valley focusing on pre-IPO opportunities in transformative technology companies."
+    },
+    "knowsAbout": [
+      "Venture Capital",
+      "Pre-IPO Investments",
+      "Artificial Intelligence",
+      "Space Technology",
+      "Web3 Development",
+      "Blockchain",
+      "Business Consulting"
+    ]
+  }
+  </script>
 </head>
 <body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <style>
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--primary);
+      color: var(--background);
+      padding: 8px 16px;
+      z-index: 10000;
+      font-family: 'Cinzel', serif;
+      text-decoration: none;
+      border-radius: 0 0 4px 0;
+      transition: top 0.3s ease;
+    }
+    .skip-link:focus {
+      top: 0;
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    /* Enhanced focus states for accessibility */
+    *:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible,
+    select:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+  </style>
   <div class="scroll-progress"></div>
   <header class="navbar" role="banner">
     <div class="mobile-nav-toggle" id="mobileNavToggle" aria-label="Open navigation" tabindex="0" role="button" aria-pressed="false">
@@ -2789,12 +2939,10 @@
       <div class="language-dropdown" id="languageDropdown" role="listbox" aria-label="Language Options">
         <a href="index.html" class="language-option" data-lang="en" role="option" aria-selected="true" tabindex="0">English</a>
         <a href="index-es.html" class="language-option" data-lang="es" role="option" tabindex="0">Español</a>
-        <a href="index-fr.html" class="language-option" data-lang="fr" role="option" tabindex="0">Français</a>
-        <a href="index-de.html" class="language-option" data-lang="de" role="option" tabindex="0">Deutsch</a>
       </div>
     </div>
   </header>
-  <main>
+  <main id="main-content" role="main">
     <!-- Hero Section -->
     <section class="hero" id="hero">
       <div class="hero-bg">
@@ -3422,7 +3570,8 @@
    </a>
                  </a>
       </div>
-      <form class="contact-form" id="contactForm" novalidate aria-labelledby="contactFormTitle" style="max-width: 600px; margin: 48px auto; padding: 48px 80px; background: rgba(16,18,20,0.95); border-radius: 16px; box-shadow: 0 4px 24px rgba(110,160,233,0.1); border: 1px solid rgba(110,160,233,0.1); display: flex; flex-direction: column; align-items: center;" autocomplete="on">
+      <!-- Contact Form - Using Formspree for submission. Replace YOUR_FORM_ID with your Formspree form ID from https://formspree.io -->
+      <form class="contact-form" id="contactForm" action="https://formspree.io/f/xwpkkpvp" method="POST" novalidate aria-labelledby="contactFormTitle" style="max-width: 600px; margin: 48px auto; padding: 48px 80px; background: rgba(16,18,20,0.95); border-radius: 16px; box-shadow: 0 4px 24px rgba(110,160,233,0.1); border: 1px solid rgba(110,160,233,0.1); display: flex; flex-direction: column; align-items: center;" autocomplete="on">
         <h2 id="contactFormTitle" class="sr-only">Contact Form</h2>
         <div class="form-group" style="margin-bottom: 32px; position: relative; width: 100%;">
           <input type="text" id="name" name="name" placeholder=" " required pattern="[A-Za-z\s]{2,50}" aria-required="true" aria-invalid="false" aria-describedby="nameError" style="width: 100%; padding: 12px 16px; border: 2px solid rgba(110,160,233,0.2); border-radius: 8px; background: rgba(16,18,20,0.95); color: var(--text); font-family: 'Cinzel', serif; font-size: 1rem; transition: all 0.3s ease;" autocapitalize="words" autocomplete="name" />
@@ -3803,25 +3952,33 @@
           try {
             // Prepare form data
             const formData = new FormData(form);
-            const data = Object.fromEntries(formData.entries());
 
-            // Here you would typically send the data to your server
-            // For demonstration, we'll simulate an API call
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            // Submit to Formspree
+            const response = await fetch(form.action, {
+              method: 'POST',
+              body: formData,
+              headers: {
+                'Accept': 'application/json'
+              }
+            });
 
-            // Show success message
-            successMessage.classList.add('show');
-            successMessage.style.display = 'flex';
-            formError.classList.remove('show');
-            formError.style.display = 'none';
-            form.reset();
-            charCount.textContent = '0';
+            if (response.ok) {
+              // Show success message
+              successMessage.classList.add('show');
+              successMessage.style.display = 'flex';
+              formError.classList.remove('show');
+              formError.style.display = 'none';
+              form.reset();
+              charCount.textContent = '0';
 
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-              successMessage.classList.remove('show');
-              successMessage.style.display = 'none';
-            }, 5000);
+              // Hide success message after 5 seconds
+              setTimeout(() => {
+                successMessage.classList.remove('show');
+                successMessage.style.display = 'none';
+              }, 5000);
+            } else {
+              throw new Error('Form submission failed');
+            }
 
           } catch (error) {
             // Show error message
@@ -4110,7 +4267,7 @@
         }
       }
     </style>
-    <div style="color: var(--primary); opacity: 0.8;">© 2024 John Carter</div>
+    <div style="color: var(--primary); opacity: 0.8;">© 2025 John Carter. All rights reserved.</div>
   </footer>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer></script>
