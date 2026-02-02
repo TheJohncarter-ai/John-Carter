@@ -4657,5 +4657,546 @@
     })();
   </script>
 
+  <!-- Interactive UX Enhancements -->
+  <style>
+    /* Cursor follower */
+    .cursor-follower {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.15s ease-out, width 0.2s, height 0.2s, border-color 0.2s;
+      transform: translate(-50%, -50%);
+      mix-blend-mode: difference;
+    }
+    .cursor-follower.hover {
+      width: 50px;
+      height: 50px;
+      border-color: var(--accent);
+    }
+    .cursor-follower.clicking {
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+    @media (max-width: 768px) {
+      .cursor-follower { display: none; }
+    }
+
+    /* 3D Card tilt effect */
+    .tilt-card {
+      transform-style: preserve-3d;
+      transition: transform 0.3s ease-out;
+    }
+    .tilt-card-inner {
+      transform: translateZ(30px);
+    }
+
+    /* Button ripple effect */
+    .ripple-button {
+      position: relative;
+      overflow: hidden;
+    }
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      transform: scale(0);
+      animation: ripple-animation 0.6s linear;
+      pointer-events: none;
+    }
+    @keyframes ripple-animation {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    /* Animated counter */
+    .counter {
+      display: inline-block;
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    /* Typing effect */
+    .typing-text {
+      display: inline-block;
+      overflow: hidden;
+      border-right: 2px solid var(--accent);
+      white-space: nowrap;
+      animation: typing-cursor 0.7s step-end infinite;
+    }
+    @keyframes typing-cursor {
+      from, to { border-color: transparent; }
+      50% { border-color: var(--accent); }
+    }
+
+    /* Nav active indicator */
+    .navbar nav a {
+      position: relative;
+    }
+    .navbar nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      width: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 2px;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+    .navbar nav a.active::after,
+    .navbar nav a:hover::after {
+      width: 100%;
+      left: 0;
+    }
+
+    /* Theme toggle */
+    .theme-toggle {
+      position: fixed;
+      bottom: 100px;
+      right: 32px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary-dark);
+      border: 2px solid var(--primary);
+      cursor: pointer;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(110,160,233,0.3);
+    }
+    .theme-toggle:hover {
+      transform: scale(1.1) rotate(15deg);
+      box-shadow: 0 6px 25px rgba(110,160,233,0.4);
+    }
+    .theme-toggle svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--primary);
+      transition: transform 0.3s ease;
+    }
+    .theme-toggle:hover svg {
+      transform: rotate(360deg);
+    }
+
+    /* Light theme variables */
+    html.light-theme {
+      --primary: #2563eb;
+      --primary-dark: #e8f0fe;
+      --primary-light: #dbeafe;
+      --accent: #059669;
+      --text: #1e293b;
+      --background: #f8fafc;
+    }
+    html.light-theme body {
+      background: var(--background);
+    }
+    html.light-theme .navbar {
+      background: rgba(248, 250, 252, 0.97);
+    }
+    html.light-theme .section,
+    html.light-theme .modal-content,
+    html.light-theme .contact-form,
+    html.light-theme .contact-info {
+      background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%);
+      box-shadow: 0 8px 32px rgba(37, 99, 235, 0.1);
+    }
+    html.light-theme .service-card {
+      background: var(--primary-light) !important;
+    }
+    html.light-theme footer {
+      border-top-color: #e2e8f0;
+    }
+
+    /* Magnetic button effect */
+    .magnetic-btn {
+      transition: transform 0.2s ease-out;
+    }
+
+    /* Smooth reveal animations */
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal-up.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Glowing text on hover */
+    .glow-text:hover {
+      text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
+    }
+
+    /* Interactive service card shine effect */
+    .service-card::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 40%,
+        rgba(255,255,255,0.1) 50%,
+        transparent 60%
+      );
+      transform: translateX(-100%);
+      transition: transform 0s;
+    }
+    .service-card:hover::after {
+      transform: translateX(100%);
+      transition: transform 0.6s ease;
+    }
+
+    /* Floating animation for elements */
+    .float-animation {
+      animation: gentle-float 4s ease-in-out infinite;
+    }
+    @keyframes gentle-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Interactive link underline */
+    .fancy-link {
+      position: relative;
+      text-decoration: none;
+    }
+    .fancy-link::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+    .fancy-link:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    /* Tooltip enhancement */
+    [data-tooltip] {
+      position: relative;
+      cursor: help;
+    }
+    [data-tooltip]::before {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-5px);
+      background: var(--primary-dark);
+      color: var(--text);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    [data-tooltip]:hover::before {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+  </style>
+
+  <!-- Theme Toggle Button -->
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark theme" data-tooltip="Toggle Theme">
+    <svg class="sun-icon" viewBox="0 0 24 24" style="display: none;">
+      <path d="M12 3V1m0 22v-2m9-9h2M1 12h2m15.5-6.5L20 4M4 20l1.5-1.5M4 4l1.5 1.5m13 13L20 20M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+    </svg>
+    <svg class="moon-icon" viewBox="0 0 24 24">
+      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+    </svg>
+  </button>
+
+  <!-- Cursor Follower -->
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <script>
+  (function() {
+    // ========================================
+    // INTERACTIVE UX ENHANCEMENTS
+    // ========================================
+
+    // 1. CURSOR FOLLOWER (Desktop only)
+    const cursor = document.getElementById('cursorFollower');
+    if (cursor && window.matchMedia('(min-width: 769px)').matches) {
+      let mouseX = 0, mouseY = 0;
+      let cursorX = 0, cursorY = 0;
+
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+
+      // Smooth cursor following
+      function animateCursor() {
+        cursorX += (mouseX - cursorX) * 0.15;
+        cursorY += (mouseY - cursorY) * 0.15;
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+        requestAnimationFrame(animateCursor);
+      }
+      animateCursor();
+
+      // Hover effect on interactive elements
+      const interactiveEls = document.querySelectorAll('a, button, .service-card, input, textarea, select');
+      interactiveEls.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+      });
+
+      // Click effect
+      document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
+      document.addEventListener('mouseup', () => cursor.classList.remove('clicking'));
+    } else if (cursor) {
+      cursor.style.display = 'none';
+    }
+
+    // 2. 3D CARD TILT EFFECT
+    const tiltCards = document.querySelectorAll('.service-card');
+    tiltCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 10;
+        const rotateY = (centerX - x) / 10;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px) scale(1.03)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+      });
+    });
+
+    // 3. BUTTON RIPPLE EFFECT
+    const buttons = document.querySelectorAll('.button-primary, .submit-button');
+    buttons.forEach(btn => {
+      btn.classList.add('ripple-button');
+      btn.addEventListener('click', function(e) {
+        const ripple = document.createElement('span');
+        ripple.classList.add('ripple');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+        ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+        this.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+      });
+    });
+
+    // 4. NAVIGATION ACTIVE STATE
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.navbar nav a');
+
+    function updateActiveNav() {
+      const scrollPos = window.scrollY + 150;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + sectionId) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveNav);
+    updateActiveNav();
+
+    // 5. THEME TOGGLE
+    const themeToggle = document.getElementById('themeToggle');
+    const sunIcon = themeToggle.querySelector('.sun-icon');
+    const moonIcon = themeToggle.querySelector('.moon-icon');
+
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+      document.documentElement.classList.add('light-theme');
+      sunIcon.style.display = 'none';
+      moonIcon.style.display = 'block';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      document.documentElement.classList.toggle('light-theme');
+      const isLight = document.documentElement.classList.contains('light-theme');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+
+      // Toggle icons
+      if (isLight) {
+        sunIcon.style.display = 'block';
+        moonIcon.style.display = 'none';
+      } else {
+        sunIcon.style.display = 'none';
+        moonIcon.style.display = 'block';
+      }
+    });
+
+    // 6. ANIMATED COUNTERS
+    function animateCounter(el, target, duration = 2000) {
+      let start = 0;
+      const startTime = performance.now();
+
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeProgress = 1 - Math.pow(1 - progress, 3); // Ease out cubic
+        const current = Math.floor(easeProgress * target);
+        el.textContent = current + (el.dataset.suffix || '');
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          el.textContent = target + (el.dataset.suffix || '');
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    // Observe counters
+    const counters = document.querySelectorAll('[data-count]');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+          entry.target.classList.add('counted');
+          const target = parseInt(entry.target.dataset.count);
+          animateCounter(entry.target, target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+
+    // 7. REVEAL ON SCROLL
+    const revealElements = document.querySelectorAll('.section-title, .service-card, .contact-info, .contact-form');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('reveal-up', 'revealed');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealElements.forEach(el => {
+      el.classList.add('reveal-up');
+      revealObserver.observe(el);
+    });
+
+    // 8. MAGNETIC BUTTON EFFECT
+    const magneticBtns = document.querySelectorAll('.button-primary');
+    magneticBtns.forEach(btn => {
+      btn.classList.add('magnetic-btn');
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+      });
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = 'translate(0, 0)';
+      });
+    });
+
+    // 9. SMOOTH SCROLL ENHANCEMENT
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        const target = document.querySelector(targetId);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // 10. PARALLAX EFFECT FOR HERO
+    const hero = document.querySelector('.hero');
+    const heroContent = document.querySelector('.hero-content');
+
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      if (hero && scrolled < window.innerHeight) {
+        hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+        if (heroContent) {
+          heroContent.style.opacity = 1 - (scrolled / (window.innerHeight * 0.8));
+        }
+      }
+    });
+
+    // 11. TYPING EFFECT FOR HERO
+    const heroDesc = document.querySelector('.hero-desc');
+    if (heroDesc) {
+      const highlights = heroDesc.querySelectorAll('.highlight-text');
+      highlights.forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        }, 1500 + (i * 300));
+      });
+    }
+
+    // 12. BACK TO TOP ENHANCEMENT
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          backToTop.style.display = 'block';
+          backToTop.style.opacity = '1';
+        } else {
+          backToTop.style.opacity = '0';
+          setTimeout(() => {
+            if (window.scrollY <= 500) backToTop.style.display = 'none';
+          }, 300);
+        }
+      });
+
+      backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+
+    console.log('Interactive UX enhancements loaded successfully!');
+  })();
+  </script>
+
 </body>
 </html> 
