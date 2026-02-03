@@ -3047,6 +3047,414 @@
       0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
       50% { transform: translateY(-30px) rotate(180deg); opacity: 0.8; }
     }
+
+    /* ========================================
+       UNIFIED POLISHED SECTION STYLES
+       Matching M&A Services Aesthetic
+       ======================================== */
+
+    /* Premium Section Base */
+    .polished-section {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--background) 50%, var(--primary-dark) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .polished-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(110,160,233,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(27,184,154,0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Section Header */
+    .polished-header {
+      text-align: center;
+      margin-bottom: 48px;
+      position: relative;
+      z-index: 2;
+    }
+    .polished-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      color: #fff;
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 8px 24px;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 16px rgba(27,184,154,0.25);
+    }
+    .polished-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 16px;
+      letter-spacing: 0.15em;
+      font-family: 'Cinzel', serif;
+      line-height: 1.2;
+    }
+    .polished-subtitle {
+      color: #a8edea;
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+
+    /* Polished Card Grid */
+    .polished-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 48px;
+      position: relative;
+      z-index: 2;
+    }
+    @media (max-width: 1024px) {
+      .polished-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
+    /* Premium Card Style */
+    .polished-card {
+      background: linear-gradient(145deg, rgba(34,48,74,0.95) 0%, rgba(16,18,20,0.98) 100%);
+      border-radius: 24px;
+      padding: 32px 24px;
+      border: 1px solid rgba(110,160,233,0.15);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2), 0 0 24px rgba(110,160,233,0.08);
+      transition: all 0.4s cubic-bezier(.4,1.6,.6,1);
+      position: relative;
+      overflow: hidden;
+    }
+    .polished-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .polished-card:hover::before {
+      opacity: 1;
+    }
+    .polished-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 16px 48px rgba(110,160,233,0.2), 0 0 32px rgba(27,184,154,0.12);
+      border-color: rgba(110,160,233,0.3);
+    }
+
+    /* Card Icon */
+    .polished-icon {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, rgba(110,160,233,0.2) 0%, rgba(27,184,154,0.15) 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      transition: all 0.4s cubic-bezier(.4,1.6,.6,1);
+    }
+    .polished-card:hover .polished-icon {
+      transform: rotate(8deg) scale(1.1);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      box-shadow: 0 8px 24px rgba(110,160,233,0.3);
+    }
+    .polished-icon svg {
+      width: 36px;
+      height: 36px;
+      color: var(--primary);
+      transition: color 0.3s ease;
+    }
+    .polished-card:hover .polished-icon svg {
+      color: #fff;
+    }
+
+    /* Card Content */
+    .polished-card-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #a8edea;
+      margin-bottom: 12px;
+      letter-spacing: 0.08em;
+      font-family: 'Cinzel', serif;
+    }
+    .polished-card-desc {
+      color: var(--text);
+      opacity: 0.85;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    /* Premium List */
+    .polished-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .polished-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(110,160,233,0.08);
+      color: var(--text);
+      font-size: 0.92rem;
+      opacity: 0.9;
+    }
+    .polished-list li:last-child {
+      border-bottom: none;
+    }
+    .polished-list li svg {
+      width: 18px;
+      height: 18px;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Feature Highlight Box */
+    .polished-highlight {
+      background: linear-gradient(135deg, rgba(27,184,154,0.12) 0%, rgba(110,160,233,0.08) 100%);
+      border: 1px solid rgba(27,184,154,0.25);
+      border-radius: 20px;
+      padding: 36px;
+      margin: 48px 0;
+      position: relative;
+      z-index: 2;
+    }
+    .polished-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    @media (max-width: 900px) {
+      .polished-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 500px) {
+      .polished-stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .polished-stat-item {
+      padding: 16px;
+    }
+    .polished-stat-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'Cinzel', serif;
+      margin-bottom: 8px;
+    }
+    .polished-stat-label {
+      color: var(--text);
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+
+    /* CTA Section */
+    .polished-cta {
+      text-align: center;
+      margin-top: 56px;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(110,160,233,0.1) 0%, rgba(27,184,154,0.08) 100%);
+      border-radius: 24px;
+      border: 1px solid rgba(110,160,233,0.15);
+      position: relative;
+      z-index: 2;
+    }
+    .polished-cta-title {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.1em;
+    }
+    .polished-cta-desc {
+      color: var(--text);
+      opacity: 0.85;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto 24px auto;
+    }
+    .polished-cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(90deg, var(--primary-dark), var(--accent));
+      color: var(--text) !important;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 40px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(.4,1.6,.6,1);
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.12em;
+      box-shadow: 0 4px 24px rgba(27,184,154,0.25);
+    }
+    .polished-cta-button:hover {
+      background: linear-gradient(90deg, var(--accent), var(--primary-dark));
+      transform: scale(1.05);
+      box-shadow: 0 8px 32px rgba(110,160,233,0.3);
+    }
+    .polished-cta-button svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+    }
+    .polished-cta-button:hover svg {
+      transform: translateX(4px);
+    }
+
+    /* Floating Shapes */
+    .polished-floating-shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .polished-float-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(110,160,233,0.08) 0%, rgba(27,184,154,0.06) 100%);
+      animation: polishedFloat 12s ease-in-out infinite;
+    }
+    .polished-float-shape:nth-child(1) {
+      width: 200px;
+      height: 200px;
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+    .polished-float-shape:nth-child(2) {
+      width: 150px;
+      height: 150px;
+      top: 60%;
+      right: 10%;
+      animation-delay: 4s;
+    }
+    .polished-float-shape:nth-child(3) {
+      width: 100px;
+      height: 100px;
+      bottom: 20%;
+      left: 15%;
+      animation-delay: 8s;
+    }
+    @keyframes polishedFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
+      50% { transform: translateY(-30px) rotate(180deg); opacity: 0.8; }
+    }
+
+    /* Compact Card Grid (for smaller cards) */
+    .polished-compact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      position: relative;
+      z-index: 2;
+    }
+    @media (max-width: 768px) {
+      .polished-compact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
+      .polished-compact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Compact Card */
+    .polished-compact-card {
+      background: rgba(22,30,44,0.9);
+      border: 1px solid rgba(110,160,233,0.1);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.3s ease;
+    }
+    .polished-compact-card:hover {
+      background: rgba(34,48,74,0.95);
+      border-color: rgba(110,160,233,0.25);
+      transform: translateX(8px);
+    }
+    .polished-compact-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, rgba(110,160,233,0.15) 0%, rgba(27,184,154,0.1) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .polished-compact-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--primary);
+    }
+    .polished-compact-name {
+      color: #a8edea;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    /* Section Subtitle Title (smaller) */
+    .polished-section-subtitle-title {
+      font-size: 1.6rem;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 32px;
+      letter-spacing: 0.12em;
+      font-family: 'Cinzel', serif;
+    }
+
+    /* Services Overview Grid - Polished */
+    .polished-services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      position: relative;
+      z-index: 2;
+    }
+    @media (max-width: 1024px) {
+      .polished-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 600px) {
+      .polished-services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -3399,83 +3807,147 @@
         </div>
       </div>
     </section>
-    <!-- Our Services Section (insert after hero, before individual service sections) -->
-    <section class="section" id="services" style="position:relative;">
-      <div class="geometric-pattern"></div>
-      <!-- Floating geometric shapes -->
-      <div class="services-floating-bg">
-        <div class="floating-shape floating-shape1"></div>
-        <div class="floating-shape floating-shape2"></div>
-        <div class="floating-shape floating-shape3"></div>
+    <!-- Our Services Section -->
+    <section class="section polished-section" id="services" data-aos="fade-up">
+      <!-- Floating Background Shapes -->
+      <div class="polished-floating-shapes">
+        <div class="polished-float-shape"></div>
+        <div class="polished-float-shape"></div>
+        <div class="polished-float-shape"></div>
       </div>
-      <h2 class="section-title">Our Services</h2>
-      <div class="services-grid">
+
+      <!-- Section Header -->
+      <div class="polished-header">
+        <span class="polished-badge">What We Offer</span>
+        <h2 class="polished-title">Our Services</h2>
+        <p class="polished-subtitle">
+          Comprehensive investment and advisory solutions tailored to drive exceptional returns and strategic growth for our clients.
+        </p>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="polished-services-grid">
         <!-- Pre-IPO Investments -->
-        <div class="service-card" data-aos="fade-up" data-aos-delay="0" onclick="scrollToSection('service-preipo')">
-          <span class="service-badge service-badge-popular">Popular</span>
-          <div class="service-info" onclick="event.stopPropagation();">
-            <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <div class="service-tooltip">Learn more about Pre-IPO access</div>
-          </div>
-          <div class="service-icon">
-            <svg class="service-icon-svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        <div class="polished-card" data-aos="fade-up" data-aos-delay="0" onclick="scrollToSection('service-preipo')" style="cursor: pointer;">
+          <div class="polished-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
             </svg>
           </div>
-          <h3>Pre-IPO Investments</h3>
-          <p>Access exclusive investment opportunities in tomorrow's market leaders.</p>
+          <h3 class="polished-card-title">Pre-IPO Investments</h3>
+          <p class="polished-card-desc">Access exclusive investment opportunities in tomorrow's market leaders before they go public.</p>
+          <ul class="polished-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Exclusive deal flow access
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Rigorous due diligence
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Portfolio diversification
+            </li>
+          </ul>
         </div>
+
         <!-- AI & Space VC -->
-        <div class="service-card" data-aos="fade-up" data-aos-delay="120" onclick="openServiceModal('vc')" style="position: relative;">
-          <span class="service-badge service-badge-popular" aria-label="High demand">High Demand</span>
-          <div class="service-info" onclick="event.stopPropagation();">
-            <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <div class="service-tooltip">AI & Space VC is our most in-demand service</div>
-          </div>
-          <div class="service-icon">
-            <svg class="service-icon-svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="8"/>
-              <path d="M12 2v20M2 12h20"/>
-            </svg>
-          </div>
-          <h3>AI & Space VC</h3>
-          <p>Strategic investments in cutting-edge technology ventures.</p>
-        </div>
-        <!-- Web3 Development -->
-        <div class="service-card" data-aos="fade-up" data-aos-delay="240" onclick="openServiceModal('web3')">
-          <div class="service-info" onclick="event.stopPropagation();">
-            <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <div class="service-tooltip">Web3: Blockchain, DeFi, NFTs & more</div>
-          </div>
-          <div class="service-icon">
-            <svg class="service-icon-svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="4" y="4" width="16" height="16" rx="4"/>
-              <path d="M8 12h8M12 8v8"/>
-            </svg>
-          </div>
-          <h3>Web3 Development</h3>
-          <p>Building the future of decentralized applications.</p>
-        </div>
-        <!-- Consulting -->
-        <div class="service-card" data-aos="fade-up" data-aos-delay="360" onclick="openServiceModal('consulting')">
-          <div class="service-info" onclick="event.stopPropagation();">
-            <svg class="service-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <div class="service-tooltip">Consulting for growth, innovation, and expansion</div>
-          </div>
-          <div class="service-icon">
-            <svg class="service-icon-svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <div class="polished-card" data-aos="fade-up" data-aos-delay="150" onclick="openServiceModal('vc')" style="cursor: pointer;">
+          <div class="polished-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="10"/>
-              <path d="M8 15s1.5 2 4 2 4-2 4-2"/>
-              <path d="M9 9h.01M15 9h.01"/>
+              <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              <path d="M2 12h20"/>
             </svg>
           </div>
-          <h3>Consulting</h3>
-          <p>Expert guidance for growth, innovation, and market expansion.</p>
+          <h3 class="polished-card-title">AI & Space VC</h3>
+          <p class="polished-card-desc">Strategic investments in cutting-edge artificial intelligence and space technology ventures.</p>
+          <ul class="polished-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Frontier technology focus
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Deep industry expertise
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Strategic value creation
+            </li>
+          </ul>
+        </div>
+
+        <!-- Web3 Development -->
+        <div class="polished-card" data-aos="fade-up" data-aos-delay="300" onclick="openServiceModal('web3')" style="cursor: pointer;">
+          <div class="polished-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="4" width="16" height="16" rx="2"/>
+              <path d="M9 9h6v6H9z"/>
+              <path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/>
+            </svg>
+          </div>
+          <h3 class="polished-card-title">Web3 Development</h3>
+          <p class="polished-card-desc">Building the future of decentralized applications, blockchain solutions, and digital assets.</p>
+          <ul class="polished-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Smart contract development
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              DeFi & NFT solutions
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Blockchain consulting
+            </li>
+          </ul>
+        </div>
+
+        <!-- Consulting -->
+        <div class="polished-card" data-aos="fade-up" data-aos-delay="450" onclick="scrollToSection('service-consulting')" style="cursor: pointer;">
+          <div class="polished-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <h3 class="polished-card-title">Strategic Consulting</h3>
+          <p class="polished-card-desc">Expert guidance for growth, innovation, and global market expansion strategies.</p>
+          <ul class="polished-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Business strategy
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Market expansion
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Growth optimization
+            </li>
+          </ul>
         </div>
       </div>
-      <!-- Serial Position Effect: Add prominent CTA at the end of services -->
-      <div style="text-align:center; margin-top: 40px;">
-        <a href="https://calendly.com/lucreativity/johncarter" class="button-primary primary-cta" target="_blank" rel="noopener">Let's Work Together</a>
+
+      <!-- CTA Section -->
+      <div class="polished-cta" data-aos="fade-up">
+        <h3 class="polished-cta-title">Ready to Transform Your Portfolio?</h3>
+        <p class="polished-cta-desc">
+          Partner with us to access exclusive opportunities and strategic guidance that drives exceptional results.
+        </p>
+        <a href="https://calendly.com/lucreativity/johncarter" class="polished-cta-button" target="_blank" rel="noopener">
+          Let's Work Together
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
       </div>
     </section>
 
@@ -3535,150 +4007,320 @@
       }
     }
     </script>
-    <!-- SERVICES: Each service is now its own section for focus and immersion -->
-    <!-- Service 1: Private Pre-IPO Investment Opportunities -->
-    <section class="section" id="service-preipo" style="background: linear-gradient(135deg, #6ea0e9 0%, #101214 100%);" data-aos="fade-up">
-      <div class="geometric-pattern"></div>
-      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 36px; justify-content: center;">
-        <div style="flex:1; min-width:260px;">
-          <h2 class="section-title preipo-title">
-            Private Pre-IPO Investment <span class="preipo-highlight">Opportunities</span>
-          </h2>
-          <!-- Investment Performance Chart -->
-          <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 16px 16px 36px 16px; margin: 18px 0;">
-            <div class="chart-title-wrapper" style="text-align: left; margin-bottom: 28px; padding-left: 12px;">
-              <h3 class="chart-title" style="text-align: left; margin-bottom: 0;">Firsthand Capital's Historic Top Gainers <span class="fc-highlight"><span class="fc-highlight-text">Firsthand Capital</span><span class="fc-underline"></span></span></h3>
-            </div>
-            <div class="bar-graph-row" style="display: flex; height: 200px; align-items: flex-end; gap: 12px; padding: 0 12px;">
-              <div class="company-bar-group">
-                <div class="chart-bar" style="background: linear-gradient(to top, #6ea0e9, #4a80c9); height: 100%; width: 100%; position: relative; border-radius: 8px 8px 0 0; min-width: 40px;"><div style="position: absolute; top: -24px; left: 50%; transform: translateX(-50%); color: #6ea0e9; font-weight: bold; font-size: 0.9rem;">417%</div></div>
-                <a href="https://finance.yahoo.com/quote/ROKU" target="_blank" rel="noopener" class="company-link-3d">Roku</a>
-              </div>
-              <div class="company-bar-group">
-                <div class="chart-bar" style="background: linear-gradient(to top, #6ea0e9, #4a80c9); height: 53%; width: 100%; position: relative; border-radius: 8px 8px 0 0; min-width: 40px;"><div style="position: absolute; top: -24px; left: 50%; transform: translateX(-50%); color: #6ea0e9; font-weight: bold; font-size: 0.9rem;">220%</div></div>
-                <a href="https://finance.yahoo.com/quote/NTNX" target="_blank" rel="noopener" class="company-link-3d">Nutanix</a>
-              </div>
-              <div class="company-bar-group">
-                <div class="chart-bar" style="background: linear-gradient(to top, #6ea0e9, #4a80c9); height: 46%; width: 100%; position: relative; border-radius: 8px 8px 0 0; min-width: 40px;"><div style="position: absolute; top: -24px; left: 50%; transform: translateX(-50%); color: #6ea0e9; font-weight: bold; font-size: 0.9rem;">193%</div></div>
-                <a href="https://finance.yahoo.com/quote/TWTR" target="_blank" rel="noopener" class="company-link-3d">Twitter</a>
-              </div>
-              <div class="company-bar-group">
-                <div class="chart-bar" style="background: linear-gradient(to top, #6ea0e9, #4a80c9); height: 38%; width: 100%; position: relative; border-radius: 8px 8px 0 0; min-width: 40px;"><div style="position: absolute; top: -24px; left: 50%; transform: translateX(-50%); color: #6ea0e9; font-weight: bold; font-size: 0.9rem;">157%</div></div>
-                <a href="https://finance.yahoo.com/quote/TSLA" target="_blank" rel="noopener" class="company-link-3d">SolarCity</a>
-              </div>
-              <div class="company-bar-group">
-                <div class="chart-bar" style="background: linear-gradient(to top, #6ea0e9, #4a80c9); height: 35%; width: 100%; position: relative; border-radius: 8px 8px 0 0; min-width: 40px;"><div style="position: absolute; top: -24px; left: 50%; transform: translateX(-50%); color: #6ea0e9; font-weight: bold; font-size: 0.9rem;">144%</div></div>
-                <a href="https://finance.yahoo.com/quote/META" target="_blank" rel="noopener" class="company-link-3d">Facebook</a>
-              </div>
-            </div>
-            <!-- Investment Summary -->
+    <!-- Private Pre-IPO Investment Opportunities Section -->
+    <section class="section polished-section" id="service-preipo" data-aos="fade-up">
+      <!-- Floating Background Shapes -->
+      <div class="polished-floating-shapes">
+        <div class="polished-float-shape"></div>
+        <div class="polished-float-shape"></div>
+        <div class="polished-float-shape"></div>
+      </div>
+
+      <!-- Section Header -->
+      <div class="polished-header">
+        <span class="polished-badge">Exclusive Access</span>
+        <h2 class="polished-title">Private Pre-IPO Investments</h2>
+        <p class="polished-subtitle">
+          Access exclusive investment opportunities in tomorrow's market leaders before they go public. Transform your portfolio with proven track records.
+        </p>
+      </div>
+
+      <!-- Performance Chart -->
+      <div class="polished-highlight" data-aos="fade-up">
+        <h3 class="polished-section-subtitle-title">Historic Top Gainers - Firsthand Capital</h3>
+        <div class="bar-graph-row" style="display: flex; height: 200px; align-items: flex-end; gap: 16px; padding: 0 12px; justify-content: center;">
+          <div class="company-bar-group">
+            <div class="chart-bar" style="background: linear-gradient(to top, var(--accent), var(--primary)); height: 100%; width: 100%; position: relative; border-radius: 8px 8px 0 0; min-width: 50px;"><div style="position: absolute; top: -28px; left: 50%; transform: translateX(-50%); color: var(--accent); font-weight: bold; font-size: 1rem;">417%</div></div>
+            <a href="https://finance.yahoo.com/quote/ROKU" target="_blank" rel="noopener" class="company-link-3d" style="color: #a8edea; text-decoration: none; font-weight: 600; margin-top: 8px; display: block; text-align: center;">Roku</a>
           </div>
-          <div style="background: rgba(16,18,20,0.95); border-radius: 16px; padding: 24px; margin-bottom: 24px;" data-aos="fade-up" data-aos-delay="100">
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
-              <div style="width: 40px; height: 40px; background: rgba(110,160,233,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6ea0e9" stroke-width="2" aria-label="Investment icon" role="img">
-                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-                </svg>
-              </div>
-              <h3 style="color: #6ea0e9; margin: 0; font-size: 1.4rem;">Exclusive Access to Tomorrow's Giants</h3>
-            </div>
-            <p style="margin-bottom: 16px; line-height: 1.6;">
-              <span style="color: #6ea0e9; font-weight: bold;">Transform Your Portfolio</span> with pre-IPO investments in revolutionary companies that are shaping the future of technology and innovation.
-            </p>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 24px 0;">
-              <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 16px;">
-                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">AI & Machine Learning</div>
-                <div style="font-size: 0.9rem; color: #F7FFF7;">OpenAI, Anthropic, and emerging AI leaders</div>
-              </div>
-              <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 16px;">
-                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">Space Technology</div>
-                <div style="font-size: 0.9rem; color: #F7FFF7;">SpaceX, Anduril, and next-gen aerospace</div>
-              </div>
-              <div style="background: rgba(110,160,233,0.05); border-radius: 12px; padding: 16px;">
-                <div style="color: #6ea0e9; font-weight: bold; margin-bottom: 8px;">Deep Tech</div>
-                <div style="font-size: 0.9rem; color: #F7FFF7;">Quantum computing, robotics, and more</div>
-              </div>
-            </div>
-            <div style="display: flex; align-items: center; gap: 12px; margin-top: 16px;"></div>
+          <div class="company-bar-group">
+            <div class="chart-bar" style="background: linear-gradient(to top, var(--accent), var(--primary)); height: 53%; width: 100%; position: relative; border-radius: 8px 8px 0 0; min-width: 50px;"><div style="position: absolute; top: -28px; left: 50%; transform: translateX(-50%); color: var(--accent); font-weight: bold; font-size: 1rem;">220%</div></div>
+            <a href="https://finance.yahoo.com/quote/NTNX" target="_blank" rel="noopener" class="company-link-3d" style="color: #a8edea; text-decoration: none; font-weight: 600; margin-top: 8px; display: block; text-align: center;">Nutanix</a>
           </div>
-          <div style="display: flex; gap: 12px; margin-top: 24px;">
-            <a href="#contact" class="button-primary primary-cta">
-              <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-              Request Access
-            </a>
-            <button class="button-primary" onclick="openLearnMoreModal()">
-              <svg width="20" height="20" fill="currentColor" style="vertical-align:middle;"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2" fill="none"/><path d="M6 10l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-              Learn More
-            </button>
+          <div class="company-bar-group">
+            <div class="chart-bar" style="background: linear-gradient(to top, var(--accent), var(--primary)); height: 46%; width: 100%; position: relative; border-radius: 8px 8px 0 0; min-width: 50px;"><div style="position: absolute; top: -28px; left: 50%; transform: translateX(-50%); color: var(--accent); font-weight: bold; font-size: 1rem;">193%</div></div>
+            <a href="https://finance.yahoo.com/quote/TWTR" target="_blank" rel="noopener" class="company-link-3d" style="color: #a8edea; text-decoration: none; font-weight: 600; margin-top: 8px; display: block; text-align: center;">Twitter</a>
+          </div>
+          <div class="company-bar-group">
+            <div class="chart-bar" style="background: linear-gradient(to top, var(--accent), var(--primary)); height: 38%; width: 100%; position: relative; border-radius: 8px 8px 0 0; min-width: 50px;"><div style="position: absolute; top: -28px; left: 50%; transform: translateX(-50%); color: var(--accent); font-weight: bold; font-size: 1rem;">157%</div></div>
+            <a href="https://finance.yahoo.com/quote/TSLA" target="_blank" rel="noopener" class="company-link-3d" style="color: #a8edea; text-decoration: none; font-weight: 600; margin-top: 8px; display: block; text-align: center;">SolarCity</a>
+          </div>
+          <div class="company-bar-group">
+            <div class="chart-bar" style="background: linear-gradient(to top, var(--accent), var(--primary)); height: 35%; width: 100%; position: relative; border-radius: 8px 8px 0 0; min-width: 50px;"><div style="position: absolute; top: -28px; left: 50%; transform: translateX(-50%); color: var(--accent); font-weight: bold; font-size: 1rem;">144%</div></div>
+            <a href="https://finance.yahoo.com/quote/META" target="_blank" rel="noopener" class="company-link-3d" style="color: #a8edea; text-decoration: none; font-weight: 600; margin-top: 8px; display: block; text-align: center;">Facebook</a>
           </div>
         </div>
-        <!-- Removed Unsplash image -->
-        <div style="max-width:220px;"></div>
+      </div>
+
+      <!-- Investment Focus Areas -->
+      <div class="polished-grid">
+        <!-- AI & Machine Learning -->
+        <div class="polished-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="polished-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7h1a1 1 0 011 1v3a1 1 0 01-1 1h-1v1a2 2 0 01-2 2H5a2 2 0 01-2-2v-1H2a1 1 0 01-1-1v-3a1 1 0 011-1h1a7 7 0 017-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 012-2z"/>
+              <path d="M7.5 13a1.5 1.5 0 110 3 1.5 1.5 0 010-3zM16.5 13a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"/>
+            </svg>
+          </div>
+          <h3 class="polished-card-title">AI & Machine Learning</h3>
+          <p class="polished-card-desc">Invest in the companies building the future of artificial intelligence and automation.</p>
+          <ul class="polished-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              OpenAI & emerging leaders
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Anthropic & AI safety
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Enterprise AI solutions
+            </li>
+          </ul>
+        </div>
+
+        <!-- Space Technology -->
+        <div class="polished-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="polished-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"/>
+              <path d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"/>
+              <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+            </svg>
+          </div>
+          <h3 class="polished-card-title">Space Technology</h3>
+          <p class="polished-card-desc">Access the next frontier with investments in space exploration and aerospace innovation.</p>
+          <ul class="polished-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              SpaceX & launch providers
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Anduril & defense tech
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Satellite & communications
+            </li>
+          </ul>
+        </div>
+
+        <!-- Deep Tech -->
+        <div class="polished-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="polished-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+            </svg>
+          </div>
+          <h3 class="polished-card-title">Deep Tech</h3>
+          <p class="polished-card-desc">Revolutionary technologies that are reshaping industries and creating new possibilities.</p>
+          <ul class="polished-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Quantum computing
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Advanced robotics
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Biotech innovations
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="polished-cta" data-aos="fade-up">
+        <h3 class="polished-cta-title">Ready to Access Pre-IPO Opportunities?</h3>
+        <p class="polished-cta-desc">
+          Join our network of sophisticated investors gaining early access to tomorrow's market leaders.
+        </p>
+        <a href="#contact" class="polished-cta-button">
+          Request Access
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
       </div>
     </section>
+
     <div style="width:100%; overflow:hidden; line-height:0;">
       <svg viewBox="0 0 1440 80" width="100%" height="80" preserveAspectRatio="none">
         <path d="M0,40 C480,80 960,0 1440,40 L1440,80 L0,80 Z" fill="#101214"/>
       </svg>
     </div>
 
-    <!-- Service 3: Consulting -->
-    <section class="section" id="service-consulting" style="background: linear-gradient(135deg, #101214 0%, #6ea0e9 100%);" data-aos="fade-up">
-      <div class="geometric-pattern"></div>
-      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 36px; justify-content: center;">
-        <div style="flex:1; min-width:260px; max-width: 800px;">
-          <div style="background: linear-gradient(135deg, #101214 0%, #6ea0e9 100%); border-radius: 20px; padding: 36px 18px; margin-bottom: 32px; box-shadow: 0 4px 24px rgba(110,160,233,0.10); position: relative;">
-            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 12px;">
-              <span style="background: #1bb89a; color: #fff; font-weight: bold; border-radius: 16px; padding: 6px 18px; font-size: 1rem; margin-right: 12px; letter-spacing: 0.08em;">🌍 Global Strategic Consulting</span>
-              <span style="font-size: 1.5rem;">✨</span>
+    <!-- Strategic Consulting Section -->
+    <section class="section polished-section" id="service-consulting" data-aos="fade-up">
+      <!-- Floating Background Shapes -->
+      <div class="polished-floating-shapes">
+        <div class="polished-float-shape"></div>
+        <div class="polished-float-shape"></div>
+        <div class="polished-float-shape"></div>
+      </div>
+
+      <!-- Section Header -->
+      <div class="polished-header">
+        <span class="polished-badge">Global Expertise</span>
+        <h2 class="polished-title">Strategic Consulting</h2>
+        <p class="polished-subtitle">
+          Comprehensive guidance for businesses, startups, funds, and international projects. Leverage our global network of experts to unlock your next big opportunity.
+        </p>
+      </div>
+
+      <!-- Consulting Services Grid -->
+      <div class="polished-grid">
+        <!-- Business Strategy -->
+        <div class="polished-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="polished-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/>
+              <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/>
+            </svg>
+          </div>
+          <h3 class="polished-card-title">Business Strategy</h3>
+          <p class="polished-card-desc">Strategic roadmaps and competitive analysis to position your business for success.</p>
+          <ul class="polished-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Market entry roadmap development
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Competitive landscape analysis
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Position refinement
+            </li>
+          </ul>
+        </div>
+
+        <!-- Technology Enhancement -->
+        <div class="polished-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="polished-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+          </div>
+          <h3 class="polished-card-title">Technology Enhancement</h3>
+          <p class="polished-card-desc">Modernize your tech stack and implement strategic AI solutions for competitive advantage.</p>
+          <ul class="polished-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Technology stack assessment
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Strategic AI implementation
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Digital transformation
+            </li>
+          </ul>
+        </div>
+
+        <!-- Sustainable Growth -->
+        <div class="polished-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="polished-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 6l-9.5 9.5-5-5L1 18"/>
+              <path d="M17 6h6v6"/>
+            </svg>
+          </div>
+          <h3 class="polished-card-title">Sustainable Growth</h3>
+          <p class="polished-card-desc">Data-driven strategies to optimize growth and diversify revenue streams globally.</p>
+          <ul class="polished-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Data-driven optimization
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Revenue diversification
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Market expansion planning
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Global Network Highlight -->
+      <div class="polished-highlight" data-aos="fade-up">
+        <h3 class="polished-section-subtitle-title">Global Reach & Network</h3>
+        <p style="text-align: center; color: var(--text); opacity: 0.85; margin-bottom: 24px;">
+          Access to a curated network of industry experts, investors, and strategic partners across:
+        </p>
+        <div class="polished-compact-grid" style="grid-template-columns: repeat(5, 1fr);">
+          <div class="polished-compact-card">
+            <div class="polished-compact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              </svg>
             </div>
-            <h2 class="section-title" style="margin-bottom: 10px;">Transform Your Vision into Reality</h2>
-            <p style="color: #a8edea; font-size: 1.1rem; text-align: center; margin-bottom: 32px;">
-              Comprehensive, creative guidance for <b>businesses</b>, <b>startups</b>, <b>funds</b>, and <b>international projects</b>.<br>
-              <span style="color: #fff;">Leverage our global network of experts to unlock your next big opportunity!</span>
-            </p>
-            <div class="consulting-cards-fun">
-              <div class="consulting-card-fun" style="animation-delay:0s;">
-                <div class="consulting-icon-fun">🧭</div>
-                <div class="consulting-title-fun">Business Strategy</div>
-                <ul>
-                  <li>🗺️ Market entry roadmap development</li>
-                  <li>🔍 Competitive landscape analysis</li>
-                  <li>🎯 Position refinement for target audiences</li>
-                </ul>
-              </div>
-              <div class="consulting-card-fun" style="animation-delay:0.1s;">
-                <div class="consulting-icon-fun">🤖</div>
-                <div class="consulting-title-fun">Technology Enhancement</div>
-                <ul>
-                  <li>🛠️ Technology stack assessment & alignment</li>
-                  <li>🧠 Strategic AI implementation planning</li>
-                  <li>🚀 Digital capabilities advancement</li>
-                </ul>
-              </div>
-              <div class="consulting-card-fun" style="animation-delay:0.2s;">
-                <div class="consulting-icon-fun">🌱</div>
-                <div class="consulting-title-fun">Sustainable Growth</div>
-                <ul>
-                  <li>📊 Data-driven growth optimization</li>
-                  <li>💸 Revenue stream diversification</li>
-                  <li>🌏 Market expansion planning</li>
-                </ul>
-              </div>
+            <span class="polished-compact-name">North America</span>
+          </div>
+          <div class="polished-compact-card">
+            <div class="polished-compact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              </svg>
             </div>
-            <div style="margin-top: 32px; text-align: center;">
-              <div style="color: #6ea0e9; font-weight: bold; font-size: 1.1rem; margin-bottom: 8px;">🌐 Global Reach & Network</div>
-              <div style="color: #fff; margin-bottom: 12px;">Access to a curated network of industry experts, investors, and strategic partners across:</div>
-              <div class="region-chips-fun">
-                <span>North America</span>
-                <span>Europe</span>
-                <span>Asia</span>
-                <span>Latin America</span>
-                <span>Middle East</span>
-              </div>
+            <span class="polished-compact-name">Europe</span>
+          </div>
+          <div class="polished-compact-card">
+            <div class="polished-compact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              </svg>
             </div>
+            <span class="polished-compact-name">Asia</span>
+          </div>
+          <div class="polished-compact-card">
+            <div class="polished-compact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              </svg>
+            </div>
+            <span class="polished-compact-name">Latin America</span>
+          </div>
+          <div class="polished-compact-card">
+            <div class="polished-compact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+              </svg>
+            </div>
+            <span class="polished-compact-name">Middle East</span>
           </div>
         </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="polished-cta" data-aos="fade-up">
+        <h3 class="polished-cta-title">Ready to Transform Your Vision?</h3>
+        <p class="polished-cta-desc">
+          Let our global team of experts help you navigate challenges and unlock new opportunities for growth.
+        </p>
+        <a href="#contact" class="polished-cta-button">
+          Start a Conversation
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
       </div>
     </section>
     <style>
@@ -4011,46 +4653,140 @@
     </section>
 
     <!-- Portfolio & Resume Section -->
-    <section class="section" id="portfolio" data-aos="fade-up">
-      <div style="background: linear-gradient(135deg, #22304a 0%, #6ea0e9 100%); border-radius: 20px; padding: 36px 18px; margin-bottom: 32px; box-shadow: 0 4px 24px rgba(110,160,233,0.10); position: relative;">
-        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 12px;">
-          <span style="background: #1bb89a; color: #fff; font-weight: bold; border-radius: 16px; padding: 6px 18px; font-size: 1rem; margin-right: 12px; letter-spacing: 0.08em;">👤 Professional Profile</span>
-          
-        </div>
-        <h2 class="section-title" style="margin-bottom: 10px;">A Track Record of Excellence</h2>
-        <p style="color: #a8edea; font-size: 1.1rem; text-align: center; margin-bottom: 32px;">
-          Blending <b>innovation</b>, <b>leadership</b>, and <b>global experience</b> to deliver results in tech, business, and beyond.
+    <section class="section polished-section" id="portfolio" data-aos="fade-up">
+      <!-- Floating Background Shapes -->
+      <div class="polished-floating-shapes">
+        <div class="polished-float-shape"></div>
+        <div class="polished-float-shape"></div>
+        <div class="polished-float-shape"></div>
+      </div>
+
+      <!-- Section Header -->
+      <div class="polished-header">
+        <span class="polished-badge">Professional Profile</span>
+        <h2 class="polished-title">A Track Record of Excellence</h2>
+        <p class="polished-subtitle">
+          Blending innovation, leadership, and global experience to deliver results in tech, business, and beyond.
         </p>
-        <div class="profile-cards-fun">
-          <div class="profile-card-fun">
-            <div class="profile-icon-fun">💡</div>
-            <div class="profile-title-fun">Investment & Technology Expertise</div>
-            <ul>
-              <li>🎓 <b>Columbia Business School</b> Executive Education in Blockchain & Business</li>
-              <li>💼 Practical experience with sales strategy and business development</li>
-              <li>🌐 Expertise in Web3 marketing and digital assets</li>
-            </ul>
+      </div>
+
+      <!-- Profile Cards Grid -->
+      <div class="polished-grid">
+        <!-- Investment & Technology Expertise -->
+        <div class="polished-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="polished-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
           </div>
-          <div class="profile-card-fun">
-            <div class="profile-icon-fun">🌎</div>
-            <div class="profile-title-fun">International Business Success</div>
-            <ul>
-              <li>📈 Led <b>$6M+</b> sales projections in Central and South America</li>
-              <li>🗣️ English & Spanish client services</li>
-              <li>🛡️ Navigated complex international regulatory challenges</li>
-              <li>🚀 Worked with <a href="https://www.spacex.com/" target="_blank" rel="noopener" style="color:#1bb89a; font-weight:bold; text-decoration:underline; font-size:1.08em; background:rgba(110,160,233,0.10); padding:2px 8px; border-radius:8px; box-shadow:0 2px 8px rgba(110,160,233,0.10); display:inline-flex; align-items:center; gap:4px;">SpaceX <svg width='16' height='16' fill='none' stroke='#1bb89a' stroke-width='2' viewBox='0 0 24 24' style='vertical-align:middle;'><path d='M5 12h14M12 5l7 7-7 7'/></svg></a></li>
-            </ul>
+          <h3 class="polished-card-title">Investment & Technology</h3>
+          <p class="polished-card-desc">Deep expertise in venture capital, blockchain, and emerging technologies.</p>
+          <ul class="polished-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Columbia Business School Executive Education
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Sales strategy & business development
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Web3 marketing & digital assets
+            </li>
+          </ul>
+        </div>
+
+        <!-- International Business Success -->
+        <div class="polished-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="polished-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/>
+            </svg>
           </div>
-          <div class="profile-card-fun">
-            <div class="profile-icon-fun">🏆</div>
-            <div class="profile-title-fun">Strategic Leadership</div>
-            <ul>
-              <li>⏳ 8+ years experience in strategic business management</li>
-              <li>📊 Familiar with sales strategies and business development processes</li>
-              <li>🤝 Expert in building and managing high-performing teams</li>
-            </ul>
+          <h3 class="polished-card-title">International Success</h3>
+          <p class="polished-card-desc">Proven track record driving growth across global markets and complex environments.</p>
+          <ul class="polished-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Led $6M+ sales in LATAM markets
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Bilingual: English & Spanish
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              <a href="https://www.spacex.com/" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600;">SpaceX</a> collaboration experience
+            </li>
+          </ul>
+        </div>
+
+        <!-- Strategic Leadership -->
+        <div class="polished-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="polished-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <h3 class="polished-card-title">Strategic Leadership</h3>
+          <p class="polished-card-desc">Building and leading high-performing teams to achieve exceptional results.</p>
+          <ul class="polished-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              8+ years strategic management
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Business development expertise
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              High-performing team leadership
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Stats Highlight -->
+      <div class="polished-highlight" data-aos="fade-up">
+        <div class="polished-stats-grid">
+          <div class="polished-stat-item">
+            <div class="polished-stat-number">8+</div>
+            <div class="polished-stat-label">Years Experience</div>
+          </div>
+          <div class="polished-stat-item">
+            <div class="polished-stat-number">$6M+</div>
+            <div class="polished-stat-label">Sales Leadership</div>
+          </div>
+          <div class="polished-stat-item">
+            <div class="polished-stat-number">5+</div>
+            <div class="polished-stat-label">Global Regions</div>
+          </div>
+          <div class="polished-stat-item">
+            <div class="polished-stat-number">2</div>
+            <div class="polished-stat-label">Languages</div>
           </div>
         </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="polished-cta" data-aos="fade-up">
+        <h3 class="polished-cta-title">Let's Connect</h3>
+        <p class="polished-cta-desc">
+          Interested in learning more about my background or discussing potential collaborations?
+        </p>
+        <a href="https://www.linkedin.com/in/john-carter-231b5a251/" target="_blank" rel="noopener" class="polished-cta-button">
+          View LinkedIn Profile
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
       </div>
     </section>
     <style>
@@ -4123,43 +4859,64 @@
     }
     </style>
     <!-- Contact Section -->
-    <section class="section" id="contact" data-aos="fade-up">
-      <h2 style="color: var(--primary); text-align:center; font-family: 'Cinzel', serif; letter-spacing: 0.2em; margin-bottom: 48px;">Contact</h2>
-      <div class="contact-flex" style="display: flex; align-items: flex-start; gap: 48px; justify-content: center; margin: 0 auto; max-width: 1200px; padding: 0 20px;">
-        <div class="contact-info" style="background: rgba(16,18,20,0.95); padding: 32px; border-radius: 16px; border: 1px solid rgba(110,160,233,0.1); box-shadow: 0 4px 24px rgba(0,0,0,0.1); flex-shrink: 0;">
+    <section class="section polished-section" id="contact" data-aos="fade-up">
+      <!-- Floating Background Shapes -->
+      <div class="polished-floating-shapes">
+        <div class="polished-float-shape"></div>
+        <div class="polished-float-shape"></div>
+        <div class="polished-float-shape"></div>
+      </div>
+
+      <!-- Section Header -->
+      <div class="polished-header">
+        <span class="polished-badge">Get In Touch</span>
+        <h2 class="polished-title">Contact</h2>
+        <p class="polished-subtitle">
+          Ready to discuss investment opportunities, partnerships, or consulting engagements? Let's start a conversation.
+        </p>
+      </div>
+
+      <!-- Contact Info and Photo -->
+      <div class="contact-flex" style="display: flex; align-items: center; gap: 48px; justify-content: center; margin: 0 auto; max-width: 1200px; padding: 0 20px; position: relative; z-index: 2;">
+        <div class="polished-card" style="flex-shrink: 0; padding: 32px;">
           <div class="contact-row" style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-            <svg class="contact-icon" viewBox="0 0 24 24" style="width: 24px; height: 24px; color: var(--primary);" aria-label="Phone icon" role="img">
-              <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5h3.5a1 1 0 011 1c0 1.35.26 2.67.76 3.88a1 1 0 01-.21 1.11l-2.2 2.2z" fill="none" stroke="currentColor" stroke-width="2"/>
-            </svg>
-            <a href="tel:+14435103503" class="contact-link" style="color: var(--primary); text-decoration: none; transition: color 0.3s ease;">+1-443-510-3503</a>
+            <div class="polished-compact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21c1.21.49 2.53.76 3.88.76a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 4.5A1 1 0 013 3.5h3.5a1 1 0 011 1c0 1.35.26 2.67.76 3.88a1 1 0 01-.21 1.11l-2.2 2.2z"/>
+              </svg>
+            </div>
+            <a href="tel:+14435103503" class="contact-link" style="color: #a8edea; text-decoration: none; transition: color 0.3s ease; font-weight: 600;">+1-443-510-3503</a>
           </div>
           <div class="contact-row" style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-            <a href="https://wa.me/qr/W4L2KKK6ANEDC1" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" style="display:inline-flex; align-items:center;">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="color:#1bb89a; transition:transform 0.2s;" class="contact-icon" aria-label="WhatsApp icon" role="img">
+            <div class="polished-compact-icon" style="background: linear-gradient(135deg, rgba(27,184,154,0.2) 0%, rgba(27,184,154,0.1) 100%);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="color:#1bb89a;">
                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.031-.967-.273-.099-.472-.148-.67.15-.198.297-.767.967-.94 1.164-.173.198-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.075-.149-.669-1.611-.916-2.206-.242-.579-.487-.5-.669-.51-.173-.007-.372-.009-.571-.009-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.099 3.205 5.077 4.372.71.306 1.263.489 1.695.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.288.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 6.17h-.001a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.455 4.436-9.89 9.893-9.89 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.896 6.995c-.003 5.456-4.438 9.891-9.893 9.891zm8.413-18.282A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.304-1.678a11.86 11.86 0 005.74 1.463h.005c6.554 0 11.89-5.335 11.893-11.893a11.822 11.822 0 00-3.477-8.462z"/>
               </svg>
-            </a>
-            <span style="color: var(--accent); font-weight: 500; font-size: 1.05rem;">Connect via WhatsApp</span>
+            </div>
+            <a href="https://wa.me/qr/W4L2KKK6ANEDC1" target="_blank" rel="noopener" style="color: var(--accent); font-weight: 600; text-decoration: none;">Connect via WhatsApp</a>
           </div>
           <div class="contact-row" style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-            <svg class="contact-icon" viewBox="0 0 24 24" style="width: 24px; height: 24px; color: var(--primary);">
-              <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
-              <path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="2" fill="none"/>
-            </svg>
-            <a href="mailto:Johncarter@lucreativity.io" class="contact-link" style="color: var(--primary); text-decoration: none; transition: color 0.3s ease;">Johncarter@lucreativity.io</a>
+            <div class="polished-compact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M22 6l-10 7L2 6"/>
+              </svg>
+            </div>
+            <a href="mailto:Johncarter@lucreativity.io" class="contact-link" style="color: #a8edea; text-decoration: none; transition: color 0.3s ease; font-weight: 600;">Johncarter@lucreativity.io</a>
           </div>
           <div class="contact-row" style="display: flex; align-items: center; gap: 16px;">
-            <svg class="contact-icon" viewBox="0 0 24 24" style="width: 24px; height: 24px; color: var(--primary);">
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="none" stroke="currentColor" stroke-width="2"/>
-              <circle cx="12" cy="9" r="2.5" stroke="currentColor" stroke-width="2" fill="none"/>
-            </svg>
-            <span id="earthLocation" style="color: var(--accent); text-decoration: underline; cursor: pointer; font-weight: 500;">Based on Earth</span>
+            <div class="polished-compact-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                <circle cx="12" cy="9" r="2.5"/>
+              </svg>
+            </div>
+            <span id="earthLocation" style="color: var(--accent); text-decoration: underline; cursor: pointer; font-weight: 600;">Based on Earth</span>
           </div>
         </div>
-           <a href="https://www.linkedin.com/in/john-carter-231b5a251/" target="_blank" rel="noopener" style="display: block;">
-     <img src="profile pic.jpeg" alt="John Carter Profile Photo" class="profile-photo responsive-img" loading="lazy" />
-   </a>
-                 </a>
+        <a href="https://www.linkedin.com/in/john-carter-231b5a251/" target="_blank" rel="noopener" style="display: block;">
+          <img src="profile pic.jpeg" alt="John Carter Profile Photo" class="profile-photo responsive-img" loading="lazy" style="border-radius: 20px; border: 2px solid rgba(110,160,233,0.3); box-shadow: 0 8px 32px rgba(110,160,233,0.2);" />
+        </a>
       </div>
       <!-- Contact Form - Using Formspree for submission. Replace YOUR_FORM_ID with your Formspree form ID from https://formspree.io -->
       <form class="contact-form" id="contactForm" action="https://formspree.io/f/xwpkkpvp" method="POST" novalidate aria-labelledby="contactFormTitle" style="max-width: 600px; margin: 48px auto; padding: 48px 80px; background: rgba(16,18,20,0.95); border-radius: 16px; box-shadow: 0 4px 24px rgba(110,160,233,0.1); border: 1px solid rgba(110,160,233,0.1); display: flex; flex-direction: column; align-items: center;" autocomplete="on">
