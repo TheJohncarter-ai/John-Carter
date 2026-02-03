@@ -2681,6 +2681,372 @@
       #aboutMeModal .aboutme-linkedin-cta { font-size: 0.98rem !important; padding: 10px 8px !important; }
       #aboutMeModal .aboutme-modal-close { top: 4px !important; right: 8px !important; font-size: 1.3rem !important; }
     }
+
+    /* M&A Services Section Styles */
+    #ma-services {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--background) 50%, var(--primary-dark) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    #ma-services::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(110,160,233,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(27,184,154,0.08) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .ma-section-header {
+      text-align: center;
+      margin-bottom: 48px;
+      position: relative;
+      z-index: 2;
+    }
+    .ma-section-badge {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      color: #fff;
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 8px 24px;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 16px rgba(27,184,154,0.25);
+    }
+    .ma-section-title {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 16px;
+      letter-spacing: 0.15em;
+      font-family: 'Cinzel', serif;
+      line-height: 1.2;
+    }
+    .ma-section-subtitle {
+      color: #a8edea;
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+    .ma-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 48px;
+      position: relative;
+      z-index: 2;
+    }
+    @media (max-width: 1024px) {
+      .ma-pillars-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+    .ma-pillar-card {
+      background: linear-gradient(145deg, rgba(34,48,74,0.95) 0%, rgba(16,18,20,0.98) 100%);
+      border-radius: 24px;
+      padding: 32px 24px;
+      border: 1px solid rgba(110,160,233,0.15);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2), 0 0 24px rgba(110,160,233,0.08);
+      transition: all 0.4s cubic-bezier(.4,1.6,.6,1);
+      position: relative;
+      overflow: hidden;
+    }
+    .ma-pillar-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .ma-pillar-card:hover::before {
+      opacity: 1;
+    }
+    .ma-pillar-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 16px 48px rgba(110,160,233,0.2), 0 0 32px rgba(27,184,154,0.12);
+      border-color: rgba(110,160,233,0.3);
+    }
+    .ma-pillar-icon {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, rgba(110,160,233,0.2) 0%, rgba(27,184,154,0.15) 100%);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      transition: all 0.4s cubic-bezier(.4,1.6,.6,1);
+    }
+    .ma-pillar-card:hover .ma-pillar-icon {
+      transform: rotate(8deg) scale(1.1);
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      box-shadow: 0 8px 24px rgba(110,160,233,0.3);
+    }
+    .ma-pillar-icon svg {
+      width: 36px;
+      height: 36px;
+      color: var(--primary);
+      transition: color 0.3s ease;
+    }
+    .ma-pillar-card:hover .ma-pillar-icon svg {
+      color: #fff;
+    }
+    .ma-pillar-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #a8edea;
+      margin-bottom: 12px;
+      letter-spacing: 0.08em;
+      font-family: 'Cinzel', serif;
+    }
+    .ma-pillar-desc {
+      color: var(--text);
+      opacity: 0.85;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .ma-pillar-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .ma-pillar-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(110,160,233,0.08);
+      color: var(--text);
+      font-size: 0.92rem;
+      opacity: 0.9;
+    }
+    .ma-pillar-list li:last-child {
+      border-bottom: none;
+    }
+    .ma-pillar-list li svg {
+      width: 18px;
+      height: 18px;
+      color: var(--accent);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    /* M&A Feature Highlight Box */
+    .ma-feature-highlight {
+      background: linear-gradient(135deg, rgba(27,184,154,0.12) 0%, rgba(110,160,233,0.08) 100%);
+      border: 1px solid rgba(27,184,154,0.25);
+      border-radius: 20px;
+      padding: 36px;
+      margin: 48px 0;
+      position: relative;
+      z-index: 2;
+    }
+    .ma-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      text-align: center;
+    }
+    @media (max-width: 900px) {
+      .ma-feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 500px) {
+      .ma-feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .ma-feature-item {
+      padding: 16px;
+    }
+    .ma-feature-number {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'Cinzel', serif;
+      margin-bottom: 8px;
+    }
+    .ma-feature-label {
+      color: var(--text);
+      font-size: 0.95rem;
+      opacity: 0.85;
+    }
+    /* M&A Industry Cards */
+    .ma-industries-section {
+      margin-top: 48px;
+      position: relative;
+      z-index: 2;
+    }
+    .ma-industries-title {
+      font-size: 1.6rem;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 32px;
+      letter-spacing: 0.12em;
+      font-family: 'Cinzel', serif;
+    }
+    .ma-industries-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 768px) {
+      .ma-industries-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 480px) {
+      .ma-industries-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .ma-industry-card {
+      background: rgba(22,30,44,0.9);
+      border: 1px solid rgba(110,160,233,0.1);
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.3s ease;
+    }
+    .ma-industry-card:hover {
+      background: rgba(34,48,74,0.95);
+      border-color: rgba(110,160,233,0.25);
+      transform: translateX(8px);
+    }
+    .ma-industry-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, rgba(110,160,233,0.15) 0%, rgba(27,184,154,0.1) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .ma-industry-icon svg {
+      width: 24px;
+      height: 24px;
+      color: var(--primary);
+    }
+    .ma-industry-name {
+      color: #a8edea;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+    }
+    /* M&A CTA Section */
+    .ma-cta-section {
+      text-align: center;
+      margin-top: 56px;
+      padding: 40px;
+      background: linear-gradient(135deg, rgba(110,160,233,0.1) 0%, rgba(27,184,154,0.08) 100%);
+      border-radius: 24px;
+      border: 1px solid rgba(110,160,233,0.15);
+      position: relative;
+      z-index: 2;
+    }
+    .ma-cta-title {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin-bottom: 16px;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.1em;
+    }
+    .ma-cta-desc {
+      color: var(--text);
+      opacity: 0.85;
+      font-size: 1.05rem;
+      max-width: 600px;
+      margin: 0 auto 24px auto;
+    }
+    .ma-cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(90deg, var(--primary-dark), var(--accent));
+      color: var(--text) !important;
+      border: none;
+      border-radius: 12px;
+      padding: 16px 40px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(.4,1.6,.6,1);
+      text-decoration: none;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 0.12em;
+      box-shadow: 0 4px 24px rgba(27,184,154,0.25);
+    }
+    .ma-cta-button:hover {
+      background: linear-gradient(90deg, var(--accent), var(--primary-dark));
+      transform: scale(1.05);
+      box-shadow: 0 8px 32px rgba(110,160,233,0.3);
+    }
+    .ma-cta-button svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+    }
+    .ma-cta-button:hover svg {
+      transform: translateX(4px);
+    }
+    /* M&A Floating Elements */
+    .ma-floating-shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+    .ma-float-shape {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(110,160,233,0.08) 0%, rgba(27,184,154,0.06) 100%);
+      animation: maFloat 12s ease-in-out infinite;
+    }
+    .ma-float-shape:nth-child(1) {
+      width: 200px;
+      height: 200px;
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+    .ma-float-shape:nth-child(2) {
+      width: 150px;
+      height: 150px;
+      top: 60%;
+      right: 8%;
+      animation-delay: 3s;
+    }
+    .ma-float-shape:nth-child(3) {
+      width: 100px;
+      height: 100px;
+      bottom: 15%;
+      left: 15%;
+      animation-delay: 6s;
+    }
+    @keyframes maFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
+      50% { transform: translateY(-30px) rotate(180deg); opacity: 0.8; }
+    }
   </style>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -2921,6 +3287,7 @@
     <nav id="mainNav" role="navigation" aria-label="Main Navigation">
       <a href="#hero" tabindex="0">Home</a>
       <a href="#services" tabindex="0">Services</a>
+      <a href="#ma-services" tabindex="0">M&A Services</a>
       <a href="#portfolio" tabindex="0">Portfolio</a>
       <a href="#contact" tabindex="0">Contact</a>
     </nav>
@@ -3418,6 +3785,230 @@
         <path d="M0,40 C480,80 960,0 1440,40 L1440,80 L0,80 Z" fill="#101214"/>
       </svg>
     </div>
+
+    <!-- M&A Services / Investment Banking Section -->
+    <section class="section" id="ma-services" data-aos="fade-up">
+      <!-- Floating Background Shapes -->
+      <div class="ma-floating-shapes">
+        <div class="ma-float-shape"></div>
+        <div class="ma-float-shape"></div>
+        <div class="ma-float-shape"></div>
+      </div>
+
+      <!-- Section Header -->
+      <div class="ma-section-header">
+        <span class="ma-section-badge">Investment Banking</span>
+        <h2 class="ma-section-title">M&A Services</h2>
+        <p class="ma-section-subtitle">
+          Comprehensive investment banking expertise for family businesses, public and private companies seeking strategic growth, capital raising, and successful exits.
+        </p>
+      </div>
+
+      <!-- Three Pillars Grid -->
+      <div class="ma-pillars-grid">
+        <!-- Pillar 1: Corporate Finance / M&A Advisory -->
+        <div class="ma-pillar-card" data-aos="fade-up" data-aos-delay="0">
+          <div class="ma-pillar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 class="ma-pillar-title">M&A Advisory</h3>
+          <p class="ma-pillar-desc">Strategic guidance through the complete transaction lifecycle, maximizing value and ensuring successful outcomes.</p>
+          <ul class="ma-pillar-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Sell-side M&A advisory
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Buy-side M&A advisory
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Business valuation & fairness opinions
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Transaction structuring
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Succession planning
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pillar 2: Capital Markets -->
+        <div class="ma-pillar-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="ma-pillar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+            </svg>
+          </div>
+          <h3 class="ma-pillar-title">Capital Markets</h3>
+          <p class="ma-pillar-desc">Access to diverse capital sources for growth, expansion, and strategic initiatives across equity and debt markets.</p>
+          <ul class="ma-pillar-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Private capital raising (equity & debt)
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Growth capital & recapitalizations
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Private credit placement
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Equity & debt financing
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              SPACs, PIPEs & direct listings
+            </li>
+          </ul>
+        </div>
+
+        <!-- Pillar 3: Strategic Advisory -->
+        <div class="ma-pillar-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="ma-pillar-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 6v6l4 2"/>
+            </svg>
+          </div>
+          <h3 class="ma-pillar-title">Strategic Advisory</h3>
+          <p class="ma-pillar-desc">Expert guidance on complex corporate decisions with a holistic understanding of your complete financial picture.</p>
+          <ul class="ma-pillar-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Strategic alternatives analysis
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Cap table optimization
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Post-merger integration
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              ESOP structures
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+              Exit planning & execution
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Feature Highlight Stats -->
+      <div class="ma-feature-highlight" data-aos="fade-up">
+        <div class="ma-feature-grid">
+          <div class="ma-feature-item">
+            <div class="ma-feature-number">$10M+</div>
+            <div class="ma-feature-label">Minimum Transaction Size</div>
+          </div>
+          <div class="ma-feature-item">
+            <div class="ma-feature-number">$500M+</div>
+            <div class="ma-feature-label">Large-Scale Deals</div>
+          </div>
+          <div class="ma-feature-item">
+            <div class="ma-feature-number">50+</div>
+            <div class="ma-feature-label">Elite Manager Relationships</div>
+          </div>
+          <div class="ma-feature-item">
+            <div class="ma-feature-number">8+</div>
+            <div class="ma-feature-label">Years Strategic Experience</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Industry Expertise Section -->
+      <div class="ma-industries-section" data-aos="fade-up">
+        <h3 class="ma-industries-title">Industry Expertise</h3>
+        <div class="ma-industries-grid">
+          <!-- Technology & Software -->
+          <div class="ma-industry-card">
+            <div class="ma-industry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <path d="M8 21h8M12 17v4"/>
+              </svg>
+            </div>
+            <span class="ma-industry-name">Technology & Software</span>
+          </div>
+          <!-- Financial Institutions -->
+          <div class="ma-industry-card">
+            <div class="ma-industry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/>
+              </svg>
+            </div>
+            <span class="ma-industry-name">Financial Institutions</span>
+          </div>
+          <!-- Healthcare -->
+          <div class="ma-industry-card">
+            <div class="ma-industry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+            </div>
+            <span class="ma-industry-name">Healthcare & Life Sciences</span>
+          </div>
+          <!-- Consumer & Retail -->
+          <div class="ma-industry-card">
+            <div class="ma-industry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6"/>
+              </svg>
+            </div>
+            <span class="ma-industry-name">Consumer & Retail</span>
+          </div>
+          <!-- Industrial -->
+          <div class="ma-industry-card">
+            <div class="ma-industry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M2 20h20M5 20V8l5 6V8l5 6V4l5 8v8"/>
+              </svg>
+            </div>
+            <span class="ma-industry-name">Industrial & Manufacturing</span>
+          </div>
+          <!-- Real Estate -->
+          <div class="ma-industry-card">
+            <div class="ma-industry-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                <path d="M9 22V12h6v10"/>
+              </svg>
+            </div>
+            <span class="ma-industry-name">Real Estate</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="ma-cta-section" data-aos="fade-up">
+        <h3 class="ma-cta-title">Ready to Explore Strategic Options?</h3>
+        <p class="ma-cta-desc">
+          Whether you're considering a business exit, seeking growth capital, or exploring strategic acquisitions, our team provides institutional-grade advisory with a personal touch.
+        </p>
+        <a href="#contact" class="ma-cta-button">
+          Schedule a Consultation
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </section>
 
     <!-- Portfolio & Resume Section -->
     <section class="section" id="portfolio" data-aos="fade-up">
